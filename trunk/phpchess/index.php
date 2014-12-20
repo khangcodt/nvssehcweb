@@ -11,7 +11,6 @@ echo date('d/m/y h:i:s');
 
   define('CHECK_PHPCHESS', true);
 
-  header("Content-Type: text/html; charset=utf-8");
   session_start();
   ob_start();
 
