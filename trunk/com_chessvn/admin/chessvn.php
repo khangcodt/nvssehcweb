@@ -4,8 +4,8 @@
  * @subpackage com_chessvn
  * @license  !license!
  *
- * Created with Marco's Component Creator for Joomla! 2.5 & 3.x
- * http://www.mmleoni.net/joomla-component-builder
+ * Created by khanglq, admin Chessvn
+ *
  *
  */
 defined( '_JEXEC' ) or die( 'Restricted access' );
