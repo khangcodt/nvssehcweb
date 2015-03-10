@@ -6,8 +6,8 @@
  * @subpackage com_chessvn
  * @license  !license!
  *
- * Created with Marco's Component Creator for Joomla! 1.6
- * http://www.mmleoni.net/joomla-component-builder
+ * Created by khanglq, admin Chessvn
+ *
  *
  */
 
