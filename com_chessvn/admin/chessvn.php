@@ -6,7 +6,6 @@
  *
  * Created by khanglq, admin Chessvn
  *
- *
  */
 defined( '_JEXEC' ) or die( 'Restricted access' );
 
