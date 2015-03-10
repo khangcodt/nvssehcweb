@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addrulepath="/administrator/components/com_chessvn/models/rules" >
+	<fieldset name="details">
+	<!-- jcb code -->
+		<field name="trophyid" type="hidden" default="" label="COM_CHESSVN_TROPHY_TROPHYID_LABEL" description="COM_CHESSVN_TROPHY_TROPHYID_DESC" readonly="true" />
+		<field name="playerid" type="text" default="" label="COM_CHESSVN_TROPHY_PLAYERID_LABEL" description="COM_CHESSVN_TROPHY_PLAYERID_DESC" maxlength="11" required="true" multiple="false" />
+		<field name="trophytime" type="calendar" default="" label="COM_CHESSVN_TROPHY_TROPHYTIME_LABEL" description="COM_CHESSVN_TROPHY_TROPHYTIME_DESC" maxlength="255" required="false" multiple="false" />
+		<field name="name" type="text" default="" label="COM_CHESSVN_TROPHY_NAME_LABEL" description="COM_CHESSVN_TROPHY_NAME_DESC" maxlength="500" required="false" multiple="false" />
+		<field name="chesstype" type="text" default="1" label="COM_CHESSVN_TROPHY_CHESSTYPE_LABEL" description="COM_CHESSVN_TROPHY_CHESSTYPE_DESC" maxlength="4" required="true" multiple="false" />
+		<field name="trophytype" type="text" default="" label="COM_CHESSVN_TROPHY_TROPHYTYPE_LABEL" description="COM_CHESSVN_TROPHY_TROPHYTYPE_DESC" maxlength="5" required="false" multiple="false" />
+		<field name="imageurl" type="text" default="" label="COM_CHESSVN_TROPHY_IMAGEURL_LABEL" description="COM_CHESSVN_TROPHY_IMAGEURL_DESC" maxlength="300" required="false" multiple="false" />
+	<!-- jcb code -->
+
+	</fieldset>
+	<fields name="params">
+		<fieldset name="params" label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS">
+			<!--
+			<field name="param1_list_select" type="list" label="COM_CHESSVN_TROPHY_PARAM1_LABEL" description="COM_CHESSVN_TROPHY_PARAM1_DESC" default="" >
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+			</field>
+			-->
+		</fieldset>
+	</fields>
+</form>

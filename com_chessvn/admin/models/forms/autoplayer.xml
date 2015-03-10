@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addrulepath="/administrator/components/com_chessvn/models/rules" >
+	<fieldset name="details">
+	<!-- jcb code -->
+		<field name="autoplayerid" type="hidden" default="" label="COM_CHESSVN_AUTOPLAYER_AUTOPLAYERID_LABEL" description="COM_CHESSVN_AUTOPLAYER_AUTOPLAYERID_DESC" readonly="true" />
+		<field name="playerid" type="text" default="" label="COM_CHESSVN_AUTOPLAYER_PLAYERID_LABEL" description="COM_CHESSVN_AUTOPLAYER_PLAYERID_DESC" maxlength="11" required="true" multiple="false" />
+		<field name="isonline" type="text" default="0" label="COM_CHESSVN_AUTOPLAYER_ISONLINE_LABEL" description="COM_CHESSVN_AUTOPLAYER_ISONLINE_DESC" maxlength="1" required="true" multiple="false" />
+		<field name="isactive" type="text" default="0" label="COM_CHESSVN_AUTOPLAYER_ISACTIVE_LABEL" description="COM_CHESSVN_AUTOPLAYER_ISACTIVE_DESC" maxlength="1" required="true" multiple="false" />
+		<field name="isplayopengame" type="text" default="0" label="COM_CHESSVN_AUTOPLAYER_ISPLAYOPENGAME_LABEL" description="COM_CHESSVN_AUTOPLAYER_ISPLAYOPENGAME_DESC" maxlength="1" required="true" multiple="false" />
+		<field name="acceptstart" type="text" default="" label="COM_CHESSVN_AUTOPLAYER_ACCEPTSTART_LABEL" description="COM_CHESSVN_AUTOPLAYER_ACCEPTSTART_DESC" maxlength="6" required="false" multiple="false" />
+		<field name="acceptend" type="text" default="" label="COM_CHESSVN_AUTOPLAYER_ACCEPTEND_LABEL" description="COM_CHESSVN_AUTOPLAYER_ACCEPTEND_DESC" maxlength="6" required="false" multiple="false" />
+		<field name="elostart" type="text" default="0" label="COM_CHESSVN_AUTOPLAYER_ELOSTART_LABEL" description="COM_CHESSVN_AUTOPLAYER_ELOSTART_DESC" maxlength="6" required="true" multiple="false" />
+		<field name="eloend" type="text" default="0" label="COM_CHESSVN_AUTOPLAYER_ELOEND_LABEL" description="COM_CHESSVN_AUTOPLAYER_ELOEND_DESC" maxlength="6" required="true" multiple="false" />
+		<field name="resttimestart" type="text" default="0" label="COM_CHESSVN_AUTOPLAYER_RESTTIMESTART_LABEL" description="COM_CHESSVN_AUTOPLAYER_RESTTIMESTART_DESC" maxlength="6" required="false" multiple="false" />
+		<field name="resttimeend" type="text" default="0" label="COM_CHESSVN_AUTOPLAYER_RESTTIMEEND_LABEL" description="COM_CHESSVN_AUTOPLAYER_RESTTIMEEND_DESC" maxlength="6" required="false" multiple="false" />
+		<field name="chesstype" type="text" default="1" label="COM_CHESSVN_AUTOPLAYER_CHESSTYPE_LABEL" description="COM_CHESSVN_AUTOPLAYER_CHESSTYPE_DESC" maxlength="4" required="true" multiple="false" />
+	<!-- jcb code -->
+
+	</fieldset>
+	<fields name="params">
+		<fieldset name="params" label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS">
+			<!--
+			<field name="param1_list_select" type="list" label="COM_CHESSVN_AUTOPLAYER_PARAM1_LABEL" description="COM_CHESSVN_AUTOPLAYER_PARAM1_DESC" default="" >
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+			</field>
+			-->
+		</fieldset>
+	</fields>
+</form>
