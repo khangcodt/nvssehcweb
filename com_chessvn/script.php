@@ -9,7 +9,7 @@
 class com_chessvnInstallerScript {
 
     /**
-     * method to create views after installing component
+     * method to create sql views after installing component
      */
     function postflight($type, $parent)
     {
