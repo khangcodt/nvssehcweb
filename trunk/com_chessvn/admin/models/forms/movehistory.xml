@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addrulepath="/administrator/components/com_chessvn/models/rules" >
+	<fieldset name="details">
+	<!-- jcb code -->
+		<field name="moveid" type="hidden" default="" label="COM_CHESSVN_MOVEHISTORY_MOVEID_LABEL" description="COM_CHESSVN_MOVEHISTORY_MOVEID_DESC" readonly="true" />
+		<field name="movetime" type="calendar" default="" label="COM_CHESSVN_MOVEHISTORY_MOVETIME_LABEL" description="COM_CHESSVN_MOVEHISTORY_MOVETIME_DESC" maxlength="255" required="true" multiple="false" />
+		<field name="playerid" type="text" default="" label="COM_CHESSVN_MOVEHISTORY_PLAYERID_LABEL" description="COM_CHESSVN_MOVEHISTORY_PLAYERID_DESC" maxlength="11" required="true" multiple="false" />
+		<field name="move" type="text" default="" label="COM_CHESSVN_MOVEHISTORY_MOVE_LABEL" description="COM_CHESSVN_MOVEHISTORY_MOVE_DESC" maxlength="10" required="true" multiple="false" />
+		<field name="gameid" type="text" default="" label="COM_CHESSVN_MOVEHISTORY_GAMEID_LABEL" description="COM_CHESSVN_MOVEHISTORY_GAMEID_DESC" maxlength="50" required="true" multiple="false" />
+	<!-- jcb code -->
+
+	</fieldset>
+	<fields name="params">
+		<fieldset name="params" label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS">
+			<!--
+			<field name="param1_list_select" type="list" label="COM_CHESSVN_MOVEHISTORY_PARAM1_LABEL" description="COM_CHESSVN_MOVEHISTORY_PARAM1_DESC" default="" >
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+			</field>
+			-->
+		</fieldset>
+	</fields>
+</form>

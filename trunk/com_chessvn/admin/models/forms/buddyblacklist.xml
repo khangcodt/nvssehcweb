@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addrulepath="/administrator/components/com_chessvn/models/rules" >
+	<fieldset name="details">
+	<!-- jcb code -->
+		<field name="bblid" type="hidden" default="" label="COM_CHESSVN_BUDDYBLACKLIST_BBLID_LABEL" description="COM_CHESSVN_BUDDYBLACKLIST_BBLID_DESC" readonly="true" />
+		<field name="playerid" type="text" default="" label="COM_CHESSVN_BUDDYBLACKLIST_PLAYERID_LABEL" description="COM_CHESSVN_BUDDYBLACKLIST_PLAYERID_DESC" maxlength="11" required="true" multiple="false" />
+		<field name="buddyid" type="text" default="" label="COM_CHESSVN_BUDDYBLACKLIST_BUDDYID_LABEL" description="COM_CHESSVN_BUDDYBLACKLIST_BUDDYID_DESC" maxlength="11" required="false" multiple="false" />
+		<field name="blackid" type="text" default="" label="COM_CHESSVN_BUDDYBLACKLIST_BLACKID_LABEL" description="COM_CHESSVN_BUDDYBLACKLIST_BLACKID_DESC" maxlength="11" required="false" multiple="false" />
+		<field name="chesstype" type="text" default="1" label="COM_CHESSVN_BUDDYBLACKLIST_CHESSTYPE_LABEL" description="COM_CHESSVN_BUDDYBLACKLIST_CHESSTYPE_DESC" maxlength="4" required="true" multiple="false" />
+		<field name="reqstate" type="text" default="" label="COM_CHESSVN_BUDDYBLACKLIST_REQSTATE_LABEL" description="COM_CHESSVN_BUDDYBLACKLIST_REQSTATE_DESC" maxlength="10" required="false" multiple="false" />
+		<field name="createdtime" type="calendar" default="" label="COM_CHESSVN_BUDDYBLACKLIST_CREATEDTIME_LABEL" description="COM_CHESSVN_BUDDYBLACKLIST_CREATEDTIME_DESC" maxlength="255" required="false" multiple="false" />
+	<!-- jcb code -->
+
+	</fieldset>
+	<fields name="params">
+		<fieldset name="params" label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS">
+			<!--
+			<field name="param1_list_select" type="list" label="COM_CHESSVN_BUDDYBLACKLIST_PARAM1_LABEL" description="COM_CHESSVN_BUDDYBLACKLIST_PARAM1_DESC" default="" >
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+			</field>
+			-->
+		</fieldset>
+	</fields>
+</form>

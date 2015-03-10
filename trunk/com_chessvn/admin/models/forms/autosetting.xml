@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addrulepath="/administrator/components/com_chessvn/models/rules" >
+	<fieldset name="details">
+	<!-- jcb code -->
+		<field name="autosettingid" type="hidden" default="" label="COM_CHESSVN_AUTOSETTING_AUTOSETTINGID_LABEL" description="COM_CHESSVN_AUTOSETTING_AUTOSETTINGID_DESC" readonly="true" />
+		<field name="autoplayerid" type="text" default="" label="COM_CHESSVN_AUTOSETTING_AUTOPLAYERID_LABEL" description="COM_CHESSVN_AUTOSETTING_AUTOPLAYERID_DESC" maxlength="11" required="true" multiple="false" />
+		<field name="livetimestart" type="text" default="" label="COM_CHESSVN_AUTOSETTING_LIVETIMESTART_LABEL" description="COM_CHESSVN_AUTOSETTING_LIVETIMESTART_DESC" maxlength="8" required="false" multiple="false" />
+		<field name="livetimeend" type="text" default="" label="COM_CHESSVN_AUTOSETTING_LIVETIMEEND_LABEL" description="COM_CHESSVN_AUTOSETTING_LIVETIMEEND_DESC" maxlength="8" required="false" multiple="false" />
+	<!-- jcb code -->
+
+	</fieldset>
+	<fields name="params">
+		<fieldset name="params" label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS">
+			<!--
+			<field name="param1_list_select" type="list" label="COM_CHESSVN_AUTOSETTING_PARAM1_LABEL" description="COM_CHESSVN_AUTOSETTING_PARAM1_DESC" default="" >
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+			</field>
+			-->
+		</fieldset>
+	</fields>
+</form>

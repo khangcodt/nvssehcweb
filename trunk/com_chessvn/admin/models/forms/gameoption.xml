@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addrulepath="/administrator/components/com_chessvn/models/rules" >
+	<fieldset name="details">
+	<!-- jcb code -->
+		<field name="gameoptionid" type="hidden" default="" label="COM_CHESSVN_GAMEOPTION_GAMEOPTIONID_LABEL" description="COM_CHESSVN_GAMEOPTION_GAMEOPTIONID_DESC" readonly="true" />
+		<field name="gameid" type="text" default="" label="COM_CHESSVN_GAMEOPTION_GAMEID_LABEL" description="COM_CHESSVN_GAMEOPTION_GAMEID_DESC" maxlength="50" required="true" multiple="false" />
+		<field name="gametitle" type="text" default="" label="COM_CHESSVN_GAMEOPTION_GAMETITLE_LABEL" description="COM_CHESSVN_GAMEOPTION_GAMETITLE_DESC" maxlength="300" required="false" multiple="false" />
+		<field name="initiator" type="text" default="" label="COM_CHESSVN_GAMEOPTION_INITIATOR_LABEL" description="COM_CHESSVN_GAMEOPTION_INITIATOR_DESC" maxlength="11" required="true" multiple="false" />
+		<field name="wplayerid" type="text" default="" label="COM_CHESSVN_GAMEOPTION_WPLAYERID_LABEL" description="COM_CHESSVN_GAMEOPTION_WPLAYERID_DESC" maxlength="11" required="true" multiple="false" />
+		<field name="bplayerid" type="text" default="" label="COM_CHESSVN_GAMEOPTION_BPLAYERID_LABEL" description="COM_CHESSVN_GAMEOPTION_BPLAYERID_DESC" maxlength="11" required="true" multiple="false" />
+		<field name="chesstype" type="text" default="1" label="COM_CHESSVN_GAMEOPTION_CHESSTYPE_LABEL" description="COM_CHESSVN_GAMEOPTION_CHESSTYPE_DESC" maxlength="4" required="true" multiple="false" />
+		<field name="gamecoin" type="text" default="" label="COM_CHESSVN_GAMEOPTION_GAMECOIN_LABEL" description="COM_CHESSVN_GAMEOPTION_GAMECOIN_DESC" maxlength="20" required="false" multiple="false" />
+		<field name="elowhite" type="text" default="" label="COM_CHESSVN_GAMEOPTION_ELOWHITE_LABEL" description="COM_CHESSVN_GAMEOPTION_ELOWHITE_DESC" maxlength="6" required="true" multiple="false" />
+		<field name="eloblack" type="text" default="" label="COM_CHESSVN_GAMEOPTION_ELOBLACK_LABEL" description="COM_CHESSVN_GAMEOPTION_ELOBLACK_DESC" maxlength="6" required="true" multiple="false" />
+		<field name="elomin" type="text" default="" label="COM_CHESSVN_GAMEOPTION_ELOMIN_LABEL" description="COM_CHESSVN_GAMEOPTION_ELOMIN_DESC" maxlength="6" required="false" multiple="false" />
+		<field name="elomax" type="text" default="" label="COM_CHESSVN_GAMEOPTION_ELOMAX_LABEL" description="COM_CHESSVN_GAMEOPTION_ELOMAX_DESC" maxlength="6" required="false" multiple="false" />
+		<field name="israting" type="text" default="0" label="COM_CHESSVN_GAMEOPTION_ISRATING_LABEL" description="COM_CHESSVN_GAMEOPTION_ISRATING_DESC" maxlength="1" required="true" multiple="false" />
+		<field name="timemode" type="text" default="" label="COM_CHESSVN_GAMEOPTION_TIMEMODE_LABEL" description="COM_CHESSVN_GAMEOPTION_TIMEMODE_DESC" maxlength="10" required="false" multiple="false" />
+		<field name="maintime" type="text" default="" label="COM_CHESSVN_GAMEOPTION_MAINTIME_LABEL" description="COM_CHESSVN_GAMEOPTION_MAINTIME_DESC" maxlength="6" required="false" multiple="false" />
+		<field name="incrementtime" type="text" default="" label="COM_CHESSVN_GAMEOPTION_INCREMENTTIME_LABEL" description="COM_CHESSVN_GAMEOPTION_INCREMENTTIME_DESC" maxlength="6" required="false" multiple="false" />
+		<field name="starttime" type="calendar" default="" label="COM_CHESSVN_GAMEOPTION_STARTTIME_LABEL" description="COM_CHESSVN_GAMEOPTION_STARTTIME_DESC" maxlength="255" required="false" multiple="false" />
+		<field name="endtime" type="calendar" default="" label="COM_CHESSVN_GAMEOPTION_ENDTIME_LABEL" description="COM_CHESSVN_GAMEOPTION_ENDTIME_DESC" maxlength="255" required="false" multiple="false" />
+		<field name="createdtime" type="calendar" default="" label="COM_CHESSVN_GAMEOPTION_CREATEDTIME_LABEL" description="COM_CHESSVN_GAMEOPTION_CREATEDTIME_DESC" maxlength="255" required="false" multiple="false" />
+	<!-- jcb code -->
+
+	</fieldset>
+	<fields name="params">
+		<fieldset name="params" label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS">
+			<!--
+			<field name="param1_list_select" type="list" label="COM_CHESSVN_GAMEOPTION_PARAM1_LABEL" description="COM_CHESSVN_GAMEOPTION_PARAM1_DESC" default="" >
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+			</field>
+			-->
+		</fieldset>
+	</fields>
+</form>

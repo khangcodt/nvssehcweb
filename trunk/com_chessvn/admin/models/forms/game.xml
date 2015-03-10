@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addrulepath="/administrator/components/com_chessvn/models/rules" >
+	<fieldset name="details">
+	<!-- jcb code -->
+		<field name="gameid" type="hidden" default="" label="COM_CHESSVN_GAME_GAMEID_LABEL" description="COM_CHESSVN_GAME_GAMEID_DESC" readonly="true" />
+		<field name="status" type="list" default="W" label="COM_CHESSVN_GAME_STATUS_LABEL" description="COM_CHESSVN_GAME_STATUS_DESC" maxlength="255" required="false" multiple="false" >
+<option value="0">JNO</option>
+<option value="1">JYES</option>
+</field>
+		<field name="completionstatus" type="list" default="I" label="COM_CHESSVN_GAME_COMPLETIONSTATUS_LABEL" description="COM_CHESSVN_GAME_COMPLETIONSTATUS_DESC" maxlength="255" required="true" multiple="false" >
+<option value="0">JNO</option>
+<option value="1">JYES</option>
+</field>
+		<field name="nextmove" type="list" default="" label="COM_CHESSVN_GAME_NEXTMOVE_LABEL" description="COM_CHESSVN_GAME_NEXTMOVE_DESC" maxlength="255" required="false" multiple="false" >
+<option value="0">JNO</option>
+<option value="1">JYES</option>
+</field>
+		<field name="iscastlewl" type="text" default="" label="COM_CHESSVN_GAME_ISCASTLEWL_LABEL" description="COM_CHESSVN_GAME_ISCASTLEWL_DESC" maxlength="1" required="false" multiple="false" />
+		<field name="iscastlews" type="text" default="" label="COM_CHESSVN_GAME_ISCASTLEWS_LABEL" description="COM_CHESSVN_GAME_ISCASTLEWS_DESC" maxlength="1" required="false" multiple="false" />
+		<field name="iscastlebl" type="text" default="" label="COM_CHESSVN_GAME_ISCASTLEBL_LABEL" description="COM_CHESSVN_GAME_ISCASTLEBL_DESC" maxlength="1" required="false" multiple="false" />
+		<field name="iscastlebs" type="text" default="" label="COM_CHESSVN_GAME_ISCASTLEBS_LABEL" description="COM_CHESSVN_GAME_ISCASTLEBS_DESC" maxlength="1" required="false" multiple="false" />
+		<field name="drawrequest" type="list" default="" label="COM_CHESSVN_GAME_DRAWREQUEST_LABEL" description="COM_CHESSVN_GAME_DRAWREQUEST_DESC" maxlength="255" required="false" multiple="false" >
+<option value="0">JNO</option>
+<option value="1">JYES</option>
+</field>
+		<field name="wtimeused" type="text" default="" label="COM_CHESSVN_GAME_WTIMEUSED_LABEL" description="COM_CHESSVN_GAME_WTIMEUSED_DESC" maxlength="11" required="false" multiple="false" />
+		<field name="btimeused" type="text" default="" label="COM_CHESSVN_GAME_BTIMEUSED_LABEL" description="COM_CHESSVN_GAME_BTIMEUSED_DESC" maxlength="11" required="false" multiple="false" />
+	<!-- jcb code -->
+
+	</fieldset>
+	<fields name="params">
+		<fieldset name="params" label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS">
+			<!--
+			<field name="param1_list_select" type="list" label="COM_CHESSVN_GAME_PARAM1_LABEL" description="COM_CHESSVN_GAME_PARAM1_DESC" default="" >
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+			</field>
+			-->
+		</fieldset>
+	</fields>
+</form>

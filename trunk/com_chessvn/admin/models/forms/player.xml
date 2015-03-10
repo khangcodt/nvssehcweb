@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<form addrulepath="/administrator/components/com_chessvn/models/rules" >
+	<fieldset name="details">
+	<!-- jcb code -->
+		<field name="playerid" type="hidden" default="" label="COM_CHESSVN_PLAYER_PLAYERID_LABEL" description="COM_CHESSVN_PLAYER_PLAYERID_DESC" readonly="true" />
+		<field name="userid" type="text" default="" label="COM_CHESSVN_PLAYER_USERID_LABEL" description="COM_CHESSVN_PLAYER_USERID_DESC" maxlength="11" required="true" multiple="false" />
+		<field name="chesstitle" type="text" default="" label="COM_CHESSVN_PLAYER_CHESSTITLE_LABEL" description="COM_CHESSVN_PLAYER_CHESSTITLE_DESC" maxlength="5" required="false" multiple="false" />
+		<field name="coin" type="text" default="0" label="COM_CHESSVN_PLAYER_COIN_LABEL" description="COM_CHESSVN_PLAYER_COIN_DESC" maxlength="30" required="false" multiple="false" />
+		<field name="favplayer" type="text" default="" label="COM_CHESSVN_PLAYER_FAVPLAYER_LABEL" description="COM_CHESSVN_PLAYER_FAVPLAYER_DESC" maxlength="60" required="false" multiple="false" />
+		<field name="avatar" type="text" default="" label="COM_CHESSVN_PLAYER_AVATAR_LABEL" description="COM_CHESSVN_PLAYER_AVATAR_DESC" maxlength="300" required="false" multiple="false" />
+	<!-- jcb code -->
+
+	</fieldset>
+	<fields name="params">
+		<fieldset name="params" label="JGLOBAL_FIELDSET_DISPLAY_OPTIONS">
+			<!--
+			<field name="param1_list_select" type="list" label="COM_CHESSVN_PLAYER_PARAM1_LABEL" description="COM_CHESSVN_PLAYER_PARAM1_DESC" default="" >
+				<option value="">JGLOBAL_USE_GLOBAL</option>
+				<option value="0">JHIDE</option>
+				<option value="1">JSHOW</option>
+			</field>
+			-->
+		</fieldset>
+	</fields>
+</form>
