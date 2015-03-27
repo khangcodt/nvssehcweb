@@ -8,7 +8,8 @@
 
 // no direct access
 defined('_JEXEC') or die;
-
+jimport('joomla.log.log');
+JLog::addLogger(array());
 class modOnlineplayersHelper
 {
 	// show online count
@@ -77,7 +78,9 @@ class modOnlineplayersHelper
 			$query->where('ug.id in (' . implode(',', $groups) . ')');
 			$query->where('ug.id <> 1');
 		}
-		$db->setQuery($query);
+
+        $db->setQuery($query);
+        JLog::add(JText::_('khanglq:--- sql = '.$db->getQuery()), JLog::INFO);
 		return (array) $db->loadObjectList();
 	}
 	
@@ -114,7 +117,9 @@ class modOnlineplayersHelper
 			$query->where('ug.id in (' . implode(',', $groups) . ')');
 			$query->where('ug.id <> 1');
 		}
+
 		$db->setQuery($query);
+        JLog::add(JText::_('khanglq:--- sql = '.$db->getQuery()), JLog::INFO);
 		return (array) $db->loadObjectList();
 	}
 }
