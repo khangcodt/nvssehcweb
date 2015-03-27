@@ -9,7 +9,7 @@
 // no direct access
 defined('_JEXEC') or die;
 $document = JFactory::getDocument();
-$mediaPath = JPATH_ROOT . '/media/media_chessvn/';
+$mediaPath = JURI::base() . '/media/media_chessvn/';
 $document->addScript($mediaPath.'js/sorttable.js');
 $document->addStyleSheet($mediaPath.'css/chessvn.css');
 ?>
