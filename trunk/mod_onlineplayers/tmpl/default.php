@@ -13,8 +13,8 @@ $mediaPath = JURI::base() . '/media/media_chessvn/';
 $document->addScript($mediaPath.'js/sorttable.js');
 $document->addStyleSheet($mediaPath.'css/chessvn.css');
 $imgScale = 10;
-$onlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="ON" src="'.$mediaPath.'images/OnlineDot.png">';
-$offlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="OFF" src="'.$mediaPath.'images/OfflineDot.png">';
+$onlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="ON" src="'.$mediaPath.'images/OnlineDot.png" style="margin: 0;">';
+$offlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="OFF" src="'.$mediaPath.'images/OfflineDot.png" style="margin: 0;">';
 ?>
 
 <?php if ($showmode == 0 || $showmode == 2) : ?>
