@@ -12,6 +12,9 @@ $document = JFactory::getDocument();
 $mediaPath = JURI::base() . '/media/media_chessvn/';
 $document->addScript($mediaPath.'js/sorttable.js');
 $document->addStyleSheet($mediaPath.'css/chessvn.css');
+$imgScale = 10;
+$onlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="ON" src="'.$mediaPath.'images/OnlineDot.png">';
+$offlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="OFF" src="'.$mediaPath.'images/OfflineDot.png">';
 ?>
 
 <?php if ($showmode == 0 || $showmode == 2) : ?>
@@ -37,13 +40,13 @@ $document->addStyleSheet($mediaPath.'css/chessvn.css');
             <tbody>
 	<?php
     foreach($names as $name) :
-        $live = (in_array($name, $liveUsers))?'ON':'OFF';
+        $live = (in_array($name, $liveUsers))?$onlineImg:$offlineImg;
     ?>
             <tr>
                 <td><?php echo $name->username; ?></td>
                 <td><?php echo $name->ratingpoint; ?></td>
                 <td><?php echo $name->coin; ?></td>
-				<td><?php echo $live; ?></td>
+				<td style="text-align: center;"><?php echo $live; ?></td>
             </tr>
 	<?php endforeach;  ?>
             </tbody>
