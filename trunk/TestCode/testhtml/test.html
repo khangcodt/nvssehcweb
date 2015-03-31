@@ -1,0 +1,85 @@
+<html>
+<head>
+<link rel="stylesheet" href="css/test.css" />
+</head>
+<body>
+<input type="button" value="Click to Expand DIV" id="testBtn" />
+<div class=" afds" id="testdiv" style="">
+123434
+</div>
+<div class="fdsf" id="codiv" style="">
+vung co laifdsfafsdfs
+</div>
+<div
+  class="fb-like"
+  data-share="true"
+  data-width="450"
+  data-show-faces="true">
+  <table class="sortable">
+<thead>
+  <tr><th><a>Person</a></th><th><a href="#">Monthly pay</a></th></tr>
+</thead>
+<tbody>
+  <tr><td>Jan Molby</td><td>£12,000</td></tr>
+  <tr><td>Steve Nicol</td><td>£8,500</td></tr>
+  <tr><td>Steve McMahon</td><td>£9,200</td></tr>
+  <tr><td>John Barnes</td><td>£15,300</td></tr>
+</tbody>
+<tfoot>
+  <tr><td>TOTAL</td><td>£45,000</td></tr>
+</tfoot>
+</table>
+</div>
+<select class="select-cities" name="city" multiple="multiple">
+                <option>Frederiksberg</option>
+                <option>Vanløse</option>
+                <option>Glostrup</option>
+                <option>Brøndby</option>
+                <option>Roskilde</option>
+                <option>Køge</option>
+                <option>Gentofte</option>
+                <option>Hillerød</option>
+                <option>Tårnby</option>
+                <option>Vallensbæk</option>
+            </select>
+
+<select class="chosen-cities" name="chosen-cities-name" multiple="multiple">
+
+            </select>
+<script src="testlib/sorttable.js"></script>
+<script src="testlib/jquery.js"></script>
+<script>
+var show = true;
+$('#testBtn').click(function() {
+
+		show = !show;
+        //updateDrawing();
+        //setTransitions();
+		//alert('khanglq tessting here');
+        $('#testdiv').toggleClass('expanddiv');
+		$('#codiv').toggleClass('minidiv');
+		window.setTimeout(changetext, 400);
+    });
+function setTransitions() {
+	var box = document.getElementById('testdiv');
+	box.style.WebkitTransition =
+        box.style.MozTransition =
+        box.style.MsTransition =
+        box.style.OTransition =
+        box.style.transition = 'all 800ms cubic-bezier(0.420, 0.000, 1.000, 1.000)'; 
+}
+function changetext() {
+		if(!show) $('#codiv').html('co'); 
+		else $('#codiv').html('vung co lai');
+}
+
+$('.select-cities').click(function () {
+    $('.select-cities option:selected').appendTo('.chosen-cities');
+});
+
+$('.chosen-cities').click(function () {
+    $('.chosen-cities option:selected').appendTo('.select-cities');
+});
+</script>
+</body>
+</html>

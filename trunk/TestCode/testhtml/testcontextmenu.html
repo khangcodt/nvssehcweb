@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+    <head>
+        <!-- jQuery should be at least version 1.7 -->
+		<script src="testlib/jquery-1.8.0.min.js"></script>
+        <script src="testlib/contextmenu.js"></script> 
+        <link rel="stylesheet" href="css/contextmenu.css" />
+    </head>
+
+    <body>
+        <div id="test">
+            <a href="www.google.com" class="test">Google</a>
+            <a href="www.google.com" class="test">Link 2</a>
+            <a href="www.google.com" class="test">Link 3</a>
+            <a href="www.google.com" class="test">Link 4</a>
+        </div>
+
+        <!-- initially hidden right-click menu -->
+        <div class="hide" id="rmenu">
+            <ul>
+                <li>
+                    <a href="http://www.google.com">Google</a>
+                </li>
+
+                <li>
+                    <a href="http://localhost:8080/login">Localhost</a>
+                </li>
+
+                <li>
+                    <a href="C:\">C</a>
+                </li>
+            </ul>
+        </div>
+    </body>
+</html>
