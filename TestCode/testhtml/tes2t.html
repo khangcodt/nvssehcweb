@@ -1,0 +1,30 @@
+<html>
+<body>
+<select class="select-cities" name="city" multiple="multiple">
+                <option>Frederiksberg</option>
+                <option>Vanløse</option>
+                <option>Glostrup</option>
+                <option>Brøndby</option>
+                <option>Roskilde</option>
+                <option>Køge</option>
+                <option>Gentofte</option>
+                <option>Hillerød</option>
+                <option>Tårnby</option>
+                <option>Vallensbæk</option>
+            </select>
+
+<select class="chosen-cities" name="chosen-cities-name" multiple="multiple">
+
+            </select>
+<script src="jquery.js"></script>
+<script>
+$('.select-cities').click(function () {
+    $('.select-cities option:selected').appendTo('.chosen-cities');
+});
+
+$('.chosen-cities').click(function () {
+    $('.chosen-cities option:selected').appendTo('.select-cities');
+});
+</script>
+</body>
+</html>

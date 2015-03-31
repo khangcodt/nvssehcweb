@@ -1,0 +1,80 @@
+.expanddiv {
+-webkit-transition: all 800ms cubic-bezier(0.420, 0.000, 1.000, 1.000);
+   -moz-transition: all 800ms cubic-bezier(0.420, 0.000, 1.000, 1.000);
+     -o-transition: all 800ms cubic-bezier(0.420, 0.000, 1.000, 1.000);
+        transition: all 800ms cubic-bezier(0.420, 0.000, 1.000, 1.000); /* ease-in */
+
+-webkit-transition-timing-function: cubic-bezier(0.420, 0.000, 1.000, 1.000);
+   -moz-transition-timing-function: cubic-bezier(0.420, 0.000, 1.000, 1.000);
+     -o-transition-timing-function: cubic-bezier(0.420, 0.000, 1.000, 1.000);
+        transition-timing-function: cubic-bezier(0.420, 0.000, 1.000, 1.000); /* ease-in */
+width: 600px !important;
+}
+.minidiv {
+-webkit-transition: all 800ms cubic-bezier(0.420, 0.000, 1.000, 1.000);
+   -moz-transition: all 800ms cubic-bezier(0.420, 0.000, 1.000, 1.000);
+     -o-transition: all 800ms cubic-bezier(0.420, 0.000, 1.000, 1.000);
+        transition: all 800ms cubic-bezier(0.420, 0.000, 1.000, 1.000); /* ease-in */
+
+-webkit-transition-timing-function: cubic-bezier(0.420, 0.000, 1.000, 1.000);
+   -moz-transition-timing-function: cubic-bezier(0.420, 0.000, 1.000, 1.000);
+     -o-transition-timing-function: cubic-bezier(0.420, 0.000, 1.000, 1.000);
+        transition-timing-function: cubic-bezier(0.420, 0.000, 1.000, 1.000); /* ease-in */
+width: 10px !important;
+}
+#testdiv {
+-webkit-transition: all 800ms cubic-bezier(0.420, 0.000, 1.000, 1.000);
+   -moz-transition: all 800ms cubic-bezier(0.420, 0.000, 1.000, 1.000);
+     -o-transition: all 800ms cubic-bezier(0.420, 0.000, 1.000, 1.000);
+        transition: all 800ms cubic-bezier(0.420, 0.000, 1.000, 1.000); /* ease-in */
+
+-webkit-transition-timing-function: cubic-bezier(0.420, 0.000, 1.000, 1.000);
+   -moz-transition-timing-function: cubic-bezier(0.420, 0.000, 1.000, 1.000);
+     -o-transition-timing-function: cubic-bezier(0.420, 0.000, 1.000, 1.000);
+        transition-timing-function: cubic-bezier(0.420, 0.000, 1.000, 1.000); /* ease-in */
+background-color: blue; 
+width: 100px;
+text-align: center;
+}
+#codiv{
+-webkit-transition: all 800ms cubic-bezier(0.420, 0.000, 1.000, 1.000);
+   -moz-transition: all 800ms cubic-bezier(0.420, 0.000, 1.000, 1.000);
+     -o-transition: all 800ms cubic-bezier(0.420, 0.000, 1.000, 1.000);
+        transition: all 800ms cubic-bezier(0.420, 0.000, 1.000, 1.000); /* ease-in */
+
+-webkit-transition-timing-function: cubic-bezier(0.420, 0.000, 1.000, 1.000);
+   -moz-transition-timing-function: cubic-bezier(0.420, 0.000, 1.000, 1.000);
+     -o-transition-timing-function: cubic-bezier(0.420, 0.000, 1.000, 1.000);
+        transition-timing-function: cubic-bezier(0.420, 0.000, 1.000, 1.000); /* ease-in */
+background-color: yellow; 
+width: 300px;
+float: right;
+}
+/* Sortable tables */
+table.sortable thead {
+    background-color:#eee;
+    color:#666666;
+    font-weight: bold;
+    cursor: default;
+}
+a:link {
+    color:#000000;
+    background-color:transparent;
+    text-decoration:none;
+}
+a:visited {
+    color:#000000;
+    background-color:transparent;
+    text-decoration:none;
+}
+a:hover {
+    color:blue;
+    background-color:transparent;
+    text-decoration:underline;
+	cursor: pointer;
+}
+a:active {
+    color:#ff0000;
+    background-color:transparent;
+    text-decoration:underline;
+}
