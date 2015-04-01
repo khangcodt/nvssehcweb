@@ -66,24 +66,24 @@ if($type == 'logout'){
                 echo '<input id="modlgn-remember" type="checkbox" name="remember" class="inputbox" value="yes"/></p>';
 			}
             echo '<input type="submit" name="Submit" class="button" value="'.JText::_('MOD_FBCONNCT_LOGIN').'" />';
-            echo '<input type="hidden" name="option" value="com_users" />';
+            echo '<input type="hidden" name="option" value="com_cvnusers" />';
             echo '<input type="hidden" name="task" value="user.login" />';
             echo '<input type="hidden" name="return" value="'.base64_encode(JURI::current()).'" />';
 			echo JHtml::_('form.token');
 			echo '</fieldset>';
             echo '<ul><li>';
-            echo '<a href="'.JRoute::_('index.php?option=com_users&view=reset').'">';
+            echo '<a href="'.JRoute::_('index.php?option=com_cvnusers&view=reset').'">';
             echo JText::_('MOD_FBCONNCT_FORGOT_PASSWORD');
 			echo '</a>';
             echo '</li><li>';
-            echo '<a href="'.JRoute::_('index.php?option=com_users&view=remind').'">';
+            echo '<a href="'.JRoute::_('index.php?option=com_cvnusers&view=remind').'">';
             echo JText::_('MOD_FBCONNCT_FORGOT_USERNAME');
 			echo '</a>';
             echo '</li>';
-            $usersConfig = JComponentHelper::getParams('com_users');
+            $usersConfig = JComponentHelper::getParams('com_cvnusers');
             if ($usersConfig->get('allowUserRegistration')){
 				echo '<li>';
-				echo '<a href="'.JRoute::_('index.php?option=com_users&view=registration').'">';
+				echo '<a href="'.JRoute::_('index.php?option=com_cvnusers&view=registration').'">';
 				echo JText::_('MOD_FBCONNCT_CREATE_ACCOUNT');
 				echo '</a></li>';
 			}
@@ -117,7 +117,7 @@ if($type == 'logout'){
             echo '<a href="'.JRoute::_( 'index.php?option=com_user&view=remind' ).'">';
             echo JText::_('MOD_FBCONNCT_FORGOT_USERNAME').'</a></li>';
             
-			$usersConfig = &JComponentHelper::getParams( 'com_users' );
+			$usersConfig = &JComponentHelper::getParams( 'com_cvnusers' );
             if ($usersConfig->get('allowUserRegistration')){
 				echo '<li><a href="'.JRoute::_( 'index.php?option=com_user&view=register' ).'">';
 				echo JText::_('MOD_FBCONNCT_CREATE_ACCOUNT');
