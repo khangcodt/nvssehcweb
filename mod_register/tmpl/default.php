@@ -13,14 +13,14 @@ JHtml::_('behavior.formvalidation');
 
 $utilfile = JPATH_ROOT. '/media/media_chessvn/cvnphp/utils/cvnutils.php';
 $configfile = JPATH_ROOT. '/media/media_chessvn/cvnphp/config/cvnconfig.php';
-include($utilfile);
-include($configfile);
+require_once($utilfile);
+require_once($configfile);
 $defaultname = $conf['default_email_prefix'].genRandomString();
 $defaultemail = $defaultname.$conf['default_email_domain'];
 ?>
 
 <div style="padding:10px;" class="sp-reg clearfix">
-	<form action="<?php echo JRoute::_('index.php?option=com_users&task=registration.register'); ?>" method="post" class="form-validate">
+	<form action="<?php echo JRoute::_('index.php?option=com_cvnusers&task=registration.register'); ?>" method="post" class="form-validate">
 		<fieldset>
 			<dl>
 				<input type="hidden" value="<?php echo $defaultname;?>" id="jform_name" name="jform[name]" />
@@ -41,7 +41,7 @@ $defaultemail = $defaultname.$conf['default_email_domain'];
 			<button type="submit" class="validate"><?php echo JText::_('JREGISTER');?></button>
 			<?php echo JText::_('OR');?>
 			<a href="<?php echo JRoute::_('');?>"><?php echo JText::_('JCANCEL');?></a>
-			<input type="hidden" name="option" value="com_users" />
+			<input type="hidden" name="option" value="com_cvnusers" />
 			<input type="hidden" name="task" value="registration.register" />
 			<?php echo JHtml::_('form.token');?>
 		</div>

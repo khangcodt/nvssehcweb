@@ -122,7 +122,7 @@ class fbconnctController extends JController
 		$session 		= JFactory::getSession();
 		$db 			= JFactory::getDBO();
 		$user 			= clone(JFactory::getUser());
-		$usersConfig	= JComponentHelper::getParams('com_users');
+		$usersConfig	= JComponentHelper::getParams('com_cvnusers');
 		$session_me 	= $session->get( 'user_details', '' );
 		$myparams 		= JComponentHelper::getParams('com_fbconnct');
 		
@@ -299,7 +299,7 @@ class fbconnctController extends JController
 		$user = JFactory::getUser();
 		$myparams 		= JComponentHelper::getParams('com_fbconnct');
 		
-		$usersConfig = JComponentHelper::getParams( 'com_users' );
+		$usersConfig = JComponentHelper::getParams( 'com_cvnusers' );
 		if(fbconnctController::isJ16())
 		{
 			$bypassreg = $myparams->getValue('data.params.bypass-signup');
