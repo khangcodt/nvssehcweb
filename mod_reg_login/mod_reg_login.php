@@ -27,7 +27,7 @@ $sitePath 	= JPATH_SITE;
 $siteUrl  	= substr(JURI::base(), 0, -1);
 
 // Module parameters
-$jwts_position			= trim($params->get('jwts_position','left'));
+//$jwts_position			= trim($params->get('jwts_position','left'));
 $jwts_displaytype		= $params->get('jwts_displaytype','tabs');
 $jwts_showmodtitle	= intval($params->get('jwts_showmodtitle',0));
 
@@ -37,7 +37,13 @@ $jwts_params				= array('style'=>'none');
 $modulesInPosition 	= JModuleHelper::getModules($jwts_position);
 
 //code by khanglq
-//$mod_
+$mods = $params->get('mods');
+$selectedModules = array ();
+//for ($i=0;$i<count($mods);$i++) {
+//    $selectedModules[] = JModuleHelper::getModule($mods[$i]);
+//}
+$selectedModules[] = JModuleHelper::getModule('register');
+$selectedModules[] = JModuleHelper::getModule('fbconnct');
 //===============
 
 // Load required JS

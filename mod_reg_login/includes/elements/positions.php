@@ -105,7 +105,7 @@ class JElementPositions extends JElement
 		$positions = array_unique($positions);
 		sort($positions);
 
-		$options[] = JHTML::_('select.option', '', JText::_('MOD_JW_TS_NONE_SELECTED'), 'id', 'title');
+		$options[] = JHTML::_('select.option', '', JText::_('MOD_REG_LOGIN_NONE_SELECTED'), 'id', 'title');
 		foreach ($positions as $position)
 		{
 			if ($position)
