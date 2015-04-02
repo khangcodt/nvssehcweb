@@ -38,10 +38,10 @@ $filePath = str_replace('\\', '/', $filePath);
 //$moduleRegister =
 ?>
 <div id="jwTabsAndSlidersModule<?php echo $module->id; ?>" class="jwts_slider<?php if($params->get('moduleclass_sfx')) echo ' '.$params->get('moduleclass_sfx'); ?>">
-	<?php foreach($modulesInPosition as $mod): ?>
+	<?php foreach($selectedModules as $mod): ?>
 	<div class="jwts_title">
 		<div class="jwts_title_left">
-			<a href="javascript:void(null);" class="jwts_title_text" title="<?php echo JText::_('MOD_JW_TS_CLICK_TO_OPEN'); ?>">
+			<a href="javascript:void(null);" class="jwts_title_text" title="<?php echo JText::_('MOD_REG_LOGIN_CLICK_TO_OPEN'); ?>">
 				<?php echo $mod->title; ?>
 			</a>
 		</div>
