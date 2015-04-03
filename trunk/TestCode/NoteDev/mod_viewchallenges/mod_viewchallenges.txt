@@ -1,0 +1,52 @@
+Mẫu tham khảo:
+request url:
+http://localhost/chessvn/mobile.php?action=openchallenges&sid=NTNBQTAzRDUwMkU1RUIzMUIxODkwRjQ1RkEzNDJDQ0R8MQ==
+
+Bản tin trả về:
+<?xml version="1.0" encoding="UTF-8"?>
+<SERVER>
+<RESPONSE>
+<GAMES>
+<STATUS>IDS_GAME_NOT_ACCEPTED</STATUS>
+<COMPLETIONSTATUS>I</COMPLETIONSTATUS>
+<GAMETYPE>GT_NORMAL_GAME</GAMETYPE>
+<RATED>true</RATED>
+<TIMEOUT>IDS_BLITZ</TIMEOUT>
+<TIMECONTROL1>IDS_NULL</TIMECONTROL1>
+<TIMECONTROL2>IDS_NULL</TIMECONTROL2>
+<TIMECREATED>1419675273</TIMECREATED>
+<DESCRIPTION>plainplayer VS ANYONE</DESCRIPTION>
+<INITIATOR>1</INITIATOR>
+<WHITE>1</WHITE>
+<BLACK>0</BLACK>
+<NEXTMOVE></NEXTMOVE>
+<GAMEID>97DD03DAD5FFCCB642431422AB76C5DB</GAMEID>
+<GAMEFEN>rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR/ w KQkq - 0 1</GAMEFEN>
+</GAMES>
+</RESPONSE>
+</SERVER>
+
+Thực tế đã code:
+request: http://localhost/Joomla25/index.php?option=com_chessvn&format=xml&userid=630
+Trả về:
+<SERVER>
+<RESPONSE>
+<GAMES>
+<STATUS>W</STATUS>
+<COMPLETIONSTATUS>I</COMPLETIONSTATUS>
+<TITLE>Game moi tinh</TITLE>
+<TIMECREATED/>
+<GAMECOIN>234242</GAMECOIN>
+</GAMES>
+<GAMES>
+<STATUS>W</STATUS>
+<COMPLETIONSTATUS>I</COMPLETIONSTATUS>
+<TITLE>all go herere chap het</TITLE>
+<TIMECREATED/>
+<GAMECOIN>321</GAMECOIN>
+</GAMES>
+</RESPONSE>
+</SERVER>
+
+Code js tham khảo file cell_chess_member.php
+Chú ý các hàm js:processChallenges, getChallenges, processOpen, getOpen
