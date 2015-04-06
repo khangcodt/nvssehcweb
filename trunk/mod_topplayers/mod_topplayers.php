@@ -1,7 +1,7 @@
 <?php
 /**
  * @package		Joomla.Site
- * @subpackage	mod_onlineplayers
+ * @subpackage	mod_topplayers
  * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
@@ -15,15 +15,15 @@ require_once dirname(__FILE__).'/helper.php';
 $showmode = $params->get('showmode', 0);
 
 if ($showmode == 0 || $showmode == 2) {
-	$count	= modOnlineplayersHelper::getOnlineCount();
+	$count	= modTopplayersHelper::getTopCount();
 }
 
 if ($showmode > 0) {
-	$names	= modOnlineplayersHelper::getSomeUserNames($params);
-	$liveUsers	= modOnlineplayersHelper::getOnlineUserNames($params);
+	$namestop	= modTopplayersHelper::getSomeUserNames($params);
+	$checkLiveUsers	= modTopplayersHelper::getTopUserNames($params);
 }
 
 $linknames = $params->get('linknames', 0);
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
 
-require JModuleHelper::getLayoutPath('mod_onlineplayers', $params->get('layout', 'default'));
+require JModuleHelper::getLayoutPath('mod_topplayers', $params->get('layout', 'default'));
