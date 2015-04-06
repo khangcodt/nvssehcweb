@@ -21,7 +21,7 @@ $offlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="OFF" src="
         float: left;
     }
     .topplayer_soft{
-        width: 80px;
+        width: 85px;
         float: right;
     }
 </style>
