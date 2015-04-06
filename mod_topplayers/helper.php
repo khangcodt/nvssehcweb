@@ -1,7 +1,7 @@
 <?php
 /**
  * @package		Joomla.Site
- * @subpackage	mod_onlineplayers
+ * @subpackage	mod_topplayers
  * @copyright	Copyright (C) 2005 - 2013 Open Source Matters, Inc. All rights reserved.
  * @license		GNU General Public License version 2 or later; see LICENSE.txt
  */
@@ -10,10 +10,10 @@
 defined('_JEXEC') or die;
 jimport('joomla.log.log');
 JLog::addLogger(array());
-class modOnlineplayersHelper
+class modTopplayersHelper
 {
 	// show online count
-	static function getOnlineCount() {
+	static function getTopCount() {
 		$db		= JFactory::getDbo();
 		// calculate number of guests and users
 		$result	= array();
@@ -46,7 +46,7 @@ class modOnlineplayersHelper
 	}
 
 	// show online member names
-	static function getOnlineUserNames($params) {
+	static function getTopUserNames($params) {
 		$db		= JFactory::getDbo();
 		$query	= $db->getQuery(true);
 		$query->select('a.username, a.userid, p.coin, r.ratingpoint');
@@ -104,6 +104,7 @@ class modOnlineplayersHelper
         $query->leftJoin('#__rating AS r ON r.playerid = p.playerid');
         $query->where('r.chesstype = 1');//test first with chess, chesstype will be input later
         $query->where('r.ratingtype = "standard"');
+        $query->order('r.ratingpoint DESC Limit 5');
 		$user = JFactory::getUser();
 		if (!$user->authorise('core.admin') && $params->get('filter_groups', 0) == 1)
 		{
