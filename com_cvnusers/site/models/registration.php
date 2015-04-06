@@ -326,6 +326,9 @@ class UsersModelRegistration extends JModelForm
 			$data['block'] = 1;
 		}
 
+        //Set name from username (register require only username in chessvn)
+        $data['name'] = $data['username'];
+
 		// Bind the data.
 		if (!$user->bind($data)) {
 			$this->setError(JText::sprintf('COM_USERS_REGISTRATION_BIND_FAILED', $user->getError()));
