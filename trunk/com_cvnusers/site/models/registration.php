@@ -11,6 +11,8 @@ defined('_JEXEC') or die;
 jimport('joomla.application.component.modelform');
 jimport('joomla.event.dispatcher');
 
+jimport('joomla.log.log');
+JLog::addLogger(array());
 /**
  * Registration model class for Users.
  *
@@ -338,6 +340,22 @@ class UsersModelRegistration extends JModelForm
 			$this->setError(JText::sprintf('COM_USERS_REGISTRATION_SAVE_FAILED', $user->getError()));
 			return false;
 		}
+
+        //Save additional data for player (user of chessvn)
+        JLog::add(JText::_('khanglq:--- go here to Save additional data for player '), JLog::INFO);
+        $newUserCoin = 10000000;//get from file config
+        $defaultAvatar = 'defaultAvatarMew';//image no-avatar.jpg, also from config file
+        $query = $db->getQuery(true);
+        $columns = array('userid', 'coin', 'avatar');
+        $values = array($user->id, $newUserCoin, $db->quote($defaultAvatar));
+        $query
+            ->insert($db->quoteName('#__player'))
+            ->columns($db->quoteName($columns))
+            ->values(implode(',', $values));
+        $db->setQuery($query);
+        $db->execute();
+        JLog::add(JText::_('khanglq1111:--- Additional data saved '), JLog::INFO);
+        //================================================
 
 		// Compile the notification mail values.
 		$data = $user->getProperties();
