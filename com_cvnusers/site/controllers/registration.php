@@ -99,11 +99,11 @@ class UsersControllerRegistration extends UsersController
 		// Check for request forgeries.
 		JSession::checkToken() or jexit(JText::_('JINVALID_TOKEN'));
 
-		// If registration is disabled - Redirect to login page.
-		if(JComponentHelper::getParams('com_cvnusers')->get('allowUserRegistration') == 0) {
-			$this->setRedirect(JRoute::_('index.php?option=com_cvnusers&view=login', false));
-			return false;
-		}
+//		// If registration is disabled - Redirect to login page.
+//		if(JComponentHelper::getParams('com_cvnusers')->get('allowUserRegistration') == 0) {
+//			$this->setRedirect(JRoute::_('index.php?option=com_cvnusers&view=login', false));
+//			return false;
+//		}
 
 		// Initialise variables.
 		$app	= JFactory::getApplication();
