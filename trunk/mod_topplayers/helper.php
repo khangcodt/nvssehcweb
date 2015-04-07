@@ -85,7 +85,7 @@ class modTopplayersHelper
 	}
 	
 	// show online member names
-	static function getSomeUserNames($params) {
+	static function getTopPlayers($params) {
 		$db		= JFactory::getDbo();
 		$query	= $db->getQuery(true);
 		// $query->select('a.username, a.time, a.userid, a.usertype, a.client_id, p.coin, r.ratingpoint');
@@ -97,7 +97,7 @@ class modTopplayersHelper
         // $query->leftJoin('#__rating AS r ON r.playerid = p.playerid');
         // $query->where('r.chesstype = 1');//test first with chess, chesstype will be input later
         // $query->where('r.ratingtype = "standard"');
-		$query->select('a.username, p.userid, p.coin, r.ratingpoint');
+		$query->select('a.username, p.userid, p.coin, r.ratingpoint, p.avatar');
 		$query->from('#__users AS a');
 		$query->group('a.id');
         $query->leftJoin('#__player AS p ON p.userid = a.id');
