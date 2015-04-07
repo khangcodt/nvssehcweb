@@ -14,16 +14,11 @@ require_once dirname(__FILE__).'/helper.php';
 
 $showmode = $params->get('showmode', 0);
 
-if ($showmode == 0 || $showmode == 2) {
 	$count	= modTopplayersHelper::getTopCount();
-}
 
-if ($showmode > 0) {
-	$namestop	= modTopplayersHelper::getSomeUserNames($params);
+	$namestop	= modTopplayersHelper::getTopPlayers($params);
 	$checkLiveUsers	= modTopplayersHelper::getTopUserNames($params);
-}
 
-$linknames = $params->get('linknames', 0);
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
 
 require JModuleHelper::getLayoutPath('mod_topplayers', $params->get('layout', 'default'));

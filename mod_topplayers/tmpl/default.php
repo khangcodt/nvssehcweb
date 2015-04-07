@@ -16,29 +16,12 @@ $imgScale = 10;
 $onlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="ON" src="'.$mediaPath.'images/OnlineDot.png" style="margin: 0;">';
 $offlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="OFF" src="'.$mediaPath.'images/OfflineDot.png" style="margin: 0;">';
 ?>
-<style>
-    .topplayer{
-        float: left;
-    }
-    .topplayer_soft{
-        width: 85px;
-        float: right;
-    }
-</style>
-<?php if ($showmode == 0 || $showmode == 2) : ?>
-	<?php $guest = JText::plural('MOD_TOPPLAYERS_GUESTS', $count['guest']); ?>
-	<?php $member = JText::plural('MOD_TOPPLAYERS_MEMBERS', $count['user']); ?>
-	<p class="topplayer"><?php echo JText::sprintf('MOD_TOPPLAYERS_WE_HAVE', $guest, $member); ?></p>
-    <form method="post" class="topplayer_soft">
-        <select>
-            <option>Tuần</option>
-            <option>Tháng</option>
-            <option>All</option>
-        </select>
-    </form>
-<?php endif; ?>
+    <div>
+        <a class="topplayer_soft" href="#">all</a>
+        <a class="topplayer_soft" href="#">month</a>
+        <a class="topplayer_soft" href="#">week</a>
+    </div>
 
-<?php if (($showmode > 0) && count($namestop)) : ?>
 
 	<?php if ($params->get('filter_groups')):?>
 		<p><?php echo JText::_('MOD_TOPPLAYERS_SAME_GROUP_MESSAGE'); ?></p>
@@ -56,9 +39,10 @@ $offlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="OFF" src="
 	<?php
     foreach($namestop as $name) :
         $checkLive = (in_array($name, $checkLiveUsers))?$onlineImg:$offlineImg;
+        $avatarImg = '<img width="15px" height="15px" alt="avatar" src="'.$mediaPath.''.$name->avatar.'" style="margin: 0;">';
     ?>
             <tr>
-                <td><?php echo $name->username; ?></td>
+                <td class="string"> <?php echo $avatarImg; ?> <?php echo mb_substr($name->username,0,8,'UTF-8') ; ?></td>
                 <td><?php echo $name->ratingpoint; ?></td>
                 <td><?php echo $name->coin; ?></td>
 				<td style="text-align: center;"><?php echo $checkLive; ?></td>
@@ -66,5 +50,4 @@ $offlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="OFF" src="
 	<?php endforeach;  ?>
             </tbody>
         </table>
-<?php endif;  ?>
 

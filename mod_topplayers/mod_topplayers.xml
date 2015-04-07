@@ -37,11 +37,11 @@
 					label="MOD_TOPPLAYERS_SHOWMODE_LABEL"
 					description="MOD_TOPPLAYERS_SHOWMODE_DESC">
 					<option
-						value="0">MOD_TOPPLAYERS_FIELD_VALUE_NUMBER</option>
+						value="0">MOD_TOPPLAYERS_FIELD_VALUE_WEEK</option>
 					<option
-						value="1">MOD_TOPPLAYERS_FIELD_VALUE_NAMES</option>
+						value="1">MOD_TOPPLAYERS_FIELD_VALUE_MONTH</option>
 					<option
-						value="2">MOD_TOPPLAYERS_FIELD_VALUE_BOTH</option>
+						value="2">MOD_TOPPLAYERS_FIELD_VALUE_ALL</option>
 				</field>
 			</fieldset>
 			<fieldset
