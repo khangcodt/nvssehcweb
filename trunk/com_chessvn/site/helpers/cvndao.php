@@ -95,8 +95,8 @@ class CvnDao
             $db2->setQuery($query2);
             $result2 = $db2->loadObjectList();
 
-            $wplayertitle = $result2[0]->playerid;
-            $bplayertitle = $result2[1]->playerid;
+            $wplayertitle = $result2[0]->chesstitle;
+            $bplayertitle = $result2[1]->chesstitle;
             $and = "and";
 
             echo "<GAMES>\n";
