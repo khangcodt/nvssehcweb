@@ -61,7 +61,7 @@ class CvnDao
 
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
-        $query->select('gameid, status, completionstatus, gametitle, initiator, gamecoin, elowhite, eloblack, israting, timemode, maintime, incrementtime, createdtime');
+        $query->select('gameid, status, completionstatus, chesstype, israting, gametitle, wplayerid, bplayerid, initiator, gamecoin, elowhite, eloblack, timemode, maintime, incrementtime, createdtime');
         $query->from('#__viewchallenges');
         $query->where('chesstype = ' . $chesstype);
         $query->where('userid = ' . $userid);
@@ -76,19 +76,47 @@ class CvnDao
             $gameid = $result[$i]->gameid;
             $status = $result[$i]->status;
             $completion_status = $result[$i]->completionstatus;
+            $gametype = $result[$i]->chesstype;
+            $israte = $result[$i]->israting;
             $gametitle = $result[$i]->gametitle;
+            $wplayerid = $result[$i]->wplayerid;
+            $bplayerid = $result[$i]->bplayerid;
             $initiator = $result[$i]->initiator;
             $gamecoin = $result[$i]->gamecoin;
             $elowhite = $result[$i]->elowhite;
             $eloblack = $result[$i]->eloblack;
             $createdtime = $result[$i]->createdtime;
 
+            $db2 = JFactory::getDbo();
+            $query2 = $db2->getQuery(true);
+            $query2->select('chesstitle');
+            $query2->from('#__player AS p');
+            $query2->where('p.playerid = '. $wplayerid or 'p.playerid = '.$bplayerid);
+            $db2->setQuery($query2);
+            $result2 = $db2->loadObjectList();
+
+            $wplayertitle = $result2[0]->playerid;
+            $bplayertitle = $result2[1]->playerid;
+            $and = "and";
+
             echo "<GAMES>\n";
             echo "<STATUS>$status</STATUS>\n";
             echo "<COMPLETIONSTATUS>$completion_status</COMPLETIONSTATUS>\n";
             echo "<TITLE>$gametitle</TITLE>\n";
+            echo "<GAMETYPE>$gametype</GAMETYPE>\n";
+            echo "<RATED>$israte</RATED>\n";
+            echo "<TIMEOUT>72323</TIMEOUT>\n";
+            echo "<TIMECONTROL1>lkald</TIMECONTROL1>\n";
+            echo "<TIMECONTROL2>iwoqeu</TIMECONTROL2>\n";
             echo "<TIMECREATED>$createdtime</TIMECREATED>\n";
+            echo "<DESCRIPTION>$wplayertitle . $and . $bplayertitle</DESCRIPTION>\n";
+            echo "<INITIATOR>$initiator</INITIATOR>\n";
+            echo "<WHITE>1</WHITE>\n";
+            echo "<BLACK>0</BLACK>\n";
+            echo "<NEXTMOVE></NEXTMOVE>\n";
+            echo "<GAMEID>$gameid</GAMEID>\n";
             echo "<GAMECOIN>$gamecoin</GAMECOIN>\n";
+            echo "<GAMEFEN>kladjflakdf</GAMEFEN>\n";
             echo "</GAMES>\n";
         }
     }
