@@ -40,3 +40,8 @@ FROM joomla25.cvn_users AS u
 LEFT JOIN joomla25.cvn_gameoption AS o ON o.initiator = p.playerid 
  JOIN joomla25.cvn_game AS g ON g.gameid = o.gameid
 WHERE o.chesstype = 1 AND u.id = 630;
+
+-- sql test for top player in week
+select p.playerid, elosum, coin, avatar from (SELECT playerid, sum(elochange) as elosum
+FROM `cvn_gameresultplayer` group by playerid order by elosum desc) as se left join cvn_player as p on se.playerid = p.playerid
+--===================================================
