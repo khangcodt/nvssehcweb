@@ -358,6 +358,7 @@ class UsersModelRegistration extends JModelForm
         $db->setQuery($query);
         $db->execute();
         JLog::add(JText::_('khanglq1111:--- Additional data saved '), JLog::INFO);
+        JLog::add(JText::_('khanglq:--- playerid = '.$db->insertid()), JLog::INFO);//lay playerid sau khi insert vao bang player bang ham nay nhe
         //================================================
 
 		// Compile the notification mail values.
