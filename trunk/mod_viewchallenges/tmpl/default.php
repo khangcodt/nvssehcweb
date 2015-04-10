@@ -46,6 +46,7 @@ $userid = JFactory::getUser()->id;
     var baseUri = '<?php echo JURI::base(); ?>';
     var userid = <?php echo $userid;?>;
     var updateChallengesSpeed = 10000;//get from config file
+
     function getXmlChallenges() {
         var url = baseUri + '?option=com_chessvn&format=xml&userid=' + userid;
         console.log('url = ' + url);
@@ -57,8 +58,7 @@ $userid = JFactory::getUser()->id;
         window.setTimeout('getXmlChallenges()', updateChallengesSpeed);
         var i, games = jQuery(xmlData).find('GAMES'), content = '', desc, gid, wid, bid, initid, status, color, timeout, type, fen;
 
-//        jQuery('#game_details').remove();
-//        opendiv.empty();
+        jQuery("#listChallenges > tbody").empty();//remove content before udpate new
         var data = "fdsafsa";//test code
         for (i = 0; i < games.length; i++) {
 //            desc = games[i].getElementsByTagName('DESCRIPTION').item(0).firstChild.data;
