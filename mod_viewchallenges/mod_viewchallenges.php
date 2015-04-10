@@ -26,4 +26,4 @@ if ($showmode > 0) {
 $linknames = $params->get('linknames', 0);
 $moduleclass_sfx = htmlspecialchars($params->get('moduleclass_sfx'));
 
-require JModuleHelper::getLayoutPath('mod_onlineplayers', $params->get('layout', 'default'));
+require JModuleHelper::getLayoutPath('mod_viewchallenges', $params->get('layout', 'default'));
