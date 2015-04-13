@@ -15,7 +15,30 @@ CREATE TABLE cvn_gameresultplayer
   coinchange BIGINT(20),
   createdtime DATETIME
 );
-# thêm trường oponentid
+# view for top all player
+CREATE OR REPLACE VIEW cvn_topplayerall AS
+  select
+    u.id AS id,
+    p.playerid AS playerid,
+    s.userid AS onlineid,
+    s.client_id AS client_id,
+    u.username AS username,
+    r.ratingpoint AS ratingpoint,
+    p.coin AS coin,
+    p.avatar AS avatar,
+    r.chesstype AS chesstype,
+    r.ratingtype AS ratingtype
+  from
+    (((cvn_users u
+    left join cvn_player p ON ((p.userid = u.id)))
+    left join cvn_rating r ON ((r.playerid = p.playerid)))
+    left join cvn_session s ON ((s.userid = u.id)))
+  where
+    (s.client_id is null) or (s.client_id = 0)
+  group by u.id
+  order by r.ratingpoint desc;
+
+# thêm trường oponentid, bổ sung thông tin cho view challenges
 ALTER TABLE cvn_gameoption
 ADD COLUMN `oponentid` INT(11) NULL COMMENT 'đối thủ trong game, null nếu là open game' AFTER `initiator`;
 

@@ -44,5 +44,7 @@ WHERE o.chesstype = 1 AND u.id = 630;
 
 -- sql test for top player in week
 select p.playerid, elosum, coin, avatar from (SELECT playerid, sum(elochange) as elosum
-FROM `cvn_gameresultplayer` group by playerid order by elosum desc) as se left join cvn_player as p on se.playerid = p.playerid
+FROM `cvn_gameresultplayer`
+--  WHERE date here in week or month here
+ group by playerid order by elosum desc) as se left join cvn_player as p on se.playerid = p.playerid
 --===================================================
