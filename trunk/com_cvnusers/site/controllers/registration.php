@@ -110,6 +110,7 @@ class UsersControllerRegistration extends UsersController
 		$model	= $this->getModel('Registration', 'UsersModel');
 
 		// Get the user data.
+        // Lấy dữ liệu từ form
 		$requestData = JRequest::getVar('jform', array(), 'post', 'array');
 
 		// Validate the posted data.

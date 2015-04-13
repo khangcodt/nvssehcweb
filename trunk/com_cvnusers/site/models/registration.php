@@ -13,6 +13,9 @@ jimport('joomla.event.dispatcher');
 
 jimport('joomla.log.log');
 JLog::addLogger(array());
+
+$configfile = JPATH_ROOT. '/media/media_chessvn/cvnphp/config/cvnconfig.php';
+require_once($configfile);
 /**
  * Registration model class for Users.
  *
@@ -345,8 +348,9 @@ class UsersModelRegistration extends JModelForm
 		}
 
         //Save additional data for player (user of chessvn)
+        // Trong đây là add thêm các cột userid lấy từ bảng user, coin là tạo = 10000000;
         JLog::add(JText::_('khanglq:--- go here to Save additional data for player '), JLog::INFO);
-        $newUserCoin = 10000000;//get from file config
+        $newUserCoin = $conf['coin_new_member'];//get from file config
         $defaultAvatar = 'defaultAvatarMew';//image no-avatar.jpg, also from config file
         $query = $db->getQuery(true);
         $columns = array('userid', 'coin', 'avatar');
@@ -359,7 +363,26 @@ class UsersModelRegistration extends JModelForm
         $db->execute();
         JLog::add(JText::_('khanglq1111:--- Additional data saved '), JLog::INFO);
         JLog::add(JText::_('khanglq:--- playerid = '.$db->insertid()), JLog::INFO);//lay playerid sau khi insert vao bang player bang ham nay nhe
+
         //================================================
+
+        $playerID    = $db->insertid();
+        $chessType   = $conf['default_chesstype'];
+        $ratingType  = $conf['default_ratingtype'];
+        $ratingPoint = $conf['default_ratingpoint'];
+        $query       = $db->getQuery(true);
+        $columns     = array('playerid','chesstype','ratingtype','ratingpoint');
+        $values      = array($playerID, $chessType, $db->quote($ratingType), $ratingPoint);
+        $query
+            ->insert($db->quoteName('#__rating'))
+            ->columns($db->quoteName($columns))
+            ->values(implode(',', $values));
+        $db->setQuery($query);
+        $db->execute();
+
+
+
+        // Save additional data for rating (user for chessvn)
 
 		// Compile the notification mail values.
 		$data = $user->getProperties();
