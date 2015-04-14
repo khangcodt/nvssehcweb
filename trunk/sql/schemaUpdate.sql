@@ -40,7 +40,7 @@ CREATE OR REPLACE VIEW cvn_topplayerall AS
 
 # thêm trường oponentid, bổ sung thông tin cho view challenges
 ALTER TABLE cvn_gameoption
-ADD COLUMN `oponentid` INT(11) NULL COMMENT 'đối thủ trong game, null nếu là open game' AFTER `initiator`;
+ADD COLUMN oponentid INT(11) NULL COMMENT 'đối thủ trong game, null nếu là open game' AFTER initiator;
 
 # update viewchallenges, thêm oponentid, oponentname
 CREATE OR REPLACE VIEW cvn_viewchallenges AS
@@ -69,4 +69,9 @@ CREATE OR REPLACE VIEW cvn_viewchallenges AS
   JOIN cvn_game a ON ((a.gameid = p.gameid)))
   LEFT JOIN cvn_player po ON ((p.oponentid = po.playerid)))
   LEFT JOIN cvn_users uo ON ((po.userid = uo.id)));
+# ===============================================================
+
+# 4:54 PM 4/14/2015
+# thêm cột mediaplayer vào bảng player đặt riêng thư mục media cho từng player
+ALTER TABLE cvn_player ADD COLUMN mediaplayer VARCHAR(200) NULL COMMENT 'lưu thư mục media cho player, chứa các file ảnh, media'  AFTER avatar ;
 # ===============================================================
