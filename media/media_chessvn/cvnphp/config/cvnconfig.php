@@ -10,4 +10,6 @@ $conf['coin_new_member'] = 5000; // coin for new member
 $conf['coin_out_add'] = 500; // coin add when out of
 $conf['coin_out_add_limit'] = 3; // limit times of adding coin out for a player in one day
 $conf['initelo'] = 1200; // default ELO point for new players
+$conf['chesstype_chess'] = 1; //chess = 1;
+$conf['ratingtype_standard'] = 'standard';
 ?>

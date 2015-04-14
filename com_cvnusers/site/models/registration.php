@@ -14,8 +14,14 @@ jimport('joomla.event.dispatcher');
 jimport('joomla.log.log');
 JLog::addLogger(array());
 
-$configfile = JPATH_ROOT. '/media/media_chessvn/cvnphp/config/cvnconfig.php';
-require_once($configfile);
+include_once(JPATH_ROOT.'/media/media_chessvn/cvnphp/config/cvnconfig.php');
+global $newUserCoin, $defaultAvatar, $chessTypeChess, $ratingTypeStandard, $initELO;
+$newUserCoin = $conf['coin_new_member'];//get from file config
+$defaultAvatar = 'defaultAvatarMew';//image no-avatar.jpg, also from config file
+$chessTypeChess   = $conf['chesstype_chess'];
+$ratingTypeStandard  = $conf['ratingtype_standard'];
+$initELO = $conf['initelo'];
+
 /**
  * Registration model class for Users.
  *
@@ -349,9 +355,8 @@ class UsersModelRegistration extends JModelForm
 
         //Save additional data for player (user of chessvn)
         // Trong đây là add thêm các cột userid lấy từ bảng user, coin là tạo = 10000000;
-        JLog::add(JText::_('khanglq:--- go here to Save additional data for player '), JLog::INFO);
-        $newUserCoin = $conf['coin_new_member'];//get from file config
-        $defaultAvatar = 'defaultAvatarMew';//image no-avatar.jpg, also from config file
+        JLog::add(JText::_('khanglq:--- begin go here to Save additional data for player '), JLog::INFO);
+        global $newUserCoin, $defaultAvatar, $chessTypeChess, $ratingTypeStandard, $initELO;
         $query = $db->getQuery(true);
         $columns = array('userid', 'coin', 'avatar');
         $values = array($user->id, $newUserCoin, $db->quote($defaultAvatar));
@@ -361,26 +366,19 @@ class UsersModelRegistration extends JModelForm
             ->values(implode(',', $values));
         $db->setQuery($query);
         $db->execute();
-        JLog::add(JText::_('khanglq1111:--- Additional data saved '), JLog::INFO);
-        JLog::add(JText::_('khanglq:--- playerid = '.$db->insertid()), JLog::INFO);//lay playerid sau khi insert vao bang player bang ham nay nhe
 
-        //================================================
-
-        $playerID    = $db->insertid();
-        $chessType   = $conf['default_chesstype'];
-        $ratingType  = $conf['default_ratingtype'];
-        $ratingPoint = $conf['default_ratingpoint'];
+        $playerId    = $db->insertid();
         $query       = $db->getQuery(true);
         $columns     = array('playerid','chesstype','ratingtype','ratingpoint');
-        $values      = array($playerID, $chessType, $db->quote($ratingType), $ratingPoint);
+        $values      = array($playerId, $chessTypeChess, $db->quote($ratingTypeStandard), $initELO);
         $query
             ->insert($db->quoteName('#__rating'))
             ->columns($db->quoteName($columns))
             ->values(implode(',', $values));
         $db->setQuery($query);
         $db->execute();
-
-
+        JLog::add(JText::_('khanglq1111:--- Additional data saved. $newUserCoin = '.$newUserCoin), JLog::INFO);
+        //================================================
 
         // Save additional data for rating (user for chessvn)
 
