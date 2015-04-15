@@ -47,4 +47,15 @@ select p.playerid, elosum, coin, avatar from (SELECT playerid, sum(elochange) as
 FROM `cvn_gameresultplayer`
 --  WHERE date here in week or month here
  group by playerid order by elosum desc) as se left join cvn_player as p on se.playerid = p.playerid
---===================================================
+
+ select p.userid, p.playerid, s.userid AS onlineid, client_id, u.username, elosum as elochange, coin, avatar, mediaplayer, chesstype, ratingtype
+from
+(SELECT playerid, sum(elochange) as elosum FROM cvn_gameresultplayer g
+		where (g.createdtime <= now() and g.createdtime > now() - interval 1 week)
+		group by playerid order by elosum desc) se
+left join cvn_player p on se.playerid = p.playerid
+left join cvn_rating r ON r.playerid = p.playerid
+left join cvn_users u ON p.userid = u.id
+left join cvn_session s ON s.userid = p.userid
+where  s.client_id is null or s.client_id = 0;
+ --===================================================

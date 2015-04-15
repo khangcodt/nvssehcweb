@@ -16,9 +16,9 @@ CREATE TABLE cvn_gameresultplayer
   createdtime DATETIME
 );
 # view for top all player
-CREATE OR REPLACE VIEW cvn_topplayerall AS
+CREATE OR REPLACE VIEW cvn_viewtopplayerall AS
   select
-    u.id AS id,
+    u.id AS userid,
     p.playerid AS playerid,
     s.userid AS onlineid,
     s.client_id AS client_id,
@@ -26,6 +26,7 @@ CREATE OR REPLACE VIEW cvn_topplayerall AS
     r.ratingpoint AS ratingpoint,
     p.coin AS coin,
     p.avatar AS avatar,
+    p.mediaplayer AS mediaplayer,
     r.chesstype AS chesstype,
     r.ratingtype AS ratingtype
   from
@@ -37,6 +38,74 @@ CREATE OR REPLACE VIEW cvn_topplayerall AS
     (s.client_id is null) or (s.client_id = 0)
   group by u.id
   order by r.ratingpoint desc;
+# ===============================================================
+
+# 2:43 PM 4/15/2015
+# view for playerid top week
+CREATE OR REPLACE VIEW cvn_viewtopplayeridweek AS
+  select
+    g.playerid AS playerid,
+    sum(g.elochange) AS elosum
+  from cvn_gameresultplayer g
+  where g.createdtime <= now() and g.createdtime > (now() - interval 1 week)
+  group by g.playerid
+  order by elosum desc;
+
+# view for playerid top month
+CREATE OR REPLACE VIEW cvn_viewtopplayeridmonth AS
+  select
+    g.playerid AS playerid,
+    sum(g.elochange) AS elosum
+  from cvn_gameresultplayer g
+  where g.createdtime <= now() and g.createdtime > (now() - interval 1 month)
+  group by g.playerid
+  order by elosum desc;
+
+# view for top player week
+CREATE OR REPLACE VIEW cvn_viewtopplayerweek AS
+select
+  p.userid AS userid,
+  p.playerid AS playerid,
+  s.userid AS onlineid,
+  s.client_id AS client_id,
+  u.username AS username,
+  se.elosum AS elochange,
+  p.coin AS coin,
+  p.avatar AS avatar,
+  p.mediaplayer AS mediaplayer,
+  r.chesstype AS chesstype,
+  r.ratingtype AS ratingtype
+from
+  ((((cvn_viewtopplayeridweek se
+  left join cvn_player p ON ((se.playerid = p.playerid)))
+  left join cvn_rating r ON ((r.playerid = p.playerid)))
+  left join cvn_users u ON ((p.userid = u.id)))
+  left join cvn_session s ON ((s.userid = p.userid)))
+where (s.client_id is null) or (s.client_id = 0);
+
+# view for top player month
+CREATE OR REPLACE VIEW cvn_viewtopplayermonth AS
+  select
+    p.userid AS userid,
+    p.playerid AS playerid,
+    s.userid AS onlineid,
+    s.client_id AS client_id,
+    u.username AS username,
+    se.elosum AS elochange,
+    p.coin AS coin,
+    p.avatar AS avatar,
+    p.mediaplayer AS mediaplayer,
+    r.chesstype AS chesstype,
+    r.ratingtype AS ratingtype
+  from
+    ((((cvn_viewtopplayeridmonth se
+  left join cvn_player p ON ((se.playerid = p.playerid)))
+  left join cvn_rating r ON ((r.playerid = p.playerid)))
+  left join cvn_users u ON ((p.userid = u.id)))
+  left join cvn_session s ON ((s.userid = p.userid)))
+  where (s.client_id is null) or (s.client_id = 0);
+# ===============================================================
+
 
 # thêm trường oponentid, bổ sung thông tin cho view challenges
 ALTER TABLE cvn_gameoption
