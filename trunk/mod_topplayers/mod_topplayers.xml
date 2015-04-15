@@ -31,7 +31,7 @@
 		<fields name="params">
 			<fieldset name="basic">
 				<field
-					name="showmode"
+					name="topplayertype"
 					type="list"
 					default="0"
 					label="MOD_TOPPLAYERS_SHOWMODE_LABEL"
