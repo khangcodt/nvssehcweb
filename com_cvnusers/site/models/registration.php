@@ -357,6 +357,23 @@ class UsersModelRegistration extends JModelForm
         // Trong đây là add thêm các cột userid lấy từ bảng user, coin là tạo = 10000000;
         JLog::add(JText::_('khanglq:--- begin go here to Save additional data for player '), JLog::INFO);
         global $newUserCoin, $defaultAvatar, $chessTypeChess, $ratingTypeStandard, $initELO;
+
+        // Phan tao folder va copy file
+        $date        = substr(str_replace('-','',$user->registerDate),0,8);
+        $month       = substr(str_replace('-','',$user->registerDate),0,6);
+        $year        = substr(str_replace('-','',$user->registerDate),0,4);
+        $mediaplayer = '/ mediaplayer/'.$year.'/'.$month.'/'.$date.'/'.$user->id.'_'.$user->name.'/';
+        $path        = 'media_chessvn'.$mediaplayer;
+        if(JFolder::create($path)){
+            JLog::add(JText::_('khanglq1111:--- Create file sucess'), JLog::INFO);
+            $src     = 'media/media_chessvn/images/no-avatar.jpg';
+            $dest    = $path.'no-avatar.jpg';
+            JFile::copy($src, $dest,null,true);
+        }else{
+            JLog::add(JText::_('khanglq1111:--- Create file failed'), JLog::INFO);
+        }
+
+
         $query = $db->getQuery(true);
         $columns = array('userid', 'coin', 'avatar');
         $values = array($user->id, $newUserCoin, $db->quote($defaultAvatar));
