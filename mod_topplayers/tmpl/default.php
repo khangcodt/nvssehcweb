@@ -15,11 +15,15 @@ $document->addStyleSheet($mediaPath.'css/chessvn.css');
 $imgScale = 10;
 $onlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="ON" src="'.$mediaPath.'images/OnlineDot.png" style="margin: 0;">';
 $offlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="OFF" src="'.$mediaPath.'images/OfflineDot.png" style="margin: 0;">';
+$currentUrl = JURI::current();
+//check friendly URL enabled or not
+$isSEF = &JFactory::getConfig()->get('sef') == 1;
+$addReqParam = $isSEF?'?':'&';
 ?>
     <div>
-        <a class="topplayer_soft" href="#">all</a>
-        <a class="topplayer_soft" href="#">month</a>
-        <a class="topplayer_soft" href="#">week</a>
+        <a class="topplayer_soft" href="<?php echo $currentUrl.$addReqParam.'topplayertype=all' ?>">all</a>
+        <a class="topplayer_soft" href="<?php echo $currentUrl.$addReqParam.'topplayertype=month' ?>">month</a>
+        <a class="topplayer_soft" href="<?php echo $currentUrl.$addReqParam.'topplayertype=week' ?>">week</a>
     </div>
 
 
