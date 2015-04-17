@@ -359,18 +359,20 @@ class UsersModelRegistration extends JModelForm
         global $newUserCoin, $defaultAvatar, $chessTypeChess, $ratingTypeStandard, $initELO;
 
         // Phan tao folder va copy file
-        $date        = substr(str_replace('-','',$user->registerDate),0,8);
-        $month       = substr(str_replace('-','',$user->registerDate),0,6);
-        $year        = substr(str_replace('-','',$user->registerDate),0,4);
-        $mediaplayer = '/ mediaplayer/'.$year.'/'.$month.'/'.$date.'/'.$user->id.'_'.$user->name.'/';
-        $path        = 'media_chessvn'.$mediaplayer;
+        $registerDate = JFactory::getDate();
+        $mediaplayer = '/mediaplayer/'.$registerDate->format('Y/Ym/Ymd/').$user->id.'_'.$user->name;
+        $path        = JPATH_ROOT.'/media/media_chessvn'.$mediaplayer;
         if(JFolder::create($path)){
-            JLog::add(JText::_('khanglq1111:--- Create file sucess'), JLog::INFO);
-            $src     = 'media/media_chessvn/images/no-avatar.jpg';
-            $dest    = $path.'no-avatar.jpg';
-            JFile::copy($src, $dest,null,true);
+            if(JFolder::create($path.'/images')){   //tạo thư mục images
+                JLog::add(JText::_('khanglq111:--- Create folders sucess'), JLog::INFO);
+                $src     = JPATH_ROOT.'/media/media_chessvn/images/no-avatar.jpg';
+                $dest    = $path.'/images/no-avatar.jpg';
+                if (JFile::copy($src, $dest,null,true)) {
+                    JLog::add(JText::_('khanglq1421111:--- Copy file ok'), JLog::INFO);
+                } else JLog::add(JText::_('khanglq1421111:--- Copy file failed'), JLog::INFO);
+            }
         }else{
-            JLog::add(JText::_('khanglq1111:--- Create file failed'), JLog::INFO);
+            JLog::add(JText::_('khanglq1111421:--- Create folder failed'), JLog::INFO);
         }
 
 
