@@ -61,7 +61,7 @@ class CvnDao
 
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
-        $query->select('gameid, status, completionstatus, chesstype, israting, gametitle, wplayerid, bplayerid, initiator, gamecoin, elowhite, eloblack, timemode, maintime, incrementtime, createdtime');
+        $query->select('gameid, status, completionstatus, chesstype, israting, gametitle, initiator, oponentid, gamecoin, elowhite, eloblack, timemode, maintime, incrementtime, createdtime');
         $query->from('#__viewchallenges');
         $query->where('chesstype = ' . $chesstype);
         $query->where('userid = ' . $userid);
@@ -87,18 +87,6 @@ class CvnDao
             $eloblack = $result[$i]->eloblack;
             $createdtime = $result[$i]->createdtime;
 
-            $db2 = JFactory::getDbo();
-            $query2 = $db2->getQuery(true);
-            $query2->select('chesstitle');
-            $query2->from('#__player AS p');
-            $query2->where('p.playerid = '. $wplayerid or 'p.playerid = '.$bplayerid);
-            $db2->setQuery($query2);
-            $result2 = $db2->loadObjectList();
-
-            $wplayertitle = $result2[0]->chesstitle;
-            $bplayertitle = $result2[1]->chesstitle;
-            $and = "and";
-
             echo "<GAMES>\n";
             echo "<STATUS>$status</STATUS>\n";
             echo "<COMPLETIONSTATUS>$completion_status</COMPLETIONSTATUS>\n";
@@ -109,7 +97,7 @@ class CvnDao
             echo "<TIMECONTROL1>lkald</TIMECONTROL1>\n";
             echo "<TIMECONTROL2>iwoqeu</TIMECONTROL2>\n";
             echo "<TIMECREATED>$createdtime</TIMECREATED>\n";
-            echo "<DESCRIPTION>$wplayertitle . $and . $bplayertitle</DESCRIPTION>\n";
+            echo "<DESCRIPTION>wplayertitle . and . bplayertitle</DESCRIPTION>\n";
             echo "<INITIATOR>$initiator</INITIATOR>\n";
             echo "<WHITE>1</WHITE>\n";
             echo "<BLACK>0</BLACK>\n";
