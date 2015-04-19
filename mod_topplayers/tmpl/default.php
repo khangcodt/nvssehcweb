@@ -21,11 +21,10 @@ $isSEF = &JFactory::getConfig()->get('sef') == 1;
 $addReqParam = $isSEF?'?':'&';
 ?>
     <div>
-        <a class="topplayer_soft" href="<?php echo $currentUrl.$addReqParam.'topplayertype=all' ?>">all</a>
-        <a class="topplayer_soft" href="<?php echo $currentUrl.$addReqParam.'topplayertype=month' ?>">month</a>
-        <a class="topplayer_soft" href="<?php echo $currentUrl.$addReqParam.'topplayertype=week' ?>">week</a>
+        <a class="topplayer_soft" href="<?php echo $currentUrl.$addReqParam.'topplayertype=2'?>">all</a>
+        <a class="topplayer_soft" href="<?php echo $currentUrl.$addReqParam.'topplayertype=1'?>">month</a>
+        <a class="topplayer_soft" href="<?php echo $currentUrl.$addReqParam.'topplayertype=0'?>">week</a>
     </div>
-
 
 	<?php if ($params->get('filter_groups')):?>
 		<p><?php echo JText::_('MOD_TOPPLAYERS_SAME_GROUP_MESSAGE'); ?></p>
@@ -54,4 +53,3 @@ $addReqParam = $isSEF?'?':'&';
 	<?php endforeach;  ?>
             </tbody>
         </table>
-
