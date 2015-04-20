@@ -131,8 +131,7 @@ CREATE OR REPLACE VIEW cvn_viewchallenges AS
     p.timemode AS timemode,
     p.maintime AS maintime,
     p.incrementtime AS incrementtime,
-    p.createdtime AS createdtime,
-    p.chesstype AS chesstype
+    p.createdtime AS createdtime
   FROM
     (((((cvn_users u JOIN cvn_player g ON ((g.userid = u.id)))
   LEFT JOIN cvn_gameoption p ON ((p.initiator = g.playerid)))
