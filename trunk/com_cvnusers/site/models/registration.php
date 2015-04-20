@@ -359,26 +359,24 @@ class UsersModelRegistration extends JModelForm
         global $newUserCoin, $defaultAvatar, $chessTypeChess, $ratingTypeStandard, $initELO;
 
         // Phan tao folder va copy file
-        $registerDate = JFactory::getDate();
-        $mediaplayer = '/mediaplayer/'.$registerDate->format('Y/Ym/Ymd/').$user->id.'_'.$user->name;
-        $path        = JPATH_ROOT.'/media/media_chessvn'.$mediaplayer;
+        $date        = substr(str_replace('-','',$user->registerDate),0,8);
+        $month       = substr($date,0,6);
+        $year        = substr($date,0,4);
+        $mediaplayer = '/ mediaplayer/'.$year.'/'.$month.'/'.$date.'/'.$user->id.'_'.$user->name.'/';
+        $path        = 'media/media_chessvn'.$mediaplayer;
         if(JFolder::create($path)){
-            if(JFolder::create($path.'/images')){   //tạo thư mục images
-                JLog::add(JText::_('khanglq111:--- Create folders sucess'), JLog::INFO);
-                $src     = JPATH_ROOT.'/media/media_chessvn/images/no-avatar.jpg';
-                $dest    = $path.'/images/no-avatar.jpg';
-                if (JFile::copy($src, $dest,null,true)) {
-                    JLog::add(JText::_('khanglq1421111:--- Copy file ok'), JLog::INFO);
-                } else JLog::add(JText::_('khanglq1421111:--- Copy file failed'), JLog::INFO);
-            }
+            JLog::add(JText::_('khanglq1111:--- Create file sucess'), JLog::INFO);
+            $src     = 'media/media_chessvn/images/no-avatar.jpg';
+            $dest    = $path.'no-avatar.jpg';
+            JFile::copy($src, $dest,null,true);
         }else{
-            JLog::add(JText::_('khanglq1111421:--- Create folder failed'), JLog::INFO);
+            JLog::add(JText::_('khanglq1111:--- Create file failed'), JLog::INFO);
         }
 
 
         $query = $db->getQuery(true);
-        $columns = array('userid', 'coin', 'avatar');
-        $values = array($user->id, $newUserCoin, $db->quote($defaultAvatar));
+        $columns = array('userid', 'coin', 'avatar','mediaplayer');
+        $values = array($user->id, $newUserCoin, $db->quote($defaultAvatar),$db->quote($mediaplayer));
         $query
             ->insert($db->quoteName('#__player'))
             ->columns($db->quoteName($columns))
@@ -501,8 +499,7 @@ class UsersModelRegistration extends JModelForm
 		}
 
 		// Send the registration email.
-//		$return = JFactory::getMailer()->sendMail($data['mailfrom'], $data['fromname'], $data['email'], $emailSubject, $emailBody);
-        $return = true;//JFactory::getMailer()->sendMail($data['mailfrom'], $data['fromname'], $data['email'], $emailSubject, $emailBody);
+		$return = JFactory::getMailer()->sendMail($data['mailfrom'], $data['fromname'], $data['email'], $emailSubject, $emailBody);
 
 		//Send Notification mail to administrators
 		if (($params->get('useractivation') < 2) && ($params->get('mail_to_admin') == 1)) {
@@ -530,8 +527,7 @@ class UsersModelRegistration extends JModelForm
 			// Send mail to all superadministrators id
 			foreach( $rows as $row )
 			{
-//				$return = JFactory::getMailer()->sendMail($data['mailfrom'], $data['fromname'], $row->email, $emailSubject, $emailBodyAdmin);
-                $return = true;//JFactory::getMailer()->sendMail($data['mailfrom'], $data['fromname'], $row->email, $emailSubject, $emailBodyAdmin);
+				$return = JFactory::getMailer()->sendMail($data['mailfrom'], $data['fromname'], $row->email, $emailSubject, $emailBodyAdmin);
 
 				// Check for an error.
 				if ($return !== true) {
