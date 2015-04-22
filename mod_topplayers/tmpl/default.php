@@ -21,33 +21,34 @@ $isSEF = &JFactory::getConfig()->get('sef') == 1;
 $addReqParam = $isSEF?'?':'&';
 ?>
     <div>
-        <a class="topplayer_soft" href="<?php echo $currentUrl.$addReqParam.'topplayertype=2'?>">all</a>
-        <a class="topplayer_soft" href="<?php echo $currentUrl.$addReqParam.'topplayertype=1'?>">month</a>
-        <a class="topplayer_soft" href="<?php echo $currentUrl.$addReqParam.'topplayertype=0'?>">week</a>
+        <a class="topplayer_soft" href="<?php echo $currentUrl.$addReqParam.'topplayertype=all'?>">all</a>
+        <a class="topplayer_soft" href="<?php echo $currentUrl.$addReqParam.'topplayertype=month'?>">month</a>
+        <a class="topplayer_soft" href="<?php echo $currentUrl.$addReqParam.'topplayertype=week'?>">week</a>
     </div>
 
-	<?php if ($params->get('filter_groups')):?>
-		<p><?php echo JText::_('MOD_TOPPLAYERS_SAME_GROUP_MESSAGE'); ?></p>
-	<?php endif;?>
         <table class="sortable" width="100%">
             <thead>
             <tr>
-                <th><a><?php echo JText::_('MOD_TOPPLAYERS_THEAD_PLAYER'); ?></a></th>
-                <th><a><?php echo JText::_('MOD_TOPPLAYERS_THEAD_RATING'); ?></a></th>
-                <th><a><?php echo JText::_('MOD_TOPPLAYERS_THEAD_COIN'); ?></a></th>
-				<th><a>Online</a></th>
+                <th class="sorttable_nosort">&nbsp</th>
+                <th class="sorttable_nosort"><?php echo JText::_('MOD_TOPPLAYERS_THEAD_PLAYER'); ?></th>
+                <th class="sorttable_nosort"><?php echo JText::_('MOD_TOPPLAYERS_THEAD_RATING'); ?></th>
+                <th class="sorttable_nosort"><?php echo JText::_('MOD_TOPPLAYERS_THEAD_COIN'); ?></th>
+				<th class="sorttable_nosort">Online</th>
             </tr>
             </thead>
             <tbody>
 	<?php
-    foreach($namestop as $name) :
-        $checkLive = (in_array($name, $checkLiveUsers))?$onlineImg:$offlineImg;
-        $avatarImg = '<img width="15px" height="15px" alt="avatar" src="'.$mediaPath.''.$name->avatar.'" style="margin: 0;">';
+    $index = 0;
+    foreach($topPlayer as $player) :
+        $index++;
+        $checkLive = is_null($player->onlineid)?$offlineImg:$onlineImg;
+        $avatarImg = '<img width="15px" height="15px" alt="avatar" src="'.$mediaPath.$player->mediaplayer.$player->avatar.'" style="margin: 0;">';
     ?>
             <tr>
-                <td class="string"> <?php echo $avatarImg; ?> <?php echo mb_substr($name->username,0,8,'UTF-8') ; ?></td>
-                <td><?php echo $name->ratingpoint; ?></td>
-                <td><?php echo $name->coin; ?></td>
+                <td style="text-align: center;"><?php echo $index; ?></td>
+                <td class="string"> <?php echo $avatarImg; ?> <?php echo mb_substr($player->username,0,8,'UTF-8') ; ?></td>
+                <td><?php echo $player->ratingpoint; ?></td>
+                <td><?php echo $player->coin; ?></td>
 				<td style="text-align: center;"><?php echo $checkLive; ?></td>
             </tr>
 	<?php endforeach;  ?>

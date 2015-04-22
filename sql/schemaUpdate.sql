@@ -35,7 +35,7 @@ CREATE OR REPLACE VIEW cvn_viewtopplayerall AS
     left join cvn_rating r ON ((r.playerid = p.playerid)))
     left join cvn_session s ON ((s.userid = u.id)))
   where
-    (s.client_id is null) or (s.client_id = 0)
+    (s.client_id is null) or (s.client_id = 0)  /*--offline or not admin*/
   group by u.id
   order by r.ratingpoint desc;
 # ===============================================================

@@ -33,15 +33,15 @@
 				<field
 					name="topplayertype"
 					type="list"
-					default="0"
+					default="all"
 					label="MOD_TOPPLAYERS_SHOWMODE_LABEL"
 					description="MOD_TOPPLAYERS_SHOWMODE_DESC">
 					<option
-						value="0">MOD_TOPPLAYERS_FIELD_VALUE_WEEK</option>
+						value="week">MOD_TOPPLAYERS_FIELD_VALUE_WEEK</option>
 					<option
-						value="1">MOD_TOPPLAYERS_FIELD_VALUE_MONTH</option>
+						value="month">MOD_TOPPLAYERS_FIELD_VALUE_MONTH</option>
 					<option
-						value="2">MOD_TOPPLAYERS_FIELD_VALUE_ALL</option>
+						value="all">MOD_TOPPLAYERS_FIELD_VALUE_ALL</option>
 				</field>
 			</fieldset>
 			<fieldset

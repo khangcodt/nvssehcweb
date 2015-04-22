@@ -221,4 +221,42 @@ class modTopplayersHelper
         JLog::add(JText::_('khanglq:--- sql = '.$db->getQuery()), JLog::INFO);
         return (array) $db->loadObjectList();
     }
+
+
+
+
+//    =============================================================================================
+
+    static function getTopPlayers($topplayertype = 'all', $topnum = 10, $chesstype = 1, $ratingtype = 'standard') {
+
+        $viewSelect = '#__viewtopplayerall';
+        $eloculumn = 'ratingpoint';
+        switch ($topplayertype) {
+            case 'all':
+                $viewSelect = '#__viewtopplayerall';
+                $eloculumn = 'ratingpoint';
+                break;
+            case 'week':
+                $viewSelect = '#__viewtopplayerweek';
+                $eloculumn = 'elochange';
+                break;
+            case 'month':
+                $viewSelect = '#__viewtopplayermonth';
+                $eloculumn = 'elochange';
+                break;
+            default:
+                break;
+        }
+
+        $db		= JFactory::getDbo();
+        $query	= $db->getQuery(true);
+//        $query->select('userid, playerid, onlineid, client_id, username, ratingpoint, coin, avatar, mediaplayer, chesstype, ratingtype');
+        $query->select('userid, playerid, onlineid, username, '.$eloculumn.', coin, avatar, mediaplayer');
+        $query->from($viewSelect);
+        $query->where('chesstype = '.$chesstype);//test first with chess, chesstype will be input later
+        $query->where('ratingtype = '.$db->quote($ratingtype));
+        $db->setQuery($query, 0, $topnum);//limit
+        JLog::add(JText::_('khanglqkfhdafkhsdk:--- sql = '.$db->getQuery()), JLog::INFO);
+        return (array) $db->loadObjectList();
+    }
 }
