@@ -31,7 +31,7 @@ CREATE OR REPLACE VIEW cvn_viewtopplayerall AS
     r.ratingtype AS ratingtype
   from
     (((cvn_users u
-    left join cvn_player p ON ((p.userid = u.id)))
+    join cvn_player p ON ((p.userid = u.id)))
     left join cvn_rating r ON ((r.playerid = p.playerid)))
     left join cvn_session s ON ((s.userid = u.id)))
   where
