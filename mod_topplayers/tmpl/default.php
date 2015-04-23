@@ -15,15 +15,15 @@ $document->addStyleSheet($mediaPath.'css/chessvn.css');
 $imgScale = 10;
 $onlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="ON" src="'.$mediaPath.'images/OnlineDot.png" style="margin: 0;">';
 $offlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="OFF" src="'.$mediaPath.'images/OfflineDot.png" style="margin: 0;">';
-$currentUrl = JURI::current();
+$currentUrl = JFactory::getURI();
 //check friendly URL enabled or not
-$isSEF = &JFactory::getConfig()->get('sef') == 1;
-$addReqParam = $isSEF?'?':'&';
+//$isSEF = &JFactory::getConfig()->get('sef') == 1;
+//$addReqParam = $isSEF?'?':'&';
 ?>
     <div>
-        <a class="topplayer_soft" href="<?php echo $currentUrl.$addReqParam.'topplayertype=all'?>">all</a>
-        <a class="topplayer_soft" href="<?php echo $currentUrl.$addReqParam.'topplayertype=month'?>">month</a>
-        <a class="topplayer_soft" href="<?php echo $currentUrl.$addReqParam.'topplayertype=week'?>">week</a>
+        <a class="topplayer_soft" href="<?php $currentUrl->setVar('topplayertype','all'); echo JRoute::_($currentUrl->toString()); ?>">all</a>
+        <a class="topplayer_soft" href="<?php $currentUrl->setVar('topplayertype','month'); echo JRoute::_($currentUrl->toString()); ?>">month</a>
+        <a class="topplayer_soft" href="<?php $currentUrl->setVar('topplayertype','week'); echo JRoute::_($currentUrl->toString()); ?>">week</a>
     </div>
 
         <table class="sortable" width="100%">
