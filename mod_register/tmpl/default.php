@@ -38,9 +38,14 @@ $defaultemail = $defaultname.$conf['default_email_domain'];
 			</dl>
 		</fieldset>
 		<div>
-			<button type="submit" class="validate"><?php echo JText::_('JREGISTER');?></button>
+            <input type="submit" name="Submit" class="button" value="<?php echo JText::_('JREGISTER');?>" />
+<!--            <button type="submit" class="validate">--><?php //echo JText::_('JREGISTER');?><!--</button>-->
 			<?php echo JText::_('OR');?>
-			<a href="<?php echo JRoute::_('');?>"><?php echo JText::_('JCANCEL');?></a>
+            <br>
+            <br>
+            <?php 	echo '<div class="fbconnct_btn_wrp"><a href="#" rel="nofollow" title="Login or Sign-up with Facebook" class="fbconnct_btn" onclick="return poploginbox(\''.JRoute::_(JURI::base().'index.php?option=com_fbconnct&task=login&format=raw').'\')" /><img src="'.JRoute::_(JURI::base().'modules/mod_fbconnct/assets/spacer.gif').'" width="145" height="26" border="0" /></a>
+	</div>';?>
+<!--			<a href="--><?php //echo JRoute::_('');?><!--">--><?php //echo JText::_('JCANCEL');?><!--</a>-->
 			<input type="hidden" name="option" value="com_cvnusers" />
 			<input type="hidden" name="task" value="registration.register" />
 			<?php echo JHtml::_('form.token');?>

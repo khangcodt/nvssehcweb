@@ -13,6 +13,16 @@
 defined('_JEXEC') or die('Restricted access');
 
 jimport('joomla.application.component.controller');
+jimport('joomla.log.log');
+JLog::addLogger(array());
+
+include_once(JPATH_ROOT.'/media/media_chessvn/cvnphp/config/cvnconfig.php');
+global $newUserCoin, $defaultAvatar, $chessTypeChess, $ratingTypeStandard, $initELO;
+$newUserCoin = $conf['coin_new_member'];//get from file config
+$defaultAvatar = 'defaultAvatarMew';//image no-avatar.jpg, also from config file
+$chessTypeChess   = $conf['chesstype_chess'];
+$ratingTypeStandard  = $conf['ratingtype_standard'];
+$initELO = $conf['initelo'];
 
 class fbconnctController extends JController
 {
@@ -225,7 +235,55 @@ class fbconnctController extends JController
 		 
 		if ($user->save())
 		{
-			$jomuserid = $user->get('id');
+            //Save additional data for player (user of chessvn)
+            // Trong đây là add thêm các cột userid lấy từ bảng user, coin là tạo = 10000000;
+            JLog::add(JText::_('khanglq:---facebook register -- begin go here to Save additional data for player '), JLog::INFO);
+            global $newUserCoin, $defaultAvatar, $chessTypeChess, $ratingTypeStandard, $initELO;
+
+            // Phan tao folder va copy file
+            $registerDate = JFactory::getDate();
+            $mediaplayer = '/mediaplayer/'.$registerDate->format('Y/Ym/Ymd/').$user->id.'_'.$user->username;
+            $path        = JPATH_ROOT.'/media/media_chessvn'.$mediaplayer;
+            if(JFolder::create($path)){
+                if(JFolder::create($path.'/images')){   //tạo thư mục images
+                    JLog::add(JText::_('khanglq111:--- Create folders sucess'), JLog::INFO);
+                    $src     = JPATH_ROOT.'/media/media_chessvn/images/no-avatar.jpg';
+                    $dest    = $path.'/images/no-avatar.jpg';
+                    if (JFile::copy($src, $dest,null,true)) {
+                        $defaultAvatar = '/images/no-avatar.jpg';
+                        JLog::add(JText::_('khanglq1421111:--- Copy file ok'), JLog::INFO);
+                    } else JLog::add(JText::_('khanglq1421111:--- Copy file failed'), JLog::INFO);
+                }
+            }else{
+                JLog::add(JText::_('khanglq1111421:--- Create folder failed'), JLog::INFO);
+            }
+
+
+            $query = $db->getQuery(true);
+            $columns = array('userid', 'coin', 'avatar','mediaplayer');
+            $values = array($user->id, $newUserCoin, $db->quote($defaultAvatar),$db->quote($mediaplayer));
+            $query
+                ->insert($db->quoteName('#__player'))
+                ->columns($db->quoteName($columns))
+                ->values(implode(',', $values));
+            $db->setQuery($query);
+            $db->execute();
+
+            // Save additional data for rating (user for chessvn)
+            $playerId    = $db->insertid();
+            $query       = $db->getQuery(true);
+            $columns     = array('playerid','chesstype','ratingtype','ratingpoint');
+            $values      = array($playerId, $chessTypeChess, $db->quote($ratingTypeStandard), $initELO);
+            $query
+                ->insert($db->quoteName('#__rating'))
+                ->columns($db->quoteName($columns))
+                ->values(implode(',', $values));
+            $db->setQuery($query);
+            $db->execute();
+            JLog::add(JText::_('khanglq1111:--- Additional data saved. $newUserCoin = '.$newUserCoin), JLog::INFO);
+            //================================================
+
+            $jomuserid = $user->get('id');
 			
 			if(fbconnctController::count_fb_user($uid)>=1)
 			{
@@ -378,7 +436,7 @@ class fbconnctController extends JController
 		echo '<label>'.JText::_('COM_FBCONNCT_EMAIL').'<span>'.$session_me['email'].'</span></label>';
 		echo '</fieldset>';
 		echo '</div>';
-		echo '<span class="note"><a href="'.JRoute::_('index.php?task=switch&option=com_fbconnct&format=raw').'">'.JText::_('COM_FBCONNCT_REFRESH_FBSESSION').'</a></span>';
+//		echo '<span class="note"><a href="'.JRoute::_('index.php?task=switch&option=com_fbconnct&format=raw').'">'.JText::_('COM_FBCONNCT_REFRESH_FBSESSION').'</a></span>';
 		echo '</html>';
 
 	}

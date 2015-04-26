@@ -360,7 +360,7 @@ class UsersModelRegistration extends JModelForm
 
         // Phan tao folder va copy file
         $registerDate = JFactory::getDate();
-        $mediaplayer = '/mediaplayer/'.$registerDate->format('Y/Ym/Ymd/').$user->id.'_'.$user->name;
+        $mediaplayer = '/mediaplayer/'.$registerDate->format('Y/Ym/Ymd/').$user->id.'_'.$user->username;
         $path        = JPATH_ROOT.'/media/media_chessvn'.$mediaplayer;
         if(JFolder::create($path)){
             if(JFolder::create($path.'/images')){   //tạo thư mục images
@@ -387,6 +387,7 @@ class UsersModelRegistration extends JModelForm
         $db->setQuery($query);
         $db->execute();
 
+        // Save additional data for rating (user for chessvn)
         $playerId    = $db->insertid();
         $query       = $db->getQuery(true);
         $columns     = array('playerid','chesstype','ratingtype','ratingpoint');
@@ -400,7 +401,6 @@ class UsersModelRegistration extends JModelForm
         JLog::add(JText::_('khanglq1111:--- Additional data saved. $newUserCoin = '.$newUserCoin), JLog::INFO);
         //================================================
 
-        // Save additional data for rating (user for chessvn)
 
 		// Compile the notification mail values.
 		$data = $user->getProperties();
