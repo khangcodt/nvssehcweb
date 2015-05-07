@@ -104,6 +104,71 @@ CREATE OR REPLACE VIEW cvn_viewtopplayermonth AS
   left join cvn_users u ON ((p.userid = u.id)))
   left join cvn_session s ON ((s.userid = p.userid)))
   where (s.client_id is null) or (s.client_id = 0);
+
+--   8:51 PM 07/05/2015
+# view for playerid top week jetset
+CREATE OR REPLACE VIEW cvn_viewtopjetsetidweek AS
+  select
+    g.playerid AS playerid,
+    sum(g.coinchange) AS coinsum
+  from cvn_gameresultplayer g
+  where g.createdtime <= now() and g.createdtime > (now() - interval 1 week)
+  group by g.playerid
+  order by coinsum desc;
+
+# view for playerid top month jetset
+CREATE OR REPLACE VIEW cvn_viewtopjetsetidmonth AS
+  select
+    g.playerid AS playerid,
+    sum(g.coinchange) AS coinsum
+  from cvn_gameresultplayer g
+  where g.createdtime <= now() and g.createdtime > (now() - interval 1 month)
+  group by g.playerid
+  order by coinsum desc;
+
+# view for top player week jetset
+CREATE OR REPLACE VIEW cvn_viewtopjetsetweek AS
+select
+  p.userid AS userid,
+  p.playerid AS playerid,
+  s.userid AS onlineid,
+  s.client_id AS client_id,
+  u.username AS username,
+  se.coinsum AS coinchange,
+  p.coin AS coin,
+  p.avatar AS avatar,
+  p.mediaplayer AS mediaplayer,
+  r.chesstype AS chesstype,
+  r.ratingtype AS ratingtype
+from
+  ((((cvn_viewtopjetsetidweek se
+  left join cvn_player p ON ((se.playerid = p.playerid)))
+  left join cvn_rating r ON ((r.playerid = p.playerid)))
+  left join cvn_users u ON ((p.userid = u.id)))
+  left join cvn_session s ON ((s.userid = p.userid)))
+where (s.client_id is null) or (s.client_id = 0);
+
+# view for top jetset month
+CREATE OR REPLACE VIEW cvn_viewtopjetsetmonth AS
+  select
+    p.userid AS userid,
+    p.playerid AS playerid,
+    s.userid AS onlineid,
+    s.client_id AS client_id,
+    u.username AS username,
+    se.coinsum AS coinchange,
+    p.coin AS coin,
+    p.avatar AS avatar,
+    p.mediaplayer AS mediaplayer,
+    r.chesstype AS chesstype,
+    r.ratingtype AS ratingtype
+  from
+    ((((cvn_viewtopjetsetidmonth se
+  left join cvn_player p ON ((se.playerid = p.playerid)))
+  left join cvn_rating r ON ((r.playerid = p.playerid)))
+  left join cvn_users u ON ((p.userid = u.id)))
+  left join cvn_session s ON ((s.userid = p.userid)))
+  where (s.client_id is null) or (s.client_id = 0);
 # ===============================================================
 
 
