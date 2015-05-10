@@ -28,7 +28,7 @@ $userid = JFactory::getUser()->id;
         <!--        <th><a>--><?php //echo JText::_('MOD_VIEWCHALLENGES_THEAD_INITIATORSIDE'); ?><!--</a></th>-->
         <!--        <th><a>--><?php //echo JText::_('MOD_VIEWCHALLENGES_THEAD_ACTION'); ?><!--</a></th>-->
         <th><a><?php echo JText::_('Nguoi tao'); ?></a></th>
-        <th><a><?php echo JText::_('Ten game'); ?></a></th>
+        <th><a><?php echo JText::_('Game'); ?></a></th>
         <th><a><?php echo JText::_('Dat cuoc'); ?></a></th>
         <th><a><?php echo JText::_('Doi thu'); ?></a></th>
         <th><a><?php echo JText::_('Tinh diem'); ?></a></th>
@@ -56,37 +56,57 @@ $userid = JFactory::getUser()->id;
 
     function processXmlChallenges(xmlData) {
         window.setTimeout('getXmlChallenges()', updateChallengesSpeed);
-        var i, games = jQuery(xmlData).find('GAMES'), content = '', desc, gid, wid, bid, initid, status, color, timeout, type, fen;
+        var i, games = jQuery(xmlData).find('GAMES'), content = '', desc, gid, gametitle, gamecoin, wid, bid, initid, status, color, timeout, type, fen;
+//        console.log('xmlData = ' + xmlData);
+//        console.log('games = ' + games.length);
 
         jQuery("#listChallenges > tbody").empty();//remove content before udpate new
         var data = "fdsafsa";//test code
         for (i = 0; i < games.length; i++) {
-//            desc = games[i].getElementsByTagName('DESCRIPTION').item(0).firstChild.data;
-//            gid = games[i].getElementsByTagName('GAMEID').item(0).firstChild.data;
-//            status = games[i].getElementsByTagName('STATUS').item(0).firstChild.data;
-//            initid = games[i].getElementsByTagName('INITIATOR').item(0).firstChild.data;
-//            wid = games[i].getElementsByTagName('WHITE').item(0).firstChild.data;
-//            bid = games[i].getElementsByTagName('BLACK').item(0).firstChild.data;
-//            timeout = games[i].getElementsByTagName('TIMEOUT').item(0).firstChild.data;
-//            type = games[i].getElementsByTagName('GAMETYPE').item(0).firstChild.data;
-//            rated = games[i].getElementsByTagName('RATED').item(0).firstChild.data;
-//            time_created = games[i].getElementsByTagName('TIMECREATED').item(0).firstChild.data;
-//            time_ctrl1 = games[i].getElementsByTagName('TIMECONTROL1').item(0).firstChild.data;
-//            time_ctrl2 = games[i].getElementsByTagName('TIMECONTROL2').item(0).firstChild.data;
-//            fen = games[i].getElementsByTagName('GAMEFEN').item(0).firstChild.data;
+            desc = games[i].getElementsByTagName('DESCRIPTION').item(0).firstChild.data;
+            gid = games[i].getElementsByTagName('GAMEID').item(0).firstChild.data;
+            gametitle = games[i].getElementsByTagName('TITLE').item(0).firstChild.data;
+            gamecoin = games[i].getElementsByTagName('GAMECOIN').item(0).firstChild.data;
+            status = games[i].getElementsByTagName('STATUS').item(0).firstChild.data;
+            initid = games[i].getElementsByTagName('INITIATOR').item(0).firstChild.data;
+            wid = games[i].getElementsByTagName('WHITE').item(0).firstChild.data;
+            bid = games[i].getElementsByTagName('BLACK').item(0).firstChild.data;
+            timeout = games[i].getElementsByTagName('TIMEOUT').item(0).firstChild.data;
+            type = games[i].getElementsByTagName('GAMETYPE').item(0).firstChild.data;
+            rated = games[i].getElementsByTagName('RATED').item(0).firstChild.data;
+            time_created = games[i].getElementsByTagName('TIMECREATED').item(0).firstChild.data;
+            time_ctrl1 = games[i].getElementsByTagName('TIMECONTROL1').item(0).firstChild.data;
+            time_ctrl2 = games[i].getElementsByTagName('TIMECONTROL2').item(0).firstChild.data;
+            fen = games[i].getElementsByTagName('GAMEFEN').item(0).firstChild.data;
+
+            //debugging
+//            console.log('desc = ' + desc);
+//            console.log('gid = ' + gid);
+//            console.log('status = ' + status);
+//            console.log('initid = ' + initid);
+//            console.log('wid = ' + wid);
+//            console.log('bid = ' + bid);
+//            console.log('timeout = ' + timeout);
+//            console.log('type = ' + type);
+//            console.log('rated = ' + rated);
+//            console.log('time_created = ' + time_created);
+//            console.log('time_ctrl1 = ' + time_ctrl1);
+//            console.log('time_ctrl2 = ' + time_ctrl2);
+//            console.log('fen = ' + fen);
+
 //
-//            var data = {desc: desc, gid: gid, status: status, initid: initid, wid: wid, bid: bid, timeout: timeout, type: type, rated: rated, time_created: time_created, time_ctrl1: time_ctrl1, time_ctrl2: time_ctrl2, fen: fen};
+            var data = {desc: desc, gid: gid, title: gametitle, gamecoin: gamecoin, status: status, initid: initid, wid: wid, bid: bid, timeout: timeout, type: type, rated: rated, time_created: time_created, time_ctrl1: time_ctrl1, time_ctrl2: time_ctrl2, fen: fen};
             drawChallengesTableRow(data);
         }
     }
 
     function drawChallengesTableRow(data) {
         jQuery("#listChallenges > tbody").append("<tr>" +
-            "<td>player01</td>" +
-            "<td>game title 02</td>" +
-            "<td>1021021 game coin</td>" +
-            "<td>to all</td>" +
-            "<td>reated game</td>" +
+            "<td>" + data.initid + "</td>" +
+            "<td>" + data.title + "</td>" +
+            "<td>" + data.gamecoin + "</td>" +
+            "<td>" + data.desc + "</td>" +
+            "<td>" + data.rated + "</td>" +
             "<td>white</td>" +
             "<td>Play</td>" +
             "</tr>");
