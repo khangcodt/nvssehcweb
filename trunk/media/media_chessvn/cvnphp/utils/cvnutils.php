@@ -36,6 +36,11 @@ function isEmailUpdated($inputEMail, $emailPrefix = "defaultemail", $emailSuffix
     return false;
 }
 
+/**
+ * Return number in human readable format, remove zeros trailing, eg: 231.76k
+ * @param $number
+ * @return string
+ */
 function readableNumber($number)
 {
     if (is_null($number) || !is_numeric($number)) return 'N_a_N';
