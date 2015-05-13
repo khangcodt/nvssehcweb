@@ -8,9 +8,14 @@
 
 // no direct access
 defined('_JEXEC') or die;
+
+$utilfile = JPATH_ROOT. '/media/media_chessvn/cvnphp/utils/cvnutils.php';
+require_once($utilfile);
+
 $document = JFactory::getDocument();
 $mediaPath = JURI::base() . '/media/media_chessvn/';
 $document->addScript($mediaPath.'js/sorttable.js');
+$document->addScript($mediaPath . 'js/cvn/cvnutils.js');
 $document->addStyleSheet($mediaPath.'css/chessvn.css');
 $imgScale = 10;
 $onlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="ON" src="'.$mediaPath.'images/OnlineDot.png" style="margin: 0;">';
@@ -20,7 +25,7 @@ $currentUrl = JFactory::getURI();
 //$isSEF = &JFactory::getConfig()->get('sef') == 1;
 //$addReqParam = $isSEF?'?':'&';
 ?>
-    <div>
+    <div style="text-align: right">
         <a class="topplayer_soft" href="<?php $currentUrl->setVar('topplayertype','all'); echo JRoute::_($currentUrl->toString()); ?>">all</a>
         <a class="topplayer_soft" href="<?php $currentUrl->setVar('topplayertype','month'); echo JRoute::_($currentUrl->toString()); ?>">month</a>
         <a class="topplayer_soft" href="<?php $currentUrl->setVar('topplayertype','week'); echo JRoute::_($currentUrl->toString()); ?>">week</a>
@@ -46,9 +51,9 @@ $currentUrl = JFactory::getURI();
     ?>
             <tr>
                 <td style="text-align: center;"><?php echo $index; ?></td>
-                <td class="string"> <?php echo $avatarImg; ?> <?php echo mb_substr($player->username,0,8,'UTF-8') ; ?></td>
+                <td class="string"> <?php echo $avatarImg; ?> <?php echo mb_strimwidth($player->username, 0, 12, "..."); ?></td>
                 <td><?php echo $player->ratingpoint; ?></td>
-                <td><?php echo $player->coin; ?></td>
+                <td><?php echo readableNumber($player->coin); ?></td>
 				<td style="text-align: center;"><?php echo $checkLive; ?></td>
             </tr>
 	<?php endforeach;  ?>

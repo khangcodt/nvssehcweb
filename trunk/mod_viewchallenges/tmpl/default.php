@@ -8,12 +8,15 @@
 
 // no direct access
 defined('_JEXEC') or die;
+$limitStr = "...";
 $document = JFactory::getDocument();
 $mediaPath = JURI::base() . '/media/media_chessvn/';
 $document->addScript($mediaPath . 'js/sorttable.js');
+$document->addScript($mediaPath . 'js/cvn/cvnutils.js');
 $document->addScript($mediaPath . 'js/jquery/jquery-1.8.2.min.js');
 $document->addStyleSheet($mediaPath . 'css/chessvn.css');
 $userid = JFactory::getUser()->id;
+echo mb_strimwidth("Hello World", 0, 20, "...");
 ?>
 
 <!--html code-->
@@ -63,21 +66,21 @@ $userid = JFactory::getUser()->id;
         jQuery("#listChallenges > tbody").empty();//remove content before udpate new
         var data = "fdsafsa";//test code
         for (i = 0; i < games.length; i++) {
-            desc = games[i].getElementsByTagName('DESCRIPTION').item(0).firstChild.data;
-            gid = games[i].getElementsByTagName('GAMEID').item(0).firstChild.data;
-            gametitle = games[i].getElementsByTagName('TITLE').item(0).firstChild.data;
-            gamecoin = games[i].getElementsByTagName('GAMECOIN').item(0).firstChild.data;
-            status = games[i].getElementsByTagName('STATUS').item(0).firstChild.data;
-            initid = games[i].getElementsByTagName('INITIATOR').item(0).firstChild.data;
-            wid = games[i].getElementsByTagName('WHITE').item(0).firstChild.data;
-            bid = games[i].getElementsByTagName('BLACK').item(0).firstChild.data;
-            timeout = games[i].getElementsByTagName('TIMEOUT').item(0).firstChild.data;
-            type = games[i].getElementsByTagName('GAMETYPE').item(0).firstChild.data;
-            rated = games[i].getElementsByTagName('RATED').item(0).firstChild.data;
-            time_created = games[i].getElementsByTagName('TIMECREATED').item(0).firstChild.data;
-            time_ctrl1 = games[i].getElementsByTagName('TIMECONTROL1').item(0).firstChild.data;
-            time_ctrl2 = games[i].getElementsByTagName('TIMECONTROL2').item(0).firstChild.data;
-            fen = games[i].getElementsByTagName('GAMEFEN').item(0).firstChild.data;
+            desc = getUncheckData(games[i].getElementsByTagName('DESCRIPTION').item(0).firstChild);
+            gid = getUncheckData(games[i].getElementsByTagName('GAMEID').item(0).firstChild);
+            gametitle = getUncheckData(games[i].getElementsByTagName('TITLE').item(0).firstChild);
+            gamecoin = getUncheckData(games[i].getElementsByTagName('GAMECOIN').item(0).firstChild);
+            status = getUncheckData(games[i].getElementsByTagName('STATUS').item(0).firstChild);
+            initid = getUncheckData(games[i].getElementsByTagName('INITIATOR').item(0).firstChild);
+            wid = getUncheckData(games[i].getElementsByTagName('WHITE').item(0).firstChild);
+            bid = getUncheckData(games[i].getElementsByTagName('BLACK').item(0).firstChild);
+            timeout = getUncheckData(games[i].getElementsByTagName('TIMEOUT').item(0).firstChild);
+            type = getUncheckData(games[i].getElementsByTagName('GAMETYPE').item(0).firstChild);
+            rated = getUncheckData(games[i].getElementsByTagName('RATED').item(0).firstChild);
+            time_created = getUncheckData(games[i].getElementsByTagName('TIMECREATED').item(0).firstChild);
+            time_ctrl1 = getUncheckData(games[i].getElementsByTagName('TIMECONTROL1').item(0).firstChild);
+            time_ctrl2 = getUncheckData(games[i].getElementsByTagName('TIMECONTROL2').item(0).firstChild);
+            fen = getUncheckData(games[i].getElementsByTagName('GAMEFEN').item(0).firstChild);
 
             //debugging
 //            console.log('desc = ' + desc);
@@ -102,10 +105,11 @@ $userid = JFactory::getUser()->id;
 
     function drawChallengesTableRow(data) {
         jQuery("#listChallenges > tbody").append("<tr>" +
-            "<td>" + data.initid + "</td>" +
-            "<td>" + data.title + "</td>" +
-            "<td>" + data.gamecoin + "</td>" +
-            "<td>" + data.desc + "</td>" +
+            "<td>" + getLimitText(data.initid, 10) + "</td>" +
+            "<td>" + getLimitText(data.title, 17) + "</td>" +
+            "<td>" + readableNumber(data.gamecoin) + "</td>" +
+//            "<td>" + data.gamecoin + "</td>" +
+            "<td>" + getLimitText(data.desc, 12) + "</td>" +
             "<td>" + data.rated + "</td>" +
             "<td>white</td>" +
             "<td>Play</td>" +
