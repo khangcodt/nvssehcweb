@@ -8,7 +8,7 @@
 
 // no direct access
 defined('_JEXEC') or die;
-$limitStr = "...";
+//$limitStr = "...";
 $document = JFactory::getDocument();
 $mediaPath = JURI::base() . '/media/media_chessvn/';
 $document->addScript($mediaPath . 'js/sorttable.js');
@@ -16,7 +16,7 @@ $document->addScript($mediaPath . 'js/cvn/cvnutils.js');
 $document->addScript($mediaPath . 'js/jquery/jquery-1.8.2.min.js');
 $document->addStyleSheet($mediaPath . 'css/chessvn.css');
 $userid = JFactory::getUser()->id;
-echo mb_strimwidth("Hello World", 0, 20, "...");
+//echo mb_strimwidth("Hello World", 0, 20, "...");
 ?>
 
 <!--html code-->

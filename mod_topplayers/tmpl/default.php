@@ -12,6 +12,8 @@ defined('_JEXEC') or die;
 $utilfile = JPATH_ROOT. '/media/media_chessvn/cvnphp/utils/cvnutils.php';
 require_once($utilfile);
 
+$limitStr = "...";
+$limitLength = 12;
 $document = JFactory::getDocument();
 $mediaPath = JURI::base() . '/media/media_chessvn/';
 $document->addScript($mediaPath.'js/sorttable.js');
@@ -51,7 +53,7 @@ $currentUrl = JFactory::getURI();
     ?>
             <tr>
                 <td style="text-align: center;"><?php echo $index; ?></td>
-                <td class="string"> <?php echo $avatarImg; ?> <?php echo mb_strimwidth($player->username, 0, 12, "..."); ?></td>
+                <td class="string"> <?php echo $avatarImg; ?> <?php echo mb_strimwidth($player->username, 0, $limitLength, $limitStr); ?></td>
                 <td><?php echo $player->ratingpoint; ?></td>
                 <td><?php echo readableNumber($player->coin); ?></td>
 				<td style="text-align: center;"><?php echo $checkLive; ?></td>
