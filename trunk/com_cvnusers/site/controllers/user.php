@@ -30,9 +30,6 @@ class UsersControllerUser extends UsersController
 
 		$app = JFactory::getApplication();
 
-        //test code display msg after login
-        $app->enqueueMessage('you have just login, test by khanglq');
-
 		// Populate the data array:
 		$data = array();
 		$data['return'] = base64_decode(JRequest::getVar('return', '', 'POST', 'BASE64'));
@@ -60,6 +57,10 @@ class UsersControllerUser extends UsersController
 		// Perform the log in.
 		if (true === $app->login($credentials, $options)) {
 			// Success
+
+            //test code display msg after login
+            $app->enqueueMessage('you have just login, test by khanglq');
+
 			$app->setUserState('users.login.form.data', array());
 			$app->redirect(JRoute::_($app->getUserState('users.login.form.return'), false));
 		} else {
