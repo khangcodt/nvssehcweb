@@ -111,15 +111,15 @@ if($type == 'logout'){
             echo '<input type="submit" name="Submit" class="button" value="'.JText::_('MOD_FBCONNCT_LOGIN').'" />';
             echo '</fieldset>';
             echo '<ul><li>';
-            echo '<a href="'.JRoute::_( 'index.php?option=com_user&view=reset' ).'">';
+            echo '<a href="'.JRoute::_( 'index.php?option=com_cvnuser&view=reset' ).'">';
             echo JText::_('MOD_FBCONNCT_FORGOT_PASSWORD').'</a>';
             echo '</li><li>';
-            echo '<a href="'.JRoute::_( 'index.php?option=com_user&view=remind' ).'">';
+            echo '<a href="'.JRoute::_( 'index.php?option=com_cvnuser&view=remind' ).'">';
             echo JText::_('MOD_FBCONNCT_FORGOT_USERNAME').'</a></li>';
-            
+
 			$usersConfig = &JComponentHelper::getParams( 'com_cvnusers' );
             if ($usersConfig->get('allowUserRegistration')){
-				echo '<li><a href="'.JRoute::_( 'index.php?option=com_user&view=register' ).'">';
+				echo '<li><a href="'.JRoute::_( 'index.php?option=com_cvnuser&view=register' ).'">';
 				echo JText::_('MOD_FBCONNCT_CREATE_ACCOUNT');
 				echo '</a></li>';
             }
