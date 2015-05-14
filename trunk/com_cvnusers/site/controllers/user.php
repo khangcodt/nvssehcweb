@@ -30,6 +30,9 @@ class UsersControllerUser extends UsersController
 
 		$app = JFactory::getApplication();
 
+        //test code display msg after login
+        $app->enqueueMessage('you have just login, test by khanglq');
+
 		// Populate the data array:
 		$data = array();
 		$data['return'] = base64_decode(JRequest::getVar('return', '', 'POST', 'BASE64'));
