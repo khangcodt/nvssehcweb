@@ -16,9 +16,12 @@ $limitStr = "...";
 $limitLength = 12;
 $document = JFactory::getDocument();
 $mediaPath = JURI::base() . '/media/media_chessvn/';
+$document->addScript($mediaPath . 'js/jquery/jquery-1.8.2.min.js');
+$document->addScript($mediaPath . 'js/jquery/jquery.contextMenu.js');
 $document->addScript($mediaPath.'js/sorttable.js');
 $document->addScript($mediaPath . 'js/cvn/cvnutils.js');
 $document->addStyleSheet($mediaPath.'css/chessvn.css');
+$document->addStyleSheet($mediaPath.'css/jquery.contextMenu.css');
 $imgScale = 10;
 $onlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="ON" src="'.$mediaPath.'images/OnlineDot.png" style="margin: 0;">';
 $offlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="OFF" src="'.$mediaPath.'images/OfflineDot.png" style="margin: 0;">';
@@ -53,7 +56,7 @@ $currentUrl = JFactory::getURI();
     ?>
             <tr>
                 <td style="text-align: center;"><?php echo $index; ?></td>
-                <td class="string"> <?php echo $avatarImg; ?> <?php echo mb_strimwidth($player->username, 0, $limitLength, $limitStr); ?></td>
+                <td><a href="#" class="cvn-player-link cvn-contextmenu"><?php echo $avatarImg; ?> <?php echo mb_strimwidth($player->username, 0, $limitLength, $limitStr); ?></a></td>
                 <td><?php echo $player->ratingpoint; ?></td>
                 <td><?php echo readableNumber($player->coin); ?></td>
 				<td style="text-align: center;"><?php echo $checkLive; ?></td>
@@ -61,3 +64,25 @@ $currentUrl = JFactory::getURI();
 	<?php endforeach;  ?>
             </tbody>
         </table>
+
+<!--script code-->
+<script type="text/javascript">
+    $(function(){
+        $.contextMenu({
+            selector: '.cvn-contextmenu',
+            callback: function(key, options) {
+                var m = "tesst by khanglq clicked: " + key;
+                window.console && console.log(m) || alert(m);
+            },
+            items: {
+                "edit": {name: "Edit", icon: "edit"},
+                "cut": {name: "Cut", icon: "cut"},
+                "copy": {name: "Copy", icon: "copy"},
+                "paste": {name: "Paste", icon: "paste"},
+                "delete": {name: "Delete", icon: "delete"},
+                "sep1": "---------",
+                "quit": {name: "Quit", icon: "quit"}
+            }
+        });
+    });
+</script>

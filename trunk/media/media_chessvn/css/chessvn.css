@@ -8,3 +8,7 @@ table.sortable thead {
 a:hover {
 	cursor: pointer;
 }
+.cvn-player-link {
+    color: #0a5689;
+    text-decoration: none;
+}
