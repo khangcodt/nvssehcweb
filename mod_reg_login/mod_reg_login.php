@@ -16,10 +16,10 @@ $mod_copyrights_start   = "\n\n<!-- JoomlaWorks \"Tabs & Sliders\" Module (v2.0)
 $mod_copyrights_end     = "\n<!-- JoomlaWorks \"Tabs & Sliders\" Module (v2.0) ends here -->\n\n";
 
 // API
-$mainframe	= &JFactory::getApplication();
-$document 	= &JFactory::getDocument();
-$db 				= &JFactory::getDBO();
-$user 			= &JFactory::getUser();
+$mainframe	= JFactory::getApplication();
+$document 	= JFactory::getDocument();
+$db 				= JFactory::getDBO();
+$user 			= JFactory::getUser();
 $aid 				= $user->get('aid');
 
 // Assign paths

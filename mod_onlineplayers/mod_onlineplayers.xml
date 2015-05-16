@@ -44,8 +44,7 @@
 						value="2">MOD_ONLINEPLAYERS_FIELD_VALUE_BOTH</option>
 				</field>
 			</fieldset>
-			<fieldset
-				name="advanced">
+			<fieldset name="advanced">
 				<field
 					name="layout"
 					type="modulelayout"
