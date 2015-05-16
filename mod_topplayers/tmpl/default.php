@@ -26,6 +26,8 @@ $imgScale = 10;
 $onlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="ON" src="'.$mediaPath.'images/OnlineDot.png" style="margin: 0;">';
 $offlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="OFF" src="'.$mediaPath.'images/OfflineDot.png" style="margin: 0;">';
 $currentUrl = JFactory::getURI();
+$coinImgThead = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="'.JText::_('MOD_TOPPLAYERS_THEAD_COIN').'" src="'.$mediaPath.'images/CoinIcon.png" style="margin: 0;">';
+$onlineImgThead= '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="'.JText::_('MOD_TOPPLAYERS_THEAD_ONLINE').'" src="'.$mediaPath.'images/online.gif" style="margin: 0;">';
 //check friendly URL enabled or not
 //$isSEF = &JFactory::getConfig()->get('sef') == 1;
 //$addReqParam = $isSEF?'?':'&';
@@ -42,8 +44,8 @@ $currentUrl = JFactory::getURI();
                 <th class="sorttable_nosort">&nbsp</th>
                 <th class="sorttable_nosort"><?php echo JText::_('MOD_TOPPLAYERS_THEAD_PLAYER'); ?></th>
                 <th class="sorttable_nosort"><?php echo JText::_('MOD_TOPPLAYERS_THEAD_RATING'); ?></th>
-                <th class="sorttable_nosort"><?php echo JText::_('MOD_TOPPLAYERS_THEAD_COIN'); ?></th>
-				<th class="sorttable_nosort">Online</th>
+                <th class="sorttable_nosort"><?php echo $coinImgThead; ?></th>
+				<th class="sorttable_nosort"><?php echo $onlineImgThead;?> </th>
             </tr>
             </thead>
             <tbody>
