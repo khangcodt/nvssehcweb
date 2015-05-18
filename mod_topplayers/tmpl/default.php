@@ -88,3 +88,12 @@ $onlineImgThead= '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="'.JText
         });
     });
 </script>
+<style>
+    .context-menu-item.icon-edit { background-image: url(<?php echo $mediaPath; ?>images/icon/edit.png); }
+    .context-menu-item.icon-cut { background-image: url(<?php echo $mediaPath; ?>images/icon/cut.png); }
+    .context-menu-item.icon-copy { background-image: url(<?php echo $mediaPath; ?>images/icon/copy.png); }
+    .context-menu-item.icon-paste { background-image: url(<?php echo $mediaPath; ?>images/icon/paste.png); }
+    .context-menu-item.icon-delete { background-image: url(<?php echo $mediaPath; ?>images/icon/delete.png); }
+    .context-menu-item.icon-add { background-image: url(<?php echo $mediaPath; ?>images/icon/add.png); }
+    .context-menu-item.icon-quit { background-image: url(<?php echo $mediaPath; ?>images/icon/door.png); }
+</style>
