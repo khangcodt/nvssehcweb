@@ -107,7 +107,7 @@ class UsersModelProfile extends JModelForm
             $query = "SELECT * FROM #__player WHERE userid = ".$userId;
             $db->setQuery($query);
             $result = $db->loadObjectList();
-            $mediaPath = JURI::base() . '/media_chessvn';
+            $mediaPath = JURI::base() . '/media/media_chessvn';
             foreach($result as $key=>$value){
                 $this->data->coin = $value->coin;
                 if($value->avatar=="defaultAvatarMew"){
