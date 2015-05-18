@@ -12,8 +12,6 @@ defined('_JEXEC') or die;
 $utilfile = JPATH_ROOT. '/media/media_chessvn/cvnphp/utils/cvnutils.php';
 require_once($utilfile);
 
-$limitStr = "...";
-$limitLength = 12;
 $document = JFactory::getDocument();
 $mediaPath = JURI::base() . '/media/media_chessvn/';
 $document->addScript($mediaPath . 'js/jquery/jquery-1.8.2.min.js');
@@ -22,12 +20,18 @@ $document->addScript($mediaPath.'js/sorttable.js');
 $document->addScript($mediaPath . 'js/cvn/cvnutils.js');
 $document->addStyleSheet($mediaPath.'css/chessvn.css');
 $document->addStyleSheet($mediaPath.'css/jquery.contextMenu.css');
+
+$imgScale = 13;
+$coinImgThead = '<img width="'.$imgScale*1.488.'" height="'.$imgScale.'" alt="'.JText::_('MOD_TOPPLAYERS_THEAD_COIN').'" src="'.$mediaPath.'images/CoinIcon.png" style="margin: 0;">';
+$onlineImgThead= '<img width="'.$imgScale*2.0.'" height="'.$imgScale.'" alt="'.JText::_('MOD_TOPPLAYERS_THEAD_ONLINE').'" src="'.$mediaPath.'images/online.gif" style="margin: 0;">';
+
+$limitStr = "...";
+$limitLength = 12;
 $imgScale = 10;
 $onlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="ON" src="'.$mediaPath.'images/OnlineDot.png" style="margin: 0;">';
 $offlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="OFF" src="'.$mediaPath.'images/OfflineDot.png" style="margin: 0;">';
 $currentUrl = JFactory::getURI();
-$coinImgThead = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="'.JText::_('MOD_TOPPLAYERS_THEAD_COIN').'" src="'.$mediaPath.'images/CoinIcon.png" style="margin: 0;">';
-$onlineImgThead= '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="'.JText::_('MOD_TOPPLAYERS_THEAD_ONLINE').'" src="'.$mediaPath.'images/online.gif" style="margin: 0;">';
+
 //check friendly URL enabled or not
 //$isSEF = &JFactory::getConfig()->get('sef') == 1;
 //$addReqParam = $isSEF?'?':'&';
@@ -44,8 +48,8 @@ $onlineImgThead= '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="'.JText
                 <th class="sorttable_nosort">&nbsp</th>
                 <th class="sorttable_nosort"><?php echo JText::_('MOD_TOPPLAYERS_THEAD_PLAYER'); ?></th>
                 <th class="sorttable_nosort"><?php echo JText::_('MOD_TOPPLAYERS_THEAD_RATING'); ?></th>
-                <th class="sorttable_nosort"><?php echo $coinImgThead; ?></th>
-				<th class="sorttable_nosort"><?php echo $onlineImgThead;?> </th>
+                <th class="sorttable_nosort" style="text-align: center; vertical-align: text-bottom"><?php echo $coinImgThead; ?></th>
+                <th class="sorttable_nosort" style="text-align: center; vertical-align: text-bottom"><?php echo $onlineImgThead;?> </th>
             </tr>
             </thead>
             <tbody>
