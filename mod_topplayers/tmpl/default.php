@@ -81,13 +81,12 @@ $currentUrl = JFactory::getURI();
                 window.console && console.log(m) || alert(m);
             },
             items: {
-                "edit": {name: "Edit", icon: "edit"},
-                "cut": {name: "Cut", icon: "cut"},
-                "copy": {name: "Copy", icon: "copy"},
-                "paste": {name: "Paste", icon: "paste"},
-                "delete": {name: "Delete", icon: "delete"},
-                "sep1": "---------",
-                "quit": {name: "Quit", icon: "quit"}
+                "challenge": {name: "Challenge", icon: "challenge"},
+                "viewprofile": {name: "View profile", icon: "viewprofile"},
+                "sendmsg": {name: "Send message", icon: "sendmsg"},
+                "addfriend": {name: "Add friend", icon: "addfriend"},
+                "block": {name: "Block", icon: "block"}
+//                "sep1": "---------",
             }
         });
     });
