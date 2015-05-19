@@ -208,4 +208,8 @@ CREATE OR REPLACE VIEW cvn_viewchallenges AS
 # 4:54 PM 4/14/2015
 # thêm cột mediaplayer vào bảng player đặt riêng thư mục media cho từng player
 ALTER TABLE cvn_player ADD COLUMN mediaplayer VARCHAR(200) NULL COMMENT 'lưu thư mục media cho player, chứa các file ảnh, media'  AFTER avatar ;
+
+# 2:49 PM 5/19/2015
+# Thêm các thông tin bổ sung cho player proifile
+ALTER TABLE cvn_player ADD COLUMN birthday VARCHAR(20) NULL  AFTER mediaplayer , ADD COLUMN address VARCHAR(200) NULL  AFTER birthday , ADD COLUMN occupation VARCHAR(50) NULL  AFTER address , ADD COLUMN aboutme MEDIUMTEXT NULL  AFTER occupation ;
 # ===============================================================
