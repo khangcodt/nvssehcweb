@@ -256,8 +256,6 @@ class UsersModelProfile extends JModelForm
         $user = new JUser($userId);
 
         // Prepare the data for the user object.
-        $data['email']		= $data['email1'];
-        $data['password']	= $data['password1'];
 
         // Lưu thông tin thay đổi
         $db = JFactory::getDbo();

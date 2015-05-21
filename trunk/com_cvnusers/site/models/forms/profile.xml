@@ -12,19 +12,10 @@
                filter="string"
                label="COM_USERS_PROFILE_AVATAR_LABEL"
                message="COM_USERS_PROFILE_EMAIL3_MESSAGE"
-               size="20"
+
                 />
 
-        <field name="name" type="text"
-               description="COM_USERS_PROFILE_NAME_DESC"
-               filter="string"
-               label="COM_USERS_PROFILE_NAME_LABEL"
-               message="COM_USERS_PROFILE_NAME_MESSAGE"
-               required="true"
-               size="30"
-                />
-
-        <field name="username" type="text"
+        <field name="username" type="text" style="border:none"
                class="validate-username"
                description="COM_USERS_DESIRED_USERNAME"
                filter="username"
@@ -35,25 +26,12 @@
                validate="username"
                 />
 
-        <field name="password1" type="password"
-               autocomplete="off"
-               class="validate-password"
-               description="COM_USERS_DESIRED_PASSWORD"
-               field="password2"
-               filter="raw"
-               label="COM_USERS_PROFILE_PASSWORD1_LABEL"
-               message="COM_USERS_PROFILE_PASSWORD1_MESSAGE"
-               size="30"
-               validate="equals"
-                />
-
-        <field name="password2" type="password"
-               autocomplete="off"
-               class="validate-password"
-               description="COM_USERS_PROFILE_PASSWORD2_DESC"
-               filter="raw"
-               label="COM_USERS_PROFILE_PASSWORD2_LABEL"
-               message="COM_USERS_PROFILE_PASSWORD2_MESSAGE"
+        <field name="name" type="text" readonly="readonly"
+               description="COM_USERS_PROFILE_NAME_DESC"
+               filter="string"
+               label="COM_USERS_PROFILE_NAME_LABEL"
+               message="COM_USERS_PROFILE_NAME_MESSAGE"
+               required="true"
                size="30"
                 />
 
@@ -67,19 +45,6 @@
                unique="true"
                validate="email"
                 />
-
-        <field name="email2" type="email"
-               description="COM_USERS_PROFILE_EMAIL2_DESC"
-               field="email1"
-               filter="string"
-               label="COM_USERS_PROFILE_EMAIL2_LABEL"
-               message="COM_USERS_PROFILE_EMAIL2_MESSAGE"
-               required="true"
-               size="30"
-               validate="equals"
-                />
-
-
 
         <field name="address" type="text"
                description="COM_USERS_PROFILE_NAME_DESC"
@@ -111,7 +76,6 @@
                label="COM_USERS_PROFILE_ABOUTME_LABEL"
                message="COM_USERS_PROFILE_EMAIL3_MESSAGE"
                size="30"
-               validate="equals"
                 />
 
 

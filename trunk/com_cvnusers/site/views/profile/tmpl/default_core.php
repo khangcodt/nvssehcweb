@@ -19,25 +19,20 @@ require_once($utilfile);
     </legend>
     <dl>
         <dt>
-            <?php echo JText::_('COM_USERS_PROFILE_NAME_LABEL'); ?>
+            <?php echo JText::_('COM_USERS_PROFILE_USERNAME_LABEL'); ?>
         </dt>
         <dd>
             <?php echo $this->data->name; ?>
         </dd>
+
         <dt>
-            <?php echo JText::_('COM_USERS_PROFILE_REGISTERED_DATE_LABEL'); ?>
+            <?php echo JText::_('COM_USERS_PROFILE_NAME_LABEL'); ?>
         </dt>
         <dd>
-            <?php echo JHtml::_('date', $this->data->registerDate); ?>
+            <?php echo $this->data->username; ?>
         </dd>
-        <dt>
-            <?php echo JText::_('COM_USERS_PROFILE_LAST_VISITED_DATE_LABEL'); ?>
-        </dt>
 
         <?php if ($this->data->lastvisitDate != '0000-00-00 00:00:00'){?>
-            <dd>
-                <?php echo JHtml::_('date', $this->data->lastvisitDate); ?>
-            </dd>
             <dt>
                 <?php echo JText::_('COM_USERS_PROFILE_EMAIL_LABEL'); ?>
             </dt>
@@ -65,70 +60,41 @@ require_once($utilfile);
                 <img width="80px" height="80px" alt="AVATAR" src="<?php echo $this->data->mediaplayer.$this->data->avatar ?>" >
             </dd>
 
-
-            <dt>
-                <?php echo JText::_('COM_USERS_PROFILE_EMAIL_LABEL'); ?>
-            </dt>
+        <?php }
+        else {?>
             <dd>
-                <?php
-                echo $this->data->email;
-                ?>
+                <?php echo JText::_('COM_USERS_PROFILE_NEVER_VISITED'); ?>
             </dd>
+        <?php } ?>
 
-            <dt>
-                Coin
-            </dt>
+        <dt>
+            <?php echo JText::_('COM_USERS_PROFILE_ADDRESS_LABEL'); ?>
+        </dt>
 
-            <dd>
-                <?php
-                echo readableNumber($this->data->coin);
-                ?>
-            </dd>
+        <dd>
+            <?php echo $this->data->address ?>
+        </dd>
 
-            <dt>
-                <?php echo JText::_('COM_USERS_PROFILE_AVATAR_LABEL'); ?>
-            </dt>
+        <dt>
+            <?php echo JText::_('COM_USERS_PROFILE_BIRTHDAY_LABEL'); ?>
+        </dt>
+        <dd>
+            <?php echo $this->data->birthday ?>
+        </dd>
 
-            <dd>
-                <img width="80px" height="80px" alt="AVATAR" src="<?php echo $this->data->mediaplayer.$this->data->avatar ?>" >
-            </dd>
+        <dt>
+            <?php echo JText::_('COM_USERS_PROFILE_OCCUPATION_LABEL'); ?>
+        </dt>
+        <dd>
+            <?php echo $this->data->occupation ?>
+        </dd>
 
-            <?php }
-            else {?>
-                <dd>
-                    <?php echo JText::_('COM_USERS_PROFILE_NEVER_VISITED'); ?>
-                </dd>
-            <?php } ?>
+        <dt>
+            <?php echo JText::_('COM_USERS_PROFILE_ABOUTME_LABEL'); ?>
+        </dt>
 
-            <dt>
-                <?php echo JText::_('COM_USERS_PROFILE_ADDRESS_LABEL'); ?>
-            </dt>
-
-            <dd>
-                <?php echo $this->data->address ?>
-            </dd>
-
-            <dt>
-                <?php echo JText::_('COM_USERS_PROFILE_BIRTHDAY_LABEL'); ?>
-            </dt>
-            <dd>
-                <?php echo $this->data->birthday ?>
-            </dd>
-
-            <dt>
-                <?php echo JText::_('COM_USERS_PROFILE_OCCUPATION_LABEL'); ?>
-            </dt>
-            <dd>
-                <?php echo $this->data->occupation ?>
-            </dd>
-
-            <dt>
-                <?php echo JText::_('COM_USERS_PROFILE_ABOUTME_LABEL'); ?>
-            </dt>
-
-            <dd>
-                <?php echo $this->data->aboutme ?>
-            </dd>
-
+        <dd>
+            <?php echo $this->data->aboutme ?>
+        </dd>
     </dl>
 </fieldset>
