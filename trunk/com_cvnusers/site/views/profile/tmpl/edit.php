@@ -40,7 +40,16 @@ $lang->load( 'plg_user_profile', JPATH_ADMINISTRATOR );
 						<span class="optional"><?php echo JText::_('COM_USERS_OPTIONAL'); ?></span>
 					<?php endif; ?>
 				</dt>
-				<dd><?php echo $field->input; ?></dd>
+				<dd>
+                    <?php if($field->name!='jform[avatar]'){
+                        echo $field->input;
+                    }else{ ?>
+                        <br>
+                        <img src="<?php echo $this->data->mediaplayer.$this->data->avatar ?>" width="70px" height="70px">
+                        <?php echo $field->input;
+                    }
+                    ?>
+				</dd>
 			<?php endif;?>
 		<?php endforeach;?>
 		</dl>
@@ -53,7 +62,7 @@ $lang->load( 'plg_user_profile', JPATH_ADMINISTRATOR );
 			<?php echo JText::_('COM_USERS_OR'); ?>
 			<a href="<?php echo JRoute::_(''); ?>" title="<?php echo JText::_('JCANCEL'); ?>"><?php echo JText::_('JCANCEL'); ?></a>
 
-			<input type="hidden" name="option" value="com_users" />
+			<input type="hidden" name="option" value="com_cvnusers" />
 			<input type="hidden" name="task" value="profile.save" />
 			<?php echo JHtml::_('form.token'); ?>
 		</div>
