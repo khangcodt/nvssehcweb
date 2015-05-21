@@ -65,12 +65,70 @@ require_once($utilfile);
                 <img width="80px" height="80px" alt="AVATAR" src="<?php echo $this->data->mediaplayer.$this->data->avatar ?>" >
             </dd>
 
-        <?php }
-        else {?>
+
+            <dt>
+                <?php echo JText::_('COM_USERS_PROFILE_EMAIL_LABEL'); ?>
+            </dt>
             <dd>
-                <?php echo JText::_('COM_USERS_PROFILE_NEVER_VISITED'); ?>
+                <?php
+                echo $this->data->email;
+                ?>
             </dd>
-        <?php } ?>
+
+            <dt>
+                Coin
+            </dt>
+
+            <dd>
+                <?php
+                echo readableNumber($this->data->coin);
+                ?>
+            </dd>
+
+            <dt>
+                <?php echo JText::_('COM_USERS_PROFILE_AVATAR_LABEL'); ?>
+            </dt>
+
+            <dd>
+                <img width="80px" height="80px" alt="AVATAR" src="<?php echo $this->data->mediaplayer.$this->data->avatar ?>" >
+            </dd>
+
+            <?php }
+            else {?>
+                <dd>
+                    <?php echo JText::_('COM_USERS_PROFILE_NEVER_VISITED'); ?>
+                </dd>
+            <?php } ?>
+
+            <dt>
+                <?php echo JText::_('COM_USERS_PROFILE_ADDRESS_LABEL'); ?>
+            </dt>
+
+            <dd>
+                <?php echo $this->data->address ?>
+            </dd>
+
+            <dt>
+                <?php echo JText::_('COM_USERS_PROFILE_BIRTHDAY_LABEL'); ?>
+            </dt>
+            <dd>
+                <?php echo $this->data->birthday ?>
+            </dd>
+
+            <dt>
+                <?php echo JText::_('COM_USERS_PROFILE_OCCUPATION_LABEL'); ?>
+            </dt>
+            <dd>
+                <?php echo $this->data->occupation ?>
+            </dd>
+
+            <dt>
+                <?php echo JText::_('COM_USERS_PROFILE_ABOUTME_LABEL'); ?>
+            </dt>
+
+            <dd>
+                <?php echo $this->data->aboutme ?>
+            </dd>
 
     </dl>
 </fieldset>

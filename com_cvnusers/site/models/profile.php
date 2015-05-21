@@ -259,6 +259,22 @@ class UsersModelProfile extends JModelForm
         $data['email']		= $data['email1'];
         $data['password']	= $data['password1'];
 
+        // Lưu thông tin thay đổi
+        $db = JFactory::getDbo();
+        $query  = $db->getQuery(true);
+        $fields = array(
+            $db->quoteName('address') . ' = '.$db->quote($data['address']),
+            $db->quoteName('birthday') . ' = '.$db->quote($data['birthday']),
+            $db->quoteName('occupation') . ' = '.$db->quote($data['occupation']),
+            $db->quoteName('aboutme') . ' = '.$db->quote($data['aboutme']),
+        );
+        $conditions = array(
+            $db->quoteName('userid')  . ' = '.$userId,
+        );
+        $query->update($db->quoteName('#__player'))->set($fields)->where($conditions);
+        $db->setQuery($query);
+        $db->execute();
+
         // Unset the username if it should not be overwritten
         if (!JComponentHelper::getParams('com_cvnusers')->get('change_login_name'))
         {
