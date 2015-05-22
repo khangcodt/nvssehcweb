@@ -78,7 +78,19 @@ class UsersControllerProfile extends UsersController
 		$userId	= (int) $user->get('id');
 
 		// Get the user data.
-		$data = JRequest::getVar('jform', array(), 'post', 'array');
+//		$data = JRequest::getVar('jform', array(), 'post', 'array');
+        $jinput = $app->input;
+        $data = $jinput->get('jform',array(),'array');//JRequest::getVar('jform', array(), 'post', 'array');
+
+        //get uploaded avatar
+//        $file_info = $jinput->files->get('avatar', null);
+        $files = $jinput->files->get('jform');
+        $file = $files['avatar'];
+        $testDest = JPATH_ROOT.'/media/media_chessvn/mediaplayer/testup/'.$file['name'];
+        $app->enqueueMessage('upload file name: '.$file['name']);
+        JFile::upload($file['tmp_name'], $testDest);
+        $app->enqueueMessage('uploaded file to: '.$testDest);
+        //test okie roi nhe, chinh lai cho dung path upload file
 
 		// Force the ID to this user.
 		$data['id'] = $userId;

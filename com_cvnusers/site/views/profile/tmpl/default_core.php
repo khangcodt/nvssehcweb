@@ -8,8 +8,8 @@
  */
 
 defined('_JEXEC') or die;
-$utilfile = JPATH_ROOT. '/media/media_chessvn/cvnphp/utils/cvnutils.php';
-require_once($utilfile);
+//$utilfile = JPATH_ROOT. '/media/media_chessvn/cvnphp/utils/cvnutils.php';
+//require_once($utilfile);
 
 ?>
 
@@ -48,7 +48,8 @@ require_once($utilfile);
 
             <dd>
                 <?php
-                echo readableNumber($this->data->coin);
+//                echo readableNumber($this->data->coin);
+                echo $this->data->coin;
                 ?>
             </dd>
 
