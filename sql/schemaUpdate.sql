@@ -210,6 +210,10 @@ CREATE OR REPLACE VIEW cvn_viewchallenges AS
 ALTER TABLE cvn_player ADD COLUMN mediaplayer VARCHAR(200) NULL COMMENT 'lưu thư mục media cho player, chứa các file ảnh, media'  AFTER avatar ;
 
 # 2:49 PM 5/19/2015
-# Thêm các thông tin bổ sung cho player proifile
+# Thêm các thông tin bổ sung cho player profile
 ALTER TABLE cvn_player ADD COLUMN birthday VARCHAR(20) NULL  AFTER mediaplayer , ADD COLUMN address VARCHAR(200) NULL  AFTER birthday , ADD COLUMN occupation VARCHAR(50) NULL  AFTER address , ADD COLUMN aboutme MEDIUMTEXT NULL  AFTER occupation ;
+
+# 11:14 AM 5/22/2015
+# thêm các thông tin thống kê game cho player trong bảng rating
+ALTER TABLE cvn_rating ADD COLUMN gamewin INT NULL COMMENT 'number of win games'  AFTER selfrating , ADD COLUMN gamelost INT NULL COMMENT 'number of lost games'  AFTER gamewin , ADD COLUMN gamedraw INT NULL COMMENT 'number of draw games'  AFTER gamelost , COMMENT = 'table lưu thông tin thống kê của player' ;
 # ===============================================================
