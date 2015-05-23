@@ -105,6 +105,31 @@ CREATE OR REPLACE VIEW cvn_viewtopplayermonth AS
   left join cvn_session s ON ((s.userid = p.userid)))
   where (s.client_id is null) or (s.client_id = 0);
 
+-- 11:06 AM 23/05/2015
+-- # view for top jetset
+CREATE OR REPLACE VIEW cvn_viewtopjetsetall AS
+  select
+    u.id AS userid,
+    p.playerid AS playerid,
+    s.userid AS onlineid,
+    s.client_id AS client_id,
+    u.username AS username,
+    r.ratingpoint AS ratingpoint,
+    p.coin AS coin,
+    p.avatar AS avatar,
+    p.mediaplayer AS mediaplayer,
+    r.chesstype AS chesstype,
+    r.ratingtype AS ratingtype
+  from
+    (((cvn_users u
+    join cvn_player p ON ((p.userid = u.id)))
+    left join cvn_rating r ON ((r.playerid = p.playerid)))
+    left join cvn_session s ON ((s.userid = u.id)))
+  where
+    (s.client_id is null) or (s.client_id = 0)  /*--offline or not admin*/
+  group by u.id
+  order by p.coin desc;
+
 --   8:51 PM 07/05/2015
 # view for playerid top week jetset
 CREATE OR REPLACE VIEW cvn_viewtopjetsetidweek AS
