@@ -12,4 +12,5 @@ $conf['coin_out_add_limit'] = 3; // limit times of adding coin out for a player 
 $conf['initelo'] = 1200; // default ELO point for new players
 $conf['chesstype_chess'] = 1; //chess = 1;
 $conf['ratingtype_standard'] = 'standard';
+$conf['default_avatar'] = '/images/no-avatar.jpg';// parent folder is media_chessvn, change this if want to change default avatar for new player
 ?>
