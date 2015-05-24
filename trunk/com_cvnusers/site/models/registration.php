@@ -17,7 +17,7 @@ JLog::addLogger(array());
 include_once(JPATH_ROOT.'/media/media_chessvn/cvnphp/config/cvnconfig.php');
 global $newUserCoin, $defaultAvatar, $chessTypeChess, $ratingTypeStandard, $initELO;
 $newUserCoin = $conf['coin_new_member'];//get from file config
-$defaultAvatar = 'defaultAvatarMew';//image no-avatar.jpg, also from config file
+$defaultAvatar = $conf['default_avatar'];//image no-avatar.jpg, also from config file
 $chessTypeChess   = $conf['chesstype_chess'];
 $ratingTypeStandard  = $conf['ratingtype_standard'];
 $initELO = $conf['initelo'];
@@ -365,10 +365,10 @@ class UsersModelRegistration extends JModelForm
         if(JFolder::create($path)){
             if(JFolder::create($path.'/images')){   //tạo thư mục images
                 JLog::add(JText::_('khanglq111:--- Create folders sucess'), JLog::INFO);
-                $src     = JPATH_ROOT.'/media/media_chessvn/images/no-avatar.jpg';
-                $dest    = $path.'/images/no-avatar.jpg';
+                $src     = JPATH_ROOT.'/media/media_chessvn'.$defaultAvatar;
+                $dest    = $path.$defaultAvatar;
                 if (JFile::copy($src, $dest,null,true)) {
-                    $defaultAvatar = '/images/no-avatar.jpg';
+//                    $defaultAvatar = '/images/no-avatar.jpg';
                     JLog::add(JText::_('khanglq1421111:--- Copy file ok'), JLog::INFO);
                 } else JLog::add(JText::_('khanglq1421111:--- Copy file failed'), JLog::INFO);
             }
