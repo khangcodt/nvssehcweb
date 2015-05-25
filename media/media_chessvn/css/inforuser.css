@@ -1,0 +1,10 @@
+img{
+   float: left;
+   margin-right: 30px;
+}
+
+#game_infor{
+   clear: both;
+   padding-left: 60px;
+    padding-top: 20px;
+}

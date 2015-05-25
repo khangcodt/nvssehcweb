@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+        type="module"
+        version="2.5"
+        client="site"
+        method="upgrade">
+    <name>MOD_PLAYERINFO</name>
+    <author>Chessvn Admin</author>
+    <creationDate>Feb 10 2015</creationDate>
+    <copyright>Copyright (C) 2005 - 2013 Open Source Matters. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorEmail>khanglq2014@gmail.com</authorEmail>
+    <authorUrl>www.chessvn.org</authorUrl>
+    <version>2.5.0</version>
+    <description>MOD_PLAYERINFO</description>
+    <files>
+        <filename module="mod_playerinfo">mod_playerinfo.php</filename>
+        <folder>tmpl</folder>
+        <filename>helper.php</filename>
+        <filename>index.html</filename>
+        <filename>mod_playerinfo.xml</filename>
+    </files>
+</extension>
