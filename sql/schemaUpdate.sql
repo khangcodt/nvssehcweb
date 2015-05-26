@@ -36,7 +36,7 @@ CREATE OR REPLACE VIEW cvn_viewtopplayerall AS
     left join cvn_session s ON ((s.userid = u.id)))
   where
     (s.client_id is null) or (s.client_id = 0)  /*--offline or not admin*/
-  group by u.id
+  group by u.id                                 /*chú ý dòng này trong trường hợp có các ratingtype khác*/
   order by r.ratingpoint desc;
 # ===============================================================
 
@@ -194,8 +194,56 @@ CREATE OR REPLACE VIEW cvn_viewtopjetsetmonth AS
   left join cvn_users u ON ((p.userid = u.id)))
   left join cvn_session s ON ((s.userid = p.userid)))
   where (s.client_id is null) or (s.client_id = 0);
-# ===============================================================
 
+# 10:40 PM 26/05/2015
+# view of requested friends
+CREATE OR REPLACE VIEW cvn_viewrequestedfriends AS
+    select
+        bb.playerid AS playerid,
+        p.userid AS userid,
+        bb.buddyid AS friendid,
+        s.userid AS onlineid,
+        s.client_id AS client_id,
+        u.username AS username,
+        r.ratingpoint AS ratingpoint,
+        p.coin AS coin,
+        p.avatar AS avatar,
+        p.mediaplayer AS mediaplayer,
+        r.chesstype AS chesstype,
+        r.ratingtype AS ratingtype
+    from
+        ((((cvn_buddyblacklist bb
+        join cvn_player p ON ((p.playerid = bb.buddyid)))
+        join cvn_users u ON ((p.userid = u.id)))
+        left join cvn_rating r ON ((r.playerid = p.playerid)))
+        left join cvn_session s ON ((s.userid = u.id)))
+    where
+        ((s.client_id is null) or (s.client_id = 0)) and (bb.reqstate = 'accepted');
+
+# view of responded friends
+CREATE OR REPLACE VIEW cvn_viewrespondedfriends AS
+    select
+        bb.buddyid AS buddyid,
+        p.userid AS userid,
+        bb.playerid AS friendid,
+        s.userid AS onlineid,
+        s.client_id AS client_id,
+        u.username AS username,
+        r.ratingpoint AS ratingpoint,
+        p.coin AS coin,
+        p.avatar AS avatar,
+        p.mediaplayer AS mediaplayer,
+        r.chesstype AS chesstype,
+        r.ratingtype AS ratingtype
+    from
+        ((((cvn_buddyblacklist bb
+        join cvn_player p ON ((p.playerid = bb.playerid)))
+        join cvn_users u ON ((p.userid = u.id)))
+        left join cvn_rating r ON ((r.playerid = p.playerid)))
+        left join cvn_session s ON ((s.userid = u.id)))
+    where
+        ((s.client_id is null) or (s.client_id = 0)) and (bb.reqstate = 'accepted');
+# ===============================================================
 
 # thêm trường oponentid, bổ sung thông tin cho view challenges
 ALTER TABLE cvn_gameoption
@@ -241,4 +289,8 @@ ALTER TABLE cvn_player ADD COLUMN birthday VARCHAR(20) NULL  AFTER mediaplayer ,
 # 11:14 AM 5/22/2015
 # thêm các thông tin thống kê game cho player trong bảng rating
 ALTER TABLE cvn_rating ADD COLUMN gamewin INT NULL COMMENT 'number of win games'  AFTER selfrating , ADD COLUMN gamelost INT NULL COMMENT 'number of lost games'  AFTER gamewin , ADD COLUMN gamedraw INT NULL COMMENT 'number of draw games'  AFTER gamelost , COMMENT = 'table lưu thông tin thống kê của player' ;
+
+# 9:54 PM 26/05/2015
+# bỏ trường chesstype trong bảng buddyblacklist, kết bạn không có option là bạn ở loại cờ nào
+ALTER TABLE cvn_buddyblacklist DROP COLUMN chesstype;
 # ===============================================================

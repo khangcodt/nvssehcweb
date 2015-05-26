@@ -62,7 +62,7 @@ $currentUrl = JFactory::getURI();
     ?>
             <tr>
                 <td style="text-align: center;"><?php echo $index; ?></td>
-                <td><a href="#" class="cvn-player-link cvn-contextmenu"><?php echo $avatarImg; ?> <?php echo mb_strimwidth($player->username, 0, $limitLength, $limitStr); ?></a></td>
+                <td><a href="#" class="cvn-player-link cvn-contextmenu" title="<?php echo $player->username; ?>"><?php echo $avatarImg; ?> <?php echo mb_strimwidth($player->username, 0, $limitLength, $limitStr); ?></a></td>
                 <td><?php echo $player->ratingpoint; ?></td>
                 <td><?php echo readableNumber($player->coin); ?></td>
 				<td style="text-align: center;"><?php echo $checkLive; ?></td>
