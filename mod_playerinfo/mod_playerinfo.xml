@@ -20,4 +20,7 @@
         <filename>index.html</filename>
         <filename>mod_playerinfo.xml</filename>
     </files>
+    <languages>
+        <language tag="vi-VN">vi-VN.mod_playerinfo.ini</language>
+    </languages>
 </extension>

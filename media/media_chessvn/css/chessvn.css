@@ -12,3 +12,14 @@ a:hover {
     color: #0a5689;
     text-decoration: none;
 }
+
+#mod-playerinfo img{
+    float: left;
+    margin-right: 30px;
+}
+
+#mod-playerinfo #mod-playerinfo-game{
+    clear: both;
+    padding-left: 60px;
+    padding-top: 20px;
+}
