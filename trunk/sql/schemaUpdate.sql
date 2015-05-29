@@ -293,4 +293,16 @@ ALTER TABLE cvn_rating ADD COLUMN gamewin INT NULL COMMENT 'number of win games'
 # 9:54 PM 26/05/2015
 # bỏ trường chesstype trong bảng buddyblacklist, kết bạn không có option là bạn ở loại cờ nào
 ALTER TABLE cvn_buddyblacklist DROP COLUMN chesstype;
+
+# 2:44 PM 5/29/2015
+# thay đổi cấu trúc trophy, bảng trophy dùng để biên soạn các danh hiệu phía backend, thêm 1 bảng playertrophy lưu các danh hiệu mà player đạt được
+ALTER TABLE cvn_trophy DROP COLUMN chesstype , DROP COLUMN trophytime , DROP COLUMN playerid , ADD COLUMN createdtime DATETIME NULL  AFTER imageurl;
+CREATE  TABLE cvn_playertrophy (
+  playertrophyid INT NOT NULL ,
+  playerid INT NOT NULL ,
+  trophyid INT NOT NULL ,
+  chesstype TINYINT(4) NOT NULL DEFAULT '1' COMMENT 'chess = 1, chinese chess = 2, chessvn = 3' ,
+  trophytime DATETIME NULL COMMENT 'thời điểm đạt được danh hiệu' ,
+  PRIMARY KEY (playertrophyid) )
+  COMMENT = 'bảng lưu thông tin các giải thưởng, danh hiệu (trophy) đạt được của player';
 # ===============================================================
