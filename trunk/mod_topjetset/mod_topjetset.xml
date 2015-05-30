@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension
+        type="module"
+        version="2.5"
+        client="site"
+        method="upgrade">
+    <name>TOP JETSET</name>
+    <author>Chessvn Admin</author>
+    <creationDate>Feb 10 2015</creationDate>
+    <copyright>Copyright (C) 2005 - 2013 Open Source Matters. All rights reserved.</copyright>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <authorEmail>khanglq2014@gmail.com</authorEmail>
+    <authorUrl>www.chessvn.org</authorUrl>
+    <version>2.5.0</version>
+    <description>MOD_TOPJETSET_XML_DESCRIPTION</description>
+    <files>
+        <filename module="mod_topjetset">mod_topjetset.php</filename>
+        <folder>tmpl</folder>
+        <filename>helper.php</filename>
+        <filename>index.html</filename>
+        <filename>mod_topjetset.xml</filename>
+    </files>
+    <languages>
+        <language tag="en-GB">en-GB.mod_topjetset.ini</language>
+        <language tag="en-GB">en-GB.mod_topjetset.sys.ini</language>
+        <language tag="vi-VN">vi-VN.mod_topjetset.ini</language>
+        <language tag="vi-VN">vi-VN.mod_topjetset.sys.ini</language>
+    </languages>
+    <help key="JHELP_EXTENSIONS_MODULE_MANAGER_WHO_TOP" />
+    <config>
+        <fields name="params">
+            <fieldset name="basic">
+                <field
+                        name="topjetsettype"
+                        type="list"
+                        default="all"
+                        label="MOD_TOPJETSET_SHOWMODE_LABEL"
+                        description="MOD_TOPJETSET_SHOWMODE_DESC">
+                    <option
+                            value="week">MOD_TOPJETSET_FIELD_VALUE_WEEK</option>
+                    <option
+                            value="month">MOD_TOPJETSET_FIELD_VALUE_MONTH</option>
+                    <option
+                            value="all">MOD_TOPJETSET_FIELD_VALUE_ALL</option>
+                </field>
+            </fieldset>
+            <fieldset
+                    name="advanced">
+                <field
+                        name="layout"
+                        type="modulelayout"
+                        label="JFIELD_ALT_LAYOUT_LABEL"
+                        description="JFIELD_ALT_MODULE_LAYOUT_DESC" />
+                <field
+                        name="moduleclass_sfx"
+                        type="text"
+                        label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                        description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+                <field
+                        name="cache"
+                        type="list"
+                        default="0"
+                        label="COM_MODULES_FIELD_CACHING_LABEL"
+                        description="COM_MODULES_FIELD_CACHING_DESC">
+                    <option
+                            value="0">COM_MODULES_FIELD_VALUE_NOCACHING</option>
+                </field>
+                <field
+                        name="filter_groups"
+                        type="radio"
+                        default="0"
+                        label="MOD_TOPJETSET_FIELD_FILTER_GROUPS_LABEL"
+                        description="MOD_TOPJETSET_FIELD_FILTER_GROUPS_DESC">
+                    <option
+                            value="0">JNo</option>
+                    <option
+                            value="1">JYes</option>
+                </field>
+            </fieldset>
+        </fields>
+    </config>
+</extension>
