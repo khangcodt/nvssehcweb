@@ -1,3 +1,8 @@
+Refference links:
+http://andrecatita.com/code-projects/php-team-elo-rating/
+http://www.3dkingdoms.com/chess/elo.htm
+http://en.wikipedia.org/wiki/Elo_rating_system
+search: normal elo calculator, php elo-calculator example
 ########################################################
 ##                                                    ##
 ## USAGE:                                             ##
