@@ -14,8 +14,8 @@ $document->addScript($mediaPath . 'js/jquery/jquery-1.8.2.min.js');
 $document->addScript($mediaPath . 'js/jquery/jquery.contextMenu.js');
 $document->addStyleSheet($mediaPath.'css/jquery.contextMenu.css');
 
-$dateformat = JText::_('DATE_FORMAT_REG_NEW_USER');//'Y-m-d';
-
+//$dateformat = JText::_('DATE_FORMAT_REG_NEW_USER');//'Y-m-d';
+$dateformat = 'd/m/y';
 ?>
 <?php if (!empty($names)) : ?>
     <ul class="latestusers<?php echo $moduleclass_sfx ?>" >
