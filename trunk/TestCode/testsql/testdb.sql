@@ -59,3 +59,7 @@ left join cvn_users u ON p.userid = u.id
 left join cvn_session s ON s.userid = p.userid
 where  s.client_id is null or s.client_id = 0;
  --===================================================
+-- sql lấy vị trí xếp hạng của player
+select p.playerid,p.username,p.ratingpoint,p.coin,p.position from  (select v.*, @rownum := @rownum + 1 AS position from cvn_viewtopplayerall v join  (select @rownum:=0) r) p
+where p.userid=671;
+  --===================================================

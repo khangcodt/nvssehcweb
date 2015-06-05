@@ -306,3 +306,7 @@ CREATE  TABLE cvn_playertrophy (
   PRIMARY KEY (playertrophyid) )
   COMMENT = 'bảng lưu thông tin các giải thưởng, danh hiệu (trophy) đạt được của player';
 # ===============================================================
+
+# 4:10 PM 6/5/2015
+# câu sql có thêm position đối với các view top (dùng trong TH view detail top hoặc get position của 1 player cụ thể nào đó)
+select @rownum := @rownum + 1 AS position, v.*  from cvn_viewtop_cần_xem v join  (select @rownum:=0) r
