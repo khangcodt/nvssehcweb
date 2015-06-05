@@ -10,4 +10,4 @@ Link hướng dẫn Bootstrap
 Link hướng dẫn Bootstrap:
 - Tiếng Việt: http://code.freetuts.net/tong-quan-ve-twitter-bootstrap-3-171.html
 
-- Tiếng Anh: http://www.facebook.com/l.php?u=http%3A%2F%2Fwww.w3schools.com%2Fbootstrap%2Fdefault.asp&h=jAQEob3qh
+- Tiếng Anh: http://www.w3schools.com/bootstrap/default.asp
