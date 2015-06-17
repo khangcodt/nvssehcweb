@@ -92,7 +92,7 @@ $currentUrl = JFactory::getURI();
     });
 </script>
 <style>
-    .context-menu-item.icon-challenge { background-image: url(<?php echo $mediaPath; ?>images/icon/edit.png); }
+    .context-menu-item.icon-edit { background-image: url(<?php echo $mediaPath; ?>images/icon/edit.png); }
     .context-menu-item.icon-cut { background-image: url(<?php echo $mediaPath; ?>images/icon/cut.png); }
     .context-menu-item.icon-copy { background-image: url(<?php echo $mediaPath; ?>images/icon/copy.png); }
     .context-menu-item.icon-paste { background-image: url(<?php echo $mediaPath; ?>images/icon/paste.png); }
