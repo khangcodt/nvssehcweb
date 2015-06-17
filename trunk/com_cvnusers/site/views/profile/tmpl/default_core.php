@@ -58,7 +58,7 @@ defined('_JEXEC') or die;
             </dt>
 
             <dd>
-                <img width="80px" height="80px" alt="AVATAR" src="<?php echo $this->data->mediaplayer.$this->data->avatar ?>" >
+                <img width="80px" height="80px" alt="AVATAR" src="<?php echo $this->data->avatar ?>" style="float: none" >
             </dd>
 
         <?php }
