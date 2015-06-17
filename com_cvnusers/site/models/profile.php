@@ -110,10 +110,8 @@ class UsersModelProfile extends JModelForm
             $mediaPath = JURI::base() . '/media/media_chessvn';
             foreach($result as $key=>$value){
                 $this->data->coin = $value->coin;
-                if($value->avatar=="defaultAvatarMew"){
-                    $value->avatar= 'no-avatar.jpg';
-                }
                 $this->data->avatar = $mediaPath.$value->mediaplayer.$value->avatar;
+                $this->data->mediaplayer = '/media/media_chessvn/'.$value->mediaplayer;
             }
 
             // Kiểm tra xem email có phài mặc định không
@@ -261,11 +259,15 @@ class UsersModelProfile extends JModelForm
         $db = JFactory::getDbo();
         $query  = $db->getQuery(true);
         $fields = array(
+            $db->quoteName('email') . ' = '.$db->quote($data['email']),
             $db->quoteName('address') . ' = '.$db->quote($data['address']),
             $db->quoteName('birthday') . ' = '.$db->quote($data['birthday']),
             $db->quoteName('occupation') . ' = '.$db->quote($data['occupation']),
             $db->quoteName('aboutme') . ' = '.$db->quote($data['aboutme']),
         );
+        if(isset($data['avatar'])){
+            array_push($fields,$db->quoteName('avatar') . ' = '.$db->quote($data['avatar']));
+        }else{}
         $conditions = array(
             $db->quoteName('userid')  . ' = '.$userId,
         );

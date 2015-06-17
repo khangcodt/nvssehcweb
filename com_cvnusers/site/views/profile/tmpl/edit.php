@@ -45,8 +45,10 @@ $lang->load( 'plg_user_profile', JPATH_ADMINISTRATOR );
                         echo $field->input;
                     }else{ ?>
                         <br>
-                        <img src="<?php echo $this->data->mediaplayer.$this->data->avatar ?>" width="70px" height="70px">
-                        <?php echo $field->input;
+                        <img src="<?php echo $this->data->avatar ?>" width="70px" height="70px">
+                        <?php echo $field->input;?>
+                        <p>Chọn ảnh đại diện để thay thế</p>
+                    <?php
                     }
                     ?>
 				</dd>
