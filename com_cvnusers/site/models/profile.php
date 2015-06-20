@@ -107,9 +107,13 @@ class UsersModelProfile extends JModelForm
             $query = "SELECT * FROM #__player WHERE userid = ".$userId;
             $db->setQuery($query);
             $result = $db->loadObjectList();
-            $mediaPath = JURI::base() . '/media/media_chessvn';
+            $mediaPath = JURI::base(). '/media/media_chessvn';
             foreach($result as $key=>$value){
                 $this->data->coin = $value->coin;
+                $this->data->birthday = $value->birthday;
+                $this->data->address = $value->address;
+                $this->data->occupation = $value->occupation;
+                $this->data->aboutme = $value->aboutme;
                 $this->data->avatar = $mediaPath.$value->mediaplayer.$value->avatar;
                 $this->data->mediaplayer = '/media/media_chessvn/'.$value->mediaplayer;
             }
@@ -255,15 +259,16 @@ class UsersModelProfile extends JModelForm
 
         // Prepare the data for the user object.
 
+
         // Lưu thông tin thay đổi
         $db = JFactory::getDbo();
         $query  = $db->getQuery(true);
         $fields = array(
-            $db->quoteName('email') . ' = '.$db->quote($data['email']),
             $db->quoteName('address') . ' = '.$db->quote($data['address']),
             $db->quoteName('birthday') . ' = '.$db->quote($data['birthday']),
             $db->quoteName('occupation') . ' = '.$db->quote($data['occupation']),
             $db->quoteName('aboutme') . ' = '.$db->quote($data['aboutme']),
+            // $db->quoteName('avatar') . ' = '.$db->quote($data['avatar']),
         );
         if(isset($data['avatar'])){
             array_push($fields,$db->quoteName('avatar') . ' = '.$db->quote($data['avatar']));
@@ -274,6 +279,7 @@ class UsersModelProfile extends JModelForm
         $query->update($db->quoteName('#__player'))->set($fields)->where($conditions);
         $db->setQuery($query);
         $db->execute();
+        //
 
         // Unset the username if it should not be overwritten
         if (!JComponentHelper::getParams('com_cvnusers')->get('change_login_name'))

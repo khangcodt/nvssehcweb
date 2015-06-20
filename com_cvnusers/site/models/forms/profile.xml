@@ -61,7 +61,7 @@
                filter="string"
                label="COM_USERS_PROFILE_BIRTHDAY_LABEL"
                message="COM_USERS_PROFILE_BIRTHDAY_MESSAGE"
-               size="30"
+               size="22"
                 />
 
         <field name="occupation" type="text"
