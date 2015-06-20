@@ -44,6 +44,7 @@
                label="COM_USERS_PROFILE_EMAIL1_LABEL"
                message="COM_USERS_PROFILE_EMAIL1_MESSAGE"
                size="30"
+               required="true"
                unique="true"
                validate="email"
                 />

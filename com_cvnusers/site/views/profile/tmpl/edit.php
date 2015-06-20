@@ -41,17 +41,18 @@ $lang->load( 'plg_user_profile', JPATH_ADMINISTRATOR );
 					<?php endif; ?>
 				</dt>
 				<dd>
-                    <?php if($field->name!='jform[avatar]'){
+                    <?php
+                    if($field->name!='jform[avatar]'){
                         echo $field->input;
                     }else{ ?>
                         <br>
-                        <img src="<?php echo $this->data->avatar ?>" width="70px" height="70px">
+                        <img src="<?php echo $this->data->avatar ?>" width="70px" height="70px" style="float: left;margin-right: 10px" >
                         <?php echo $field->input;?>
-                        <p>Chọn ảnh đại diện để thay thế</p>
+                        <p>Hỗ trợ tốt hơn với kích thước ảnh 200x200 pixels</p>
                     <?php
                     }
                     ?>
-				</dd>
+				</dd><br>
 			<?php endif;?>
 		<?php endforeach;?>
 		</dl>
