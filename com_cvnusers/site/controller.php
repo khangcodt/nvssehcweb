@@ -76,6 +76,9 @@ class UsersController extends JControllerLegacy
 				case 'login':
 					$model = $this->getModel($vName);
 					break;
+                case 'topplayer':
+                    $model = $this->getModel($vName);
+                    break;
 
 				case 'reset':
 					// If the user is already logged in, redirect to the profile page.
