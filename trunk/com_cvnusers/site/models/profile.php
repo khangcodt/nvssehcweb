@@ -188,7 +188,7 @@ class UsersModelProfile extends JModelForm
 
     /**
      * Method to get the data that should be injected in the form.
-     *
+     * Test svn by khanglq
      * @return	mixed	The data for the form.
      * @since	1.6
      */
