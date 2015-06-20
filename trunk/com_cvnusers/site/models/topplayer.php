@@ -68,8 +68,8 @@ class UsersModelTopplayer extends JModelLegacy{
     public function getData(){
         // Lets load the data if it doesn't already exist
         if (empty( $this->_data )){
-            if(isset($_GET["search"])){
-                $param = $_GET["search"];
+            if(isset($_GET["txtSearch"])){
+                $param = $_GET["txtSearch"];
                 $query = 'SELECT * FROM `#__viewtopplayerall` WHERE `username` LIKE  '."'".'%'.$param."%'";
             }else{
                 $query = 'SELECT * FROM `#__viewtopplayerall`';
