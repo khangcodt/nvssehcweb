@@ -18,18 +18,28 @@ defined('_JEXEC') or die;
         <?php echo JText::_('COM_USERS_PROFILE_CORE_LEGEND'); ?>
     </legend>
     <dl>
+
+        <dt>
+            <?php echo JText::_('COM_USERS_PROFILE_AVATAR_LABEL'); ?>
+        </dt>
+
+        <dd>
+            <img width="80px" height="80px" alt="AVATAR" src="<?php echo $this->data->avatar ?>" style="float: none" >
+        </dd>
+
         <dt>
             <?php echo JText::_('COM_USERS_PROFILE_USERNAME_LABEL'); ?>
         </dt>
         <dd>
-            <?php echo $this->data->name; ?>
+            <?php echo $this->data->username; ?>
+
         </dd>
 
         <dt>
             <?php echo JText::_('COM_USERS_PROFILE_NAME_LABEL'); ?>
         </dt>
         <dd>
-            <?php echo $this->data->username; ?>
+            <?php echo $this->data->name; ?>
         </dd>
 
         <?php if ($this->data->lastvisitDate != '0000-00-00 00:00:00'){?>
@@ -51,14 +61,6 @@ defined('_JEXEC') or die;
 //                echo readableNumber($this->data->coin);
                 echo $this->data->coin;
                 ?>
-            </dd>
-
-            <dt>
-                <?php echo JText::_('COM_USERS_PROFILE_AVATAR_LABEL'); ?>
-            </dt>
-
-            <dd>
-                <img width="80px" height="80px" alt="AVATAR" src="<?php echo $this->data->avatar ?>" style="float: none" >
             </dd>
 
         <?php }

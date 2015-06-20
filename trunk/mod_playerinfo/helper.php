@@ -11,7 +11,7 @@ class modPlayerinfoHelper{
         $playerid = $jinput->get('playerid',$defaultPlayerid);
         $db		= JFactory::getDbo();
         $query	= $db->getQuery(true);
-        if($option=="com_cvnusers"){
+        if($option!="com_cvnusers"){
             $query->select('username,coin,gamewin,gamelost,gamedraw,avatar,mediaplayer,ratingpoint');
             $query->from('#__rating AS r');
             $query->join('INNER','#__player AS p ON (p.playerid=r.playerid) AND (p.userid="'.$id.'")');
