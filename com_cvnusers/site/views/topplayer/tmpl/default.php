@@ -13,12 +13,14 @@ $imgScale = 13;
 $onlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="ON" src="'.$mediaPath.'images/OnlineDot.png" style="margin: 0;">';
 $offlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="OFF" src="'.$mediaPath.'images/OfflineDot.png" style="margin: 0;">';
 $index=0;
+$currentUrl = JFactory::getURI();
 ?>
 <div style="text-align: right">
-    <form name="form" method="post" action="tmp.php">
-    <input type="text" name="txtSearch" />&nbsp
-    <input type="submit" name="btnSearch" value="<?php echo JText::_('COM_USERS_SEARCH_LABEL');  ?>" />
-    </form>
+    <form name="form" method="GET" action="<?php echo $currentUrl->toString(); ?>">
+
+        <input type="text" name="txtSearch" />&nbsp
+        <input type="submit" name="btnSearch" value="<?php echo JText::_('COM_USERS_SEARCH_LABEL');  ?>" />
+    </form>>
 </div>
 <table>
     <thead>
