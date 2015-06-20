@@ -87,6 +87,7 @@ class UsersControllerProfile extends UsersController
 
         //get uploaded avatar
 //        $file_info = $jinput->files->get('avatar', null);
+
         $files = $jinput->files->get('jform');
         $file = $files['avatar'];
         // check file exits
@@ -100,6 +101,7 @@ class UsersControllerProfile extends UsersController
             // Force the ID to this user.
             $data['avatar'] = '/images/'.$file['name'];
         }else{}
+
 
 
         // Force the ID to this user.
