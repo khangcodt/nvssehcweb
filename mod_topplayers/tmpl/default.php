@@ -31,6 +31,7 @@ $imgScale = 10;
 $onlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="ON" src="'.$mediaPath.'images/OnlineDot.png" style="margin: 0;">';
 $offlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="OFF" src="'.$mediaPath.'images/OfflineDot.png" style="margin: 0;">';
 $currentUrl = JFactory::getURI();
+$viewmoreUrl = JURI::base() .'?option=com_cvnusers&view=topplayer&limit=15';
 
 //check friendly URL enabled or not
 //$isSEF = &JFactory::getConfig()->get('sef') == 1;
@@ -70,6 +71,9 @@ $currentUrl = JFactory::getURI();
 	<?php endforeach;  ?>
             </tbody>
         </table>
+<div style="text-align: right">
+    <a class="topplayer_soft"  href="<?php echo $viewmoreUrl; ?>">View more...</a>
+</div>
 
 <!--script code-->
 <script type="text/javascript">
