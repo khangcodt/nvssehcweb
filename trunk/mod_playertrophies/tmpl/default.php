@@ -3,7 +3,7 @@
 $document = JFactory::getDocument();
 $mediaPath = JURI::base() . '/media/media_chessvn/';
 $document->addStyleSheet($mediaPath . 'css/chessvn.css');
-
+JFactory::getApplication()->enqueueMessage('abc',$trophyLabel);
 ?>
 <div id="mod-playertrophies">
     <table>
@@ -15,7 +15,7 @@ $document->addStyleSheet($mediaPath . 'css/chessvn.css');
             ?>
             <tr>
                 <td><?php echo $trophyImg; ?></td>
-                <td><?php echo JText::_($trophyLabel) ?></td>
+                <td><?php echo JText::_($trophyLabel); ?></td>
             </tr>
         <?php endforeach; ?>
     </table>
