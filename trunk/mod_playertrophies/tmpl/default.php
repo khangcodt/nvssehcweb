@@ -3,13 +3,12 @@
 $document = JFactory::getDocument();
 $mediaPath = JURI::base() . '/media/media_chessvn/';
 $document->addStyleSheet($mediaPath . 'css/chessvn.css');
-JFactory::getApplication()->enqueueMessage('abc',$trophyLabel);
 ?>
 <div id="mod-playertrophies">
     <table>
         <?php
         foreach ($trophies as $trophy):
-            $trophyImg = '<img width="45px" height="45px" alt="avatar" src="' . $mediaPath . 'images/' . $trophy->imageurl . '" style="margin: 0;">';
+            $trophyImg = '<img width="45px" height="45px" alt="trophyImg" src="' . $mediaPath . 'images/' . $trophy->imageurl . '" style="margin: 0;">';
             $trophyLabel= $trophy->name;
 
             ?>
