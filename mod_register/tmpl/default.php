@@ -18,6 +18,31 @@ require_once($configfile);
 $defaultname = $conf['default_email_prefix'].genRandomString();
 $defaultemail = $defaultname.$conf['default_email_domain'];
 ?>
+<script>
+    window.addEvent('domready', function(){
+        function checkuser(username){
+            var array = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','1','2','3','4','5','6','7','8','9','-','_'];
+            var check = 0;
+            username = username.toLowerCase();
+            for(i = 0; i<username.length; i++){
+                if(array.indexOf(username[i]) == -1){
+                    check++;
+                }else{}
+            }
+            if(check >0){
+                return false;
+            }
+            return true;
+        }
+
+        document.formvalidator.setHandler('username', function(value) {
+            if(checkuser(value)){
+                return true;
+            }
+            return false;
+        });
+    })
+</script>
 
 <div style="padding:10px;" class="sp-reg clearfix">
 	<form action="<?php echo JRoute::_('index.php?option=com_cvnusers&task=registration.register'); ?>" method="post" class="form-validate">
