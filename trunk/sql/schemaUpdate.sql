@@ -245,11 +245,20 @@ CREATE OR REPLACE VIEW cvn_viewrespondedfriends AS
         ((s.client_id is null) or (s.client_id = 0)) and (bb.reqstate = 'accepted');
 # ===============================================================
 
-# thêm trường oponentid, bổ sung thông tin cho view challenges
+# thêm trường opponentid, bổ sung thông tin cho view challenges
 ALTER TABLE cvn_gameoption
-ADD COLUMN oponentid INT(11) NULL COMMENT 'đối thủ trong game, null nếu là open game' AFTER initiator;
+ADD COLUMN opponentid INT(11) NULL COMMENT 'đối thủ trong game, null nếu là open game' AFTER initiator;
 
-# update viewchallenges, thêm oponentid, oponentname
+# 3:49 PM 6/29/2015
+ALTER TABLE cvn_gameoption CHANGE COLUMN elowhite eloinitiator SMALLINT(6) NOT NULL COMMENT 'ELO initiator'  , CHANGE COLUMN eloblack eloopponent SMALLINT(6) NOT NULL COMMENT 'ELO oppenent' , ADD COLUMN iswhiteinit TINYINT(1) NULL COMMENT 'Is initiaror play as white' AFTER eloopponent ;
+# table gamewatchers
+# CREATE  TABLE cvn_gamewatchers (
+#   gamewatchersid INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+#   gameid VARCHAR(50) NOT NULL,
+#   watcherid INT(11) NOT NULL)
+#   COMMENT = 'bảng lưu thông tin những người xem game';
+
+# update viewchallenges, thêm opponentid, opponentname
 CREATE OR REPLACE VIEW cvn_viewchallenges AS
   SELECT
     g.userid AS userid,
@@ -259,9 +268,9 @@ CREATE OR REPLACE VIEW cvn_viewchallenges AS
     p.gametitle AS gametitle,
     p.chesstype AS chesstype,
     p.initiator AS initiator,
-    p.oponentid AS oponentid,
+    p.opponentid AS opponentid,
     u.username AS initiatorname,
-    uo.username AS oponentname,
+    uo.username AS opponentname,
     p.gamecoin AS gamecoin,
     p.elowhite AS elowhite,
     p.eloblack AS eloblack,
@@ -274,7 +283,7 @@ CREATE OR REPLACE VIEW cvn_viewchallenges AS
     (((((cvn_users u JOIN cvn_player g ON ((g.userid = u.id)))
   LEFT JOIN cvn_gameoption p ON ((p.initiator = g.playerid)))
   JOIN cvn_game a ON ((a.gameid = p.gameid)))
-  LEFT JOIN cvn_player po ON ((p.oponentid = po.playerid)))
+  LEFT JOIN cvn_player po ON ((p.opponentid = po.playerid)))
   LEFT JOIN cvn_users uo ON ((po.userid = uo.id)));
 # ===============================================================
 
