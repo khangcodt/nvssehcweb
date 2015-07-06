@@ -23,19 +23,19 @@ jimport('joomla.application.component.controller');
 $ctrl='Chessvn';
 $input = JFactory::getApplication()->input;
 // Require specific controller if requested
-if($controller = $input->getWord('controller')) {
+/*if($controller = JRequest::getWord('controller')) {
 	$ctrl = $controller;
 }else{
 	// define default view if you need routing...
 	//JRequest::setVar( 'view', '***' ); // insert here!! 
-}
+}*/
  
 // Get an instance of the required controller
-$controller = JControllerLegacy::getInstance($ctrl);
+//$controller = JControllerLegacy::getInstance($ctrl);
  
 // Perform the Request task
-
-$controller->execute($input->getCmd('task'));
+$controller = JController::getInstance('Chessvn');
+$controller->execute(JRequest::getCmd('task'));
  
 // Redirect if set by the controller
 $controller->redirect();

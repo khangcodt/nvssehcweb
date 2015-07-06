@@ -108,6 +108,39 @@ class CvnDao
             echo "</GAMES>\n";
         }
     }
+
+    public static function getViewChat($gameid){
+        $db = JFactory::getDbo();
+        $query = $db->getQuery(true);
+        $query->select('*');
+        $query->from('#__gamechat');
+        $query->where("gameid = '".$gameid."'");
+        $query->order('createddate DESC');
+        $db->setQuery($query);
+        $result = $db->loadObjectList();
+        for($i = 0;$i < count($result); $i++){
+            // lay userid thong qua playerid
+            $playerid = $result[$i]->playerid;
+            $query = $db->getQuery(true);
+            $query->select('userid');
+            $query->from('#__player');
+            $query->where('playerid='.$playerid);
+            $db->setQuery($query);
+            $userid = $db->loadObject()->userid;
+            // lay ten cua user
+            $query = $db->getQuery(true);
+            $query->select('username');
+            $query->from('#__users');
+            $query->where('id = '.$userid);
+            $db->setQuery($query);
+            $username = $db->loadObject()->username;
+            $message = $result[$i]->chatmsg;
+            echo "<GAMECHAT>\n";
+            echo "<USERNAME>$username</USERNAME>\n";
+            echo "<MESSAGE>$message</MESSAGE>\n";
+            echo "</GAMECHAT>\n";
+        }
+    }
 }
 
 ?>

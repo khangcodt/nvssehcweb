@@ -34,12 +34,23 @@ class ChessvnViewChessvn extends JViewLegacy{
 		*/
 		$data = $this->get('Data');
 		$this->assignRef('data', $data);
-		
+
+        $userid = JRequest::getVar('userid');
+        $this->assignRef('userid', $userid);
+
 		// Check for errors.
 		if (count($errors = $this->get('Errors'))){
 			JLog::add(implode('<br />', $errors), JLog::WARNING, 'jerror');
 			return false;
 		}
+
+        $layout = JRequest::getVar('layout');
+
+        if($layout == 'chat'){
+            $gameid = JRequest::getVar('gameid');
+            $this->assignRef('gameid', $gameid);
+            $this->setLayout('chat');
+        }
 		
 		parent::display($tpl);
 	}

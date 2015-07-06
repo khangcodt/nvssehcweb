@@ -40,10 +40,15 @@ class ChessvnViewChessvn extends JViewLegacy{
 			return false;
 		}
 
+
         $userid = JRequest::getVar('userid');
         $this->assignRef('userid', $userid);
+        $gameid = JRequest::getVar('gameid');
+        $this->assignRef('gameid', $gameid);
         jimport('joomla.log.log');
         JLog::addLogger(array());
+
+
 //        JLog::add(JText::_('$userid = '.$userid), JLog::INFO);
 //        $cvnuser = JFactory::getUser();
 //        $returnData = CvnDao::getChallenges();//$cvnuser->get('id')
