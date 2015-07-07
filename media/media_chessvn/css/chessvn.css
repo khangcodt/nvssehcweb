@@ -23,3 +23,53 @@ a:hover {
     padding-left: 60px;
     padding-top: 20px;
 }
+
+a:hover {
+    cursor: pointer;
+}
+
+#mod-chat{
+    width: 400px;
+    height: 450px;
+    border: 1px solid #ccc;
+    background: #F2F2F2;
+    padding: 10px;
+}
+
+#mod-chat h3{
+    color: #000000;
+}
+
+#mod-chat #box-chat{
+    width: 350px;
+    height: 300px;
+    overflow: hidden;
+    padding: 10px;
+    text-align: left;
+    background: #F2F2F2;
+    line-height: 20px;
+}
+
+#mod-chat #enter-message{
+    width: 350px;
+    height: 50px;
+    margin-top: 20px;
+}
+
+#mod-chat #text-message{
+    width: 260px;
+    height: 27px;
+    padding: 5px;
+    background: white;
+    border: 1px solid rgba(0,0,0,0.25);
+    color: #666;
+    border-radius: 0px;
+}
+
+#mod-chat a{
+    padding: 8px 20px;
+    background-color: #3D56FF;
+    font-size: 14px;
+    color: white;
+    margin-left: 4px;
+}
