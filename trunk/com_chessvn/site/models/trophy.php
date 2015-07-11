@@ -30,7 +30,7 @@ class ChessvnModelTrophy extends JModelItem{
 	 *
 	 * @var array
 	 */
-	protected $_data;
+	public $_data;
 	
 	/**
 	 * Gets the data
