@@ -3,6 +3,7 @@ defined('_JEXEC') or die('Restricted access');
 $utilfile = JPATH_ROOT. '/media/media_chessvn/cvnphp/utils/cvnutils.php';
 require_once($utilfile);
 $document = JFactory::getDocument();
+$input = JFactory::getApplication()->input;
 $mediaPath = JURI::base() . '/media/media_chessvn/';
 $document->addScript($mediaPath . 'js/jquery/jquery-1.8.2.min.js');
 $document->addScript($mediaPath . 'js/jquery/jquery.contextMenu.js');
@@ -12,15 +13,19 @@ $document->addStyleSheet($mediaPath.'css/jquery.contextMenu.css');
 $imgScale = 13;
 $onlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="ON" src="'.$mediaPath.'images/OnlineDot.png" style="margin: 0;">';
 $offlineImg = '<img width="'.$imgScale.'" height="'.$imgScale.'" alt="OFF" src="'.$mediaPath.'images/OfflineDot.png" style="margin: 0;">';
+$txtSearch = $input->get('txtSearch', "");
 $index=0;
-$currentUrl = JFactory::getURI();
 ?>
 <div style="text-align: right">
-    <form name="form" method="GET" action="<?php echo $currentUrl->toString(); ?>">
+    <form name="form" method="GET" action="<?php echo JRoute::_('index.php?option=com_cvnusers&view=topplayer&limit=15&limitstart=0'); ?>">
 
-        <input type="text" name="txtSearch" />&nbsp
+        <input type="text" name="txtSearch" value="<?php echo $txtSearch; ?>" />&nbsp
         <input type="submit" name="btnSearch" value="<?php echo JText::_('COM_USERS_SEARCH_LABEL');  ?>" />
-    </form>>
+        <input type="hidden" name="option" value="com_cvnusers" />
+        <input type="hidden" name="view" value="topplayer" />
+        <input type="hidden" name="limit" value="15" />
+        <input type="hidden" name="limitstart" value="0" />
+    </form>
 </div>
 <table>
     <thead>
