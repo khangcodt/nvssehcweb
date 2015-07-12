@@ -9,6 +9,11 @@ $document->addScript($mediaPath . 'js/jquery/jquery-1.8.2.min.js');
 $document->addStyleSheet($mediaPath . 'css/chessvn.css');
 $userid = JFactory::getUser()->id;
 $gameid = JRequest::getVar('gameid');
+if($result){
+    $timeUpdate = 1000;
+}else{
+    $timeUpdate = 1500;
+}
 //echo mb_strimwidth("Hello World", 0, 20, "...");
 ?>
 
@@ -28,18 +33,19 @@ $gameid = JRequest::getVar('gameid');
     var baseUri = '<?php echo JURI::base(); ?>';
     var gameid = '<?php echo $gameid ?>';
     var userid = '<?php echo $userid ?>';
+    var timeupdate = '<?php echo $timeUpdate ?>';
     //console.log(gameid);
     //console.log(userid);
     //Event onclick button send
     function sendMessage(){
         //console.log('test');
-        message = $('#text-message').val();
+        message = jQuery('#text-message').val();
         if(message != ''){
             data = {gameid : gameid, userid: userid, message: message };
             //console.log(data);
             var url = baseUri + '?option=com_chessvn&task=send';
             jQuery.post(url, data, function(){
-                $('#text-message').val('');
+                jQuery('#text-message').val('');
                 getXmlChat();
             });
         }
@@ -52,19 +58,19 @@ $gameid = JRequest::getVar('gameid');
 
     function processXmlChat(xmlData){
         //var i, games = jQuery(xmlData).find('GAMECHAT');
-        $("#box-chat").empty();
+        jQuery("#box-chat").empty();
         //console.log(xmlData)''
-        $(xmlData).find('GAMECHAT').each(function(){
-            var username = $(this).find('USERNAME').text();
-            var message = $(this).find('MESSAGE').text();
-            $("#box-chat").append('<span style="font-size: 13px"> <span style="font-weight: bold">' +username +'</span> : '+ message + ' <br>');
+        jQuery(xmlData).find('GAMECHAT').each(function(){
+            var username = jQuery(this).find('USERNAME').text();
+            var message = jQuery(this).find('MESSAGE').text();
+            jQuery("#box-chat").append('<span style="font-size: 13px"> <span style="font-weight: bold">' +username +'</span> : '+ message + ' <br>');
         })
     }
 
     jQuery(document).ready(function(){
         setInterval(function(){
             getXmlChat();
-        },1000);
+        },timeupdate);
     });
 
 
