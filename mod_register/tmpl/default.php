@@ -19,7 +19,7 @@ $defaultname = $conf['default_email_prefix'].genRandomString();
 $defaultemail = $defaultname.$conf['default_email_domain'];
 ?>
 <script>
-    window.addEvent('domready', function(){
+    jQuery(document).ready(function(){
         function checkuser(username){
             var array = ['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z','1','2','3','4','5','6','7','8','9','-','_'];
             var check = 0;
@@ -39,8 +39,16 @@ $defaultemail = $defaultname.$conf['default_email_domain'];
             if(checkuser(value)){
                 return true;
             }
+
             return false;
         });
+
+
+        document.formvalidator.setHandler('confirm', function (value) {
+            return (document.getElementById('jform_password1').value  == value);
+        });
+
+
     })
 </script>
 
@@ -56,7 +64,7 @@ $defaultemail = $defaultname.$conf['default_email_domain'];
                 <input type="password" size="30" class="validate-password required" autocomplete="off" value="" id="jform_password1" name="jform[password1]" />
 
                 <p></p><label class="required" for="jform_password2" id="jform_password2-lbl"><?php echo JText::_('PASSWORD2_LABEL');?><span class="star">&nbsp;*</span></label></p>
-                <input type="password" size="30" class="validate-password required" autocomplete="off" value="" id="jform_password2" name="jform[password2]" />
+                <input type="password" size="30" class="validate-confirm required" autocomplete="off" value="" id="jform_password2" name="jform[password2]" />
 
                 <input type="hidden" value="<?php echo $defaultemail;?>" id="jform_email1" name="jform[email1]" />
                 <input type="hidden" value="<?php echo $defaultemail;?>" id="jform_email2" name="jform[email2]" />
