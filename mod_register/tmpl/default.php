@@ -17,6 +17,9 @@ require_once($utilfile);
 require_once($configfile);
 $defaultname = $conf['default_email_prefix'].genRandomString();
 $defaultemail = $defaultname.$conf['default_email_domain'];
+//$document = JFactory::getDocument();
+//$mediaPath = JURI::base() . '/media/media_chessvn/';
+//$document->addStyleSheet($mediaPath.'css/jquery-ui-1.10.3.custom.min.css');
 ?>
 <script>
     jQuery(document).ready(function(){
@@ -52,7 +55,7 @@ $defaultemail = $defaultname.$conf['default_email_domain'];
     })
 </script>
 
-<div style="padding:10px;" class="sp-reg clearfix">
+<!--<div style="padding:10px;" class="sp-reg clearfix">-->
 	<form action="<?php echo JRoute::_('index.php?option=com_cvnusers&task=registration.register'); ?>" method="post" class="form-validate">
 		<fieldset>
 			<dl>
@@ -70,10 +73,11 @@ $defaultemail = $defaultname.$conf['default_email_domain'];
                 <input type="hidden" value="<?php echo $defaultemail;?>" id="jform_email2" name="jform[email2]" />
 			</dl>
 		</fieldset>
-		<div>
-            <input type="submit" name="Submit" class="button" value="<?php echo JText::_('JREGISTER');?>" />
+<!--		<div>-->
+<!--            <input type="submit" name="Submit" class="button" value="--><?php //echo JText::_('JREGISTER');?><!--" />-->
 <!--            <button type="submit" class="validate">--><?php //echo JText::_('JREGISTER');?><!--</button>-->
-			<?php echo JText::_('OR');?>
+        <input type="submit" name="Submit" class="button validate" value="<?php echo JText::_('JREGISTER') ?>" />
+        <?php echo JText::_('OR');?>
             <br>
             <br>
             <?php 	echo '<div class="fbconnct_btn_wrp"><a href="#" rel="nofollow" title="Login or Sign-up with Facebook" class="fbconnct_btn" onclick="return poploginbox(\''.JRoute::_(JURI::base().'index.php?option=com_fbconnct&task=login&format=raw').'\')" /><img src="'.JRoute::_(JURI::base().'modules/mod_fbconnct/assets/spacer.gif').'" width="145" height="26" border="0" /></a>
@@ -82,6 +86,6 @@ $defaultemail = $defaultname.$conf['default_email_domain'];
 			<input type="hidden" name="option" value="com_cvnusers" />
 			<input type="hidden" name="task" value="registration.register" />
 			<?php echo JHtml::_('form.token');?>
-		</div>
+<!--		</div>-->
 	</form>
-</div>
+<!--</div>-->
