@@ -56,7 +56,7 @@ $defaultemail = $defaultname.$conf['default_email_domain'];
 </script>
 
 <!--<div style="padding:10px;" class="sp-reg clearfix">-->
-	<form action="<?php echo JRoute::_('index.php?option=com_cvnusers&task=registration.register'); ?>" method="post" class="form-validate">
+	<form id="cvn-register-form" action="<?php echo JRoute::_('index.php?option=com_cvnusers&task=registration.register'); ?>" method="post" class="form-validate">
 		<fieldset>
 			<dl>
                 <input type="hidden" value="<?php echo $defaultname;?>" id="jform_name" name="jform[name]" />
