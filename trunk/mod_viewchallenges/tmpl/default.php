@@ -66,6 +66,8 @@ $userid = JFactory::getUser()->id;
         jQuery("#listChallenges > tbody").empty();//remove content before udpate new
         var data = "fdsafsa";//test code
         for (i = 0; i < games.length; i++) {
+            opponentname = getUncheckData(games[i].getElementsByTagName('OPPONENTNAME').item(0).firstChild);
+            initiatorname = getUncheckData(games[i].getElementsByTagName('INITIATORNAME').item(0).firstChild);
             desc = getUncheckData(games[i].getElementsByTagName('DESCRIPTION').item(0).firstChild);
             gid = getUncheckData(games[i].getElementsByTagName('GAMEID').item(0).firstChild);
             gametitle = getUncheckData(games[i].getElementsByTagName('TITLE').item(0).firstChild);
@@ -105,11 +107,11 @@ $userid = JFactory::getUser()->id;
 
     function drawChallengesTableRow(data) {
         jQuery("#listChallenges > tbody").append("<tr>" +
-            "<td>" + getLimitText(data.initid, 10) + "</td>" +
+            "<td>" + getLimitText(data.initiatorname, 10) + "</td>" +
             "<td>" + getLimitText(data.title, 17) + "</td>" +
             "<td>" + readableNumber(data.gamecoin) + "</td>" +
 //            "<td>" + data.gamecoin + "</td>" +
-            "<td>" + getLimitText(data.desc, 12) + "</td>" +
+            "<td>" + getLimitText(data.opponentname, 12) + "</td>" +
             "<td>" + data.rated + "</td>" +
             "<td>white</td>" +
             "<td>Play</td>" +
