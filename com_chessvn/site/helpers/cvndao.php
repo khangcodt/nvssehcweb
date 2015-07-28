@@ -61,10 +61,17 @@ class CvnDao
 
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
-        $query->select('gameid, status, completionstatus, chesstype, israting, gametitle, initiator, oponentid, gamecoin, elowhite, eloblack, timemode, maintime, incrementtime, createdtime');
+        $query->select('playerid');
+        $query->from('#__player');
+        $query->where('userid = ' . $userid);
+        $db->setQuery($query);
+        $playerid = $db->loadObject()->playerid;
+
+        $query = $db->getQuery(true);
+        $query->select('gameid, status, completionstatus, chesstype, israting, gametitle, initiator, oponentid, gamecoin, elowhite, eloblack, timemode, maintime, incrementtime, createdtime, opponentname, initiatorname');
         $query->from('#__viewchallenges');
         $query->where('chesstype = ' . $chesstype);
-        $query->where('userid = ' . $userid);
+        $query->where('oponentid is null or oponentid = ' . $playerid);
         $db->setQuery($query);
         $result = $db->loadObjectList();
 
@@ -74,6 +81,11 @@ class CvnDao
 
         for ($i = 0; $i < $resultCount; $i++) {
             $gameid = $result[$i]->gameid;
+            $opponentname = $result[$i]->opponentname;
+            $initiatorname = $result[$i]->initiatorname;
+            if($opponentname == ''){
+                $opponentname = "Mọi người";
+            }
             $status = $result[$i]->status;
             $completion_status = $result[$i]->completionstatus;
             $gametype = $result[$i]->chesstype;
@@ -88,6 +100,8 @@ class CvnDao
             $createdtime = $result[$i]->createdtime;
 
             echo "<GAMES>\n";
+            echo "<OPPONENTNAME>$opponentname</OPPONENTNAME>\n";
+            echo "<INITIATORNAME>$initiatorname</INITIATORNAME>\n";
             echo "<STATUS>$status</STATUS>\n";
             echo "<COMPLETIONSTATUS>$completion_status</COMPLETIONSTATUS>\n";
             echo "<TITLE>$gametitle</TITLE>\n";
