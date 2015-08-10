@@ -1,0 +1,82 @@
+﻿* Thiết kế chi tiết CSDL:
+- sehcnvs_config: Chứa các thông tin cấu hình hệ thống (hiện chưa dùng, cấu hình trong file php)
+	+ configid:
+	+ name: Tên thông số cấu hình
+	+ value: Giá trị thông số cấu hình
+- sehcnvs_player: table chứa các thông tin chung của player
+	+ playerid
+	+ userid: userid of joomla system
+	+ chesstitle: eg: GM, IM, ... (consider because other chess type)
+	+ coin: Số tiền của người chơi, sử dụng để cược vào các game
+	+ avatar: ảnh đại diện
+	+ favplayer: Tên kỳ thủ thần tượng (ưa thích)
+- sehcnvs_rating: table lưu thông tin rating của player
+	+ ratingid
+	+ playerid
+	+ chesstype: chess, chinese chess ||| chess = 1, chinese chess = 2, 
+	+ ratingtype: bullet, blitz, standard
+	+ ratingpoint: ELO point of rating of player
+	+ selfrating: elo tự đánh giá
+- sehcnvs_game: table lưu thông tin về các game
+	+ gameid: có thể lấy dạng random string 
+	+ status: Trạng thái game: ('I','A','T','P','C','W' --- W=Waiting, A=Accepted, C=Completed, the rest? are tournament related (scheduling)) 
+	+ completionstatus: trạng thái hoàn thành game: ('W','B','D','A','I'),I = incomplete, W = white wins, B = black wins, D = draw, A = abandoned.
+	+ nextmove: move tiếp theo (white side or black side)
+	+ iscastlewl: white nhập thành xa (long castle)		| 
+	+ iscastlews: white nhập thành gần (short castle)	|
+	+ iscastlebl: black nhập thành xa (long castle)		|
+	+ iscastlebs: black nhập thành gần (short castle)	|
+	+ drawrequest: Xin hòa
+	+ wtimeused: time used by white
+	+ btimeused: time used by black
+- sehcnvs_gameoption: table lưu thông tin các thông số thiết lập của game được tạo ra (eg: coin, white ELO, black ELO, timing, ...), mỗi record được tạo ra khi game mới được tạo, không thường xuyên được update, table sehcnvs_game mỗi record cũng là 1 game được tạo nhưng thường xuyên update một số giá trị
+	+ gameoptionid: key
+	+ gameid: gameid của table sehcnvs_game
+	+ gametitle: Text mô tả game, khích tướng các đối thủ
+	+ initiator: người tạo game
+	+ wplayerid: playerid of white
+	+ bplayerid: playerid of black	
+	+ chesstype: chess, chinese chess ||| chess = 1, chinese chess = 2, 
+	+ gamecoin: Số tiền cược của game
+	+ elowhite: ELO white player
+	+ eloblack: ELO black player
+	+ elomin: ELO nhỏ nhất có thể thấy và chơi game
+	+ elomax: ELO lớn nhất có thể thấy và chơi game
+	+ israting: rating game or not
+	+ timemode: Chế độ thời gian (blitz, bullet, ...)
+	+ maintime: thời gian của mỗi player
+	+ incrementtime: thời gian cộng của mỗi nước đi
+	+ createdtime: Thời gian tạo game
+	+ starttime: Thời gian game bắt đầu
+	+ endtime: Thời gian game kết thúc
+- sehcnvs_gameresultplayer: table lưu thông tin kết quả game của player, sử dụng chính để lấy top player theo tuần, tháng
+	+ gameresultplayerid: key
+	+ gameid: gameid của table sehcnvs_game
+	+ playerid:
+	+ iswhite: is play as white
+	+ gamestatus: Trạng thái game,('W','B','D' = white wins, black wins, draw)
+	+ elochange: ELO thay đổi trước và sau game, dương hoặc âm
+	+ coinchange: coin thay đổi trước và sau game, dương hoặc âm
+	+ createdtime: Thời gian tạo record (thời gian kết thúc game)
+- sehcnvs_trophy: table lưu thông tin các danh hiệu, giải thưởng, cúp, ... mà player đã đạt được
+	+ trophyid:
+	+ playerid: player đạt được danh hiệu
+	+ trophytime: thời gian đạt được giải
+	+ chesstype: chess, chinese chess ||| chess = 1, chinese chess = 2, 
+	+ trophytype: Loại giải thưởng
+	+ imageurl: ảnh đại diện của giải thưởng 
+	+ name: tên giải thưởng đạt được
+- sehcnvs_buddyblacklist: table lưu thông tin danh sách bạn bè hoặc người không ưa thích của người chơi
+	+ bblid: id record
+	+ playerid: id người request bạn
+	+ buddyid: id người accept request
+	+ blackid: id player bị đưa vào blacklist
+	+ chesstype: chess, chinese chess ||| chess = 1, chinese chess = 2,  (có vẻ ko cần thiết)
+	+ reqstate: trạng thái request (requested, accepted, cancelled)
+	+ createdtime: 
+- sehcnvs_gamechat: table lưu thông tin chat của 1 game, mỗi record là 1 chat msg của 1 player trong 1 game
+	+ gamechatid:
+	+ gameid: Game chứa nội dung các chat
+	+ playerid: người chat
+	+ chatmsg: nội dung chat
+	+ createddate: Thời gian tạo message
