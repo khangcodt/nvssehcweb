@@ -61,13 +61,13 @@ $defaultemail = $defaultname.$conf['default_email_domain'];
 			<dl>
                 <input type="hidden" value="<?php echo $defaultname;?>" id="jform_name" name="jform[name]" />
                 <p><label class="required" for="jform_username" id="jform_username-lbl"><?php echo JText::_('USERNAME_LABEL');?><span class="star">&nbsp;*</span></label></p>
-                <input type="text" size="30" class="validate-username required" value="" id="jform_username" name="jform[username]" />
+                <input type="text" size="22" class="validate-username required" value="" id="jform_username" name="jform[username]" />
 
                 <p><label class="required" for="jform_password1" id="jform_password1-lbl"><?php echo JText::_('PASSWORD1_LABEL');?><span class="star">&nbsp;*</span></label></p>
-                <input type="password" size="30" class="validate-password required" autocomplete="off" value="" id="jform_password1" name="jform[password1]" />
+                <input type="password" size="22" class="validate-password required" autocomplete="off" value="" id="jform_password1" name="jform[password1]" />
 
                 <p></p><label class="required" for="jform_password2" id="jform_password2-lbl"><?php echo JText::_('PASSWORD2_LABEL');?><span class="star">&nbsp;*</span></label></p>
-                <input type="password" size="30" class="validate-confirm required" autocomplete="off" value="" id="jform_password2" name="jform[password2]" />
+                <input type="password" size="22" class="validate-confirm required" autocomplete="off" value="" id="jform_password2" name="jform[password2]" />
 
                 <input type="hidden" value="<?php echo $defaultemail;?>" id="jform_email1" name="jform[email1]" />
                 <input type="hidden" value="<?php echo $defaultemail;?>" id="jform_email2" name="jform[email2]" />
